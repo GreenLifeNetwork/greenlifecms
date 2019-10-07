@@ -10,4 +10,6 @@ The biggest driver for mindless consumerism is living "uncounsciously" (as in "t
 
 Simple habits and a simple life remind us about what we really are. We are children of the earth.
 
+## Contribution
 
+To provide green habits that lead to co2 emission reduction. 
