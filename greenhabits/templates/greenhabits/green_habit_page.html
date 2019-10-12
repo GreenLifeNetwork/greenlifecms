@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-blogpage{% endblock %}
+
+{% block content %}
+    <h1>{{ page.title }}</h1>
+    <small>{{ page.type  }}</small>
+    <p class="meta">{{ page.date }}</p>
+
+    <div class="intro">{{ page.summary }}</div>
+
+    {{ page.body|richtext }}
+    author: {{ page.owner }}
+
+    
+    {% if page.tags.all.count %}
+        <div class="tags">
+            <h3>Tags</h3>
+            {% for tag in page.tags.all %}
+                <a href="{% slugurl 'tags' %}?tag={{ tag }}">
+                    <button type="button">{{ tag }}</button>
+                </a>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <p><a href="{{ page.get_parent.url }}">Return to blog</a></p>
+
+{% endblock %}
+

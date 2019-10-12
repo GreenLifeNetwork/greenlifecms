@@ -11,6 +11,7 @@ from wagtail.search import index
 
 
 class GreenHabitIndexPage(Page):
+    parent_page_types = []
     intro = RichTextField(blank=True)
 
     content_panels = Page.content_panels + [
@@ -35,7 +36,7 @@ class GreenHabitPageTag(TaggedItemBase):
 
 
 class GreenHabitTagIndexPage(Page):
-
+    parent_page_types = []
     def get_context(self, request):
         # Filter by tag
         tag = request.GET.get('tag')
