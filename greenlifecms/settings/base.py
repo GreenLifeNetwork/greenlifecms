@@ -120,15 +120,15 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    # },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    # },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    # },
 ]
 
 
@@ -144,6 +144,14 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+ADMINS = [
+            ('Yann VR', 'yannvr@gmail.com'),
+            
+        ]
+MANAGERS = ADMINS
+
+# EMAIL_SUBJECT_PREFIX = '[GreenLife] '
 
 
 # Static files (CSS, JavaScript, Images)
@@ -174,6 +182,10 @@ MEDIA_URL = '/media/'
 
 WAGTAIL_SITE_NAME = "greenlifecms"
 
+WAGTAIL_GRAVATAR_PROVIDER_URL = '//www.gravatar.com/avatar'
+
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'http://example.com'
+BASE_URL = 'https://greenlife.cloud'
+
+SITE_ID = 1
