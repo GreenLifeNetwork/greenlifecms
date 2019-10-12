@@ -49,7 +49,7 @@ class GreenHabitTagIndexPage(Page):
 
 
 class GreenHabitPage(Page):
-    date = models.DateField("Post date")
+    # date = models.DateField("Post date", auto_now_add=True, blank=True)
     header = models.CharField(max_length=250, blank=True)
     TYPES = (
         ('law', 'Law'), ('essential', 'Essential'), ('habit', 'Habit')
@@ -72,7 +72,7 @@ class GreenHabitPage(Page):
 
     content_panels = Page.content_panels + [
         MultiFieldPanel([
-            FieldPanel('date'),
+            # FieldPanel('date'),
             FieldPanel('tags'),
         ], heading="Sustainable habit details"),
         # FieldPanel('header'),
