@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'wagtail.search',
     'wagtail.admin',
     'wagtail.core',
+    'wagtail.api.v2',
 
     'modelcluster',
     'taggit',
@@ -56,6 +57,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.twitter',
 
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -179,6 +181,7 @@ MEDIA_URL = '/media/'
 
 
 # Wagtail settings
+# https://docs.wagtail.io/en/v2.6.2/advanced_topics/api/v2/configuration.html
 
 WAGTAIL_SITE_NAME = "greenlifecms"
 
@@ -189,3 +192,5 @@ WAGTAIL_GRAVATAR_PROVIDER_URL = '//www.gravatar.com/avatar'
 BASE_URL = 'https://greenlife.cloud'
 
 SITE_ID = 1
+
+# WAGTAILAPI_LIMIT_MAX = None

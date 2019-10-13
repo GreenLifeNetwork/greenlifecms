@@ -8,6 +8,9 @@ from wagtail.core.fields import RichTextField
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
+from wagtail.api import APIField
+
+
 
 
 class GreenHabitIndexPage(Page):
@@ -54,7 +57,7 @@ class GreenHabitPage(Page):
     TYPES = (
         ('law', 'Law'), ('essential', 'Essential'), ('habit', 'Habit')
     )
-    type = models.CharField(choices=TYPES, max_length=20)
+    importance = models.CharField(choices=TYPES, max_length=20)
     summary = models.CharField(max_length=250, blank=True)
     body = RichTextField(blank=True)
     tags = ClusterTaggableManager(through=GreenHabitPageTag, blank=True)
@@ -66,8 +69,20 @@ class GreenHabitPage(Page):
         index.SearchField('header'),
         index.SearchField('summary'),
         index.SearchField('tags'),
-        index.SearchField('type'),
+        index.SearchField('importance'),
         # index.SearchField('body'),
+    ]
+
+    # Export fields over the API
+    api_fields = [
+        # APIField('published_date'),
+        APIField('header'),
+        APIField('summary'),
+        APIField('body'),
+        APIField('importance'),
+        APIField('link'),
+        APIField('notes'),
+        APIField('reference'),
     ]
 
     content_panels = Page.content_panels + [
@@ -77,7 +92,7 @@ class GreenHabitPage(Page):
         ], heading="Sustainable habit details"),
         # FieldPanel('header'),
         FieldPanel('summary'),
-        FieldPanel('type'),
+        FieldPanel('importance'),
         FieldPanel('body', classname="full"),
         FieldPanel('link'),
         FieldPanel('reference'),
@@ -100,6 +115,3 @@ class GreenHabitPage(Page):
     #     ]
 
 
-
-
-# Create your models here.
