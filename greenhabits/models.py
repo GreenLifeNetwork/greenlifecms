@@ -3,14 +3,25 @@ from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey
 from taggit.models import TaggedItemBase
 
-from wagtail.core.models import Page, Orderable
+from wagtail.core.models import Page, Orderable, Group
 from wagtail.core.fields import RichTextField
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtail.api import APIField
 
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
+
+# See how long it takes before that becomes too lax..
+@receiver(post_save, sender=User)
+def set_user_as_contributor(sender, instance, created, **kwargs):
+    if created:
+        # This group should exist from last db backup. 
+        # TODO: check backup strategy
+        instance.groups.add(Group.objects.get(name='Contributors'))
 
 
 class GreenHabitIndexPage(Page):

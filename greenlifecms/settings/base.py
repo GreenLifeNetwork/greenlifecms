@@ -119,9 +119,9 @@ AUTHENTICATION_BACKENDS = (
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    # },
     # {
     #     'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
     # },
@@ -152,8 +152,10 @@ ADMINS = [
             
         ]
 MANAGERS = ADMINS
+LOGIN_REDIRECT_URL = 'https://greenlife.cloud/admin/pages/add/greenhabits/greenhabitpage/4/'
+EMAIL_SUBJECT_PREFIX = '[GreenLife] '
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-# EMAIL_SUBJECT_PREFIX = '[GreenLife] '
 
 
 # Static files (CSS, JavaScript, Images)
