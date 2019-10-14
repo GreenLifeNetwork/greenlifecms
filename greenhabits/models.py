@@ -68,7 +68,7 @@ class GreenHabitPage(Page):
     TYPES = (
         ('law', 'Law'), ('essential', 'Essential'), ('habit', 'Habit')
     )
-    importance = models.CharField(choices=TYPES, max_length=20)
+    importance = models.CharField(choices=TYPES, max_length=20, default='habit')
     summary = models.CharField(max_length=250, blank=True)
     body = RichTextField(blank=True)
     tags = ClusterTaggableManager(through=GreenHabitPageTag, blank=True)
@@ -89,7 +89,7 @@ class GreenHabitPage(Page):
         # APIField('published_date'),
         APIField('header'),
         APIField('summary'),
-        APIField('body'),
+        # APIField('body'),
         APIField('importance'),
         APIField('link'),
         APIField('notes'),
