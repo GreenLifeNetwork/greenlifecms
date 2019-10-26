@@ -61,6 +61,7 @@ class GreenHabitPage(Page):
     body = RichTextField(blank=True)
     tags = ClusterTaggableManager(through=GreenHabitPageTag, blank=True)
     link = models.URLField(blank=True)
+    source = models.CharField(max_length=120, blank=True, help_text='Original author')
     reference = models.CharField(blank=True, max_length=250)
     notes = models.TextField(blank=True)
 
