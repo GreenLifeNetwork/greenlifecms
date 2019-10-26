@@ -11,7 +11,6 @@ from wagtail.api import APIField
 
 from django.contrib.auth.models import User
 
-
 class GreenHabitIndexPage(Page):
     parent_page_types = []
     intro = RichTextField(blank=True)
@@ -101,8 +100,8 @@ class GreenHabitPage(Page):
 
 
 class PrivacyTerms(Page):
+    # parent_page_types = []  # make the page private
     body = StreamField([
-        ('title', blocks.CharBlock()),
         ('body', blocks.RawHTMLBlock()),
     ])
 
@@ -112,8 +111,8 @@ class PrivacyTerms(Page):
 
 
 class TermAndConditions(Page):
+    # parent_page_types = []  # make the page private
     body = StreamField([
-        ('title', blocks.CharBlock()),
         ('body', blocks.RawHTMLBlock()),
     ])
 
