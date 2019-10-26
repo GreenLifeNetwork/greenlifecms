@@ -2,26 +2,14 @@ from django.db import models
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey
 from taggit.models import TaggedItemBase
-
+from wagtail.core import blocks
 from wagtail.core.models import Page, Orderable, Group
-from wagtail.core.fields import RichTextField
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel
-from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.core.fields import RichTextField, StreamField
+from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, StreamFieldPanel
 from wagtail.search import index
 from wagtail.api import APIField
 
 from django.contrib.auth.models import User
-from django.db.models.signals import post_save
-from django.dispatch import receiver
-
-
-# See how long it takes before that becomes too lax..
-@receiver(post_save, sender=User)
-def set_user_as_contributor(sender, instance, created, **kwargs):
-    if created:
-        # This group should exist from last db backup. 
-        # TODO: check backup strategy
-        instance.groups.add(Group.objects.get(name='Contributors'))
 
 
 class GreenHabitIndexPage(Page):
@@ -35,9 +23,9 @@ class GreenHabitIndexPage(Page):
     def get_context(self, request):
         # Update context to include only published posts, ordered by reverse-chron
         context = super().get_context(request)
-        GreenHabitpages = self.get_children().live().order_by('-first_published_at')
-        context['greenhabitspages'] = GreenHabitpages
-        context['all']=self.get_children()
+        GreenHabitPages = self.get_children().live().order_by('-first_published_at')
+        context['greenhabitspages'] = GreenHabitPages
+        context['all'] = self.get_children()
         return context
 
 
@@ -51,6 +39,7 @@ class GreenHabitPageTag(TaggedItemBase):
 
 class GreenHabitTagIndexPage(Page):
     parent_page_types = []
+
     def get_context(self, request):
         # Filter by tag
         tag = request.GET.get('tag')
@@ -110,19 +99,24 @@ class GreenHabitPage(Page):
         FieldPanel('notes'),
     ]
 
-    # Various rating assessing the impact of the habit
-    # class GreenHabitRating(Page)
 
-    # class GreenHabitPageGalleryImage(Orderable):
-    #     page = ParentalKey(GreenHabitPage, on_delete=models.CASCADE, related_name='gallery_images')
-    #     image = models.ForeignKey(
-    #         'wagtailimages.Image', on_delete=models.CASCADE, related_name='+'
-    #     )
-    #     caption = models.CharField(blank=True, max_length=250)
-    #
-    #     panels = [
-    #         ImageChooserPanel('image'),
-    #         FieldPanel('caption'),
-    #     ]
+class PrivacyTerms(Page):
+    body = StreamField([
+        ('title', blocks.CharBlock()),
+        ('body', blocks.RawHTMLBlock()),
+    ])
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel('body'),
+    ]
 
 
+class TermAndConditions(Page):
+    body = StreamField([
+        ('title', blocks.CharBlock()),
+        ('body', blocks.RawHTMLBlock()),
+    ])
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel('body'),
+    ]
