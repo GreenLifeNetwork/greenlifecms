@@ -1,4 +1,4 @@
-
+db.bsqlite3
 # Created by https://www.gitignore.io/api/vim,backup
 # Edit at https://www.gitignore.io/?templates=vim,backup
 
@@ -141,4 +141,4 @@ dmypy.json
 .pyre/
 
 # End of https://www.gitignore.io/api/python
-
+NetrwTreeListing
