@@ -57,11 +57,11 @@ class GreenHabitPage(Page):
         ('law', 'Law'), ('essential', 'Essential'), ('habit', 'Habit')
     )
     importance = models.CharField(choices=TYPES, max_length=20, default='habit')
-    summary = models.CharField(max_length=250, blank=True)
+    summary = models.CharField(max_length=250, blank=True, help_text='Keep this short and impactful')
     body = RichTextField(blank=True)
     tags = ClusterTaggableManager(through=GreenHabitPageTag, blank=True)
     link = models.URLField(blank=True)
-    source = models.CharField(max_length=120, blank=True, help_text='Original author')
+    source = models.CharField(max_length=120, blank=True, help_text='Original author or source. Seek approval of the owner before publishing')
     reference = models.CharField(blank=True, max_length=250)
     notes = models.TextField(blank=True)
 
@@ -76,8 +76,8 @@ class GreenHabitPage(Page):
     # Export fields over the API
     api_fields = [
         # APIField('published_date'),
-        APIField('header'),
         APIField('summary'),
+        APIField('header'),
         # APIField('body'),
         APIField('importance'),
         APIField('link'),
@@ -91,6 +91,7 @@ class GreenHabitPage(Page):
             FieldPanel('tags'),
         ], heading="Sustainable habit details"),
         # FieldPanel('header'),
+        FieldPanel('source'),
         FieldPanel('summary'),
         FieldPanel('importance'),
         FieldPanel('body', classname="full"),
