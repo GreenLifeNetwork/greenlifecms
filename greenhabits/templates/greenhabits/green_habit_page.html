@@ -5,18 +5,21 @@
 {% block body_class %}template-quotepage{% endblock %}
 
 {% block content %}
-    <h1>{{ page.title }}</h1>
-{#    <small>{{ page.importance  }}</small>#}
+{#    <h1>{{ page.title }}</h1>#}
+    {#    <small>{{ page.importance  }}</small>#}
     <!-- <small>{{ page|dump }}</small> -->
-{#    <p class="meta">last publish: {{ page.last_published_at}}</p>#}
-
-    <div class="intro">{{ page.summary }}</div>
+    {#    <p class="meta">last publish: {{ page.last_published_at}}</p>#}
+    {% if page.summary %}
+        <h1>{{ page.summary }}</h1>
+    {% else %}
+        <h1>{{ page.title }}</h1>
+    {% endif %}
 
     {{ page.body|richtext }}
 
     <small class="last-revision">author: {{ page.owner }}</small>
 
-    
+
     {% if page.tags.all.count %}
         <div class="tags">
             <h3>Tags</h3>
