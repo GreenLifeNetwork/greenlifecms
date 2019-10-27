@@ -3,6 +3,10 @@ html, body {
     color: white;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
     height: 98%;
+}
+
+body {
+    background: bottom no-repeat url("../images/svg/GLlogo.svg");
     font-size: 12px;
 }
 
@@ -12,6 +16,13 @@ p {
 
 a:link, a:hover, a:active {
     color: #18be00;
+}
+
+.template-quotepage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 /*form[class=signup] p {*/
