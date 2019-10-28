@@ -1,13 +1,18 @@
-{% extends "base-quote.html" %}
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/greenlife-quotes.css' %}">
+{% endblock %}
 
 {% load wagtailcore_tags wagtailimages_tags dump_tag %}
 
 {% block body_class %}template-quotepage{% endblock %}
 
 {% block content %}
-{#    <h1>{{ page.title }}</h1>#}
+    {#    <h1>{{ page.title }}</h1>#}
     {#    <small>{{ page.importance  }}</small>#}
-    <!-- <small>{{ page|dump }}</small> -->
+    {#  <small>{{ page|dump }}</small> #}
     {#    <p class="meta">last publish: {{ page.last_published_at}}</p>#}
     {% if page.summary %}
         <h1>{{ page.summary }}</h1>
@@ -24,9 +29,7 @@
         <div class="tags">
             <h3>Tags</h3>
             {% for tag in page.tags.all %}
-                <a href="{% slugurl 'tags' %}?tag={{ tag }}">
-                    <button type="button">{{ tag }}</button>
-                </a>
+                <a href="{% slugurl 'tags' %}?tag={{ tag }}"> {{ tag }} </a>
             {% endfor %}
         </div>
     {% endif %}

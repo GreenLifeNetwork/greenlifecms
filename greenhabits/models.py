@@ -13,7 +13,7 @@ from wagtail.api import APIField
 
 from django.contrib.auth.models import User
 
-class GreenHabitIndexPage(RoutablePageMixin, Page):
+class GreenHabitIndexPage(Page):
     # parent_page_types = []
     intro = RichTextField(blank=True)
 
@@ -36,8 +36,7 @@ class GreenHabitIndexPage(RoutablePageMixin, Page):
             'page': page,
         })
 
-
-class GreenHabitPageTag(TaggedItemBase):
+class GreenHabitTagPage(TaggedItemBase):
     content_object = ParentalKey(
         'GreenHabitPage',
         related_name='tagged_items',
@@ -51,16 +50,15 @@ class GreenHabitTagIndexPage(Page):
     def get_context(self, request):
         # Filter by tag
         tag = request.GET.get('tag')
-        GreenHabitpages = GreenHabitPage.objects.filter(tags__name=tag)
+        pages_tagged = GreenHabitPage.objects.filter(tags__name=tag)
 
         # Update template context
         context = super().get_context(request)
-        context['GreenHabitpages'] = GreenHabitpages
+        context['pages_tagged'] = pages_tagged
         return context
 
 
 class GreenHabitPage(Page):
-    # date = models.DateField("Post date", auto_now_add=True, blank=True)
     header = models.CharField(max_length=250, blank=True)
     TYPES = (
         ('law', 'Law'), ('essential', 'Essential'), ('habit', 'Habit')
@@ -68,7 +66,7 @@ class GreenHabitPage(Page):
     importance = models.CharField(choices=TYPES, max_length=20, default='habit')
     summary = models.CharField(max_length=180, blank=True, help_text='Keep this short and impactful')
     body = RichTextField(blank=True)
-    tags = ClusterTaggableManager(through=GreenHabitPageTag, blank=True)
+    tags = ClusterTaggableManager(through=GreenHabitTagPage, blank=True)
     link = models.URLField(blank=True)
     source = models.CharField(max_length=120, blank=True, help_text='Original author or source. Seek approval of the owner before publishing')
     reference = models.CharField(blank=True, max_length=250)

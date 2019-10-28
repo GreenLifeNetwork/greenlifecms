@@ -1,22 +1,3 @@
-html, body {
-    background-color: #1c1c1c;
-    color: white;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
-    height: 98%;
-}
-
-body {
-    background: bottom no-repeat url("../images/svg/GLlogo.svg");
-    font-size: 12px;
-}
-
-p {
-    font-size: 1rem;
-}
-
-a:link, a:hover, a:active {
-    color: #18be00;
-}
 
 .template-quotepage {
     display: flex;

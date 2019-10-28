@@ -1,8 +1,9 @@
 from django import template
 
 register = template.Library()
-# Custom tag for diagnostics
+
+# Custom tag for debug
 @register.filter()
 def dump(var):
-    print('dump var',var )
-    return vars(var)
+    if var:
+        return vars(var)
