@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.sites',
     'django.contrib.staticfiles',
+    'wagtail.contrib.routable_page',
 
     'allauth',
     'allauth.account',

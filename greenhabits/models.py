@@ -1,4 +1,5 @@
 from django.db import models
+from django.shortcuts import render
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey
 from taggit.models import TaggedItemBase
@@ -6,13 +7,14 @@ from wagtail.core import blocks
 from wagtail.core.models import Page, Orderable, Group
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, StreamFieldPanel
+from wagtail.contrib.routable_page.models import RoutablePageMixin, route
 from wagtail.search import index
 from wagtail.api import APIField
 
 from django.contrib.auth.models import User
 
-class GreenHabitIndexPage(Page):
-    parent_page_types = []
+class GreenHabitIndexPage(RoutablePageMixin, Page):
+    # parent_page_types = []
     intro = RichTextField(blank=True)
 
     content_panels = Page.content_panels + [
@@ -27,6 +29,13 @@ class GreenHabitIndexPage(Page):
         context['all'] = self.get_children()
         return context
 
+    @route(r'^(\d+)/$', name='id')
+    def render_page_by_id(self, request, id):
+        page = GreenHabitPage.objects.get(id=int(id))
+        return render(request, 'greenhabits/green_habit_page.html', {
+            'page': page,
+        })
+
 
 class GreenHabitPageTag(TaggedItemBase):
     content_object = ParentalKey(
@@ -37,7 +46,7 @@ class GreenHabitPageTag(TaggedItemBase):
 
 
 class GreenHabitTagIndexPage(Page):
-    parent_page_types = []
+    # parent_page_types = []
 
     def get_context(self, request):
         # Filter by tag
