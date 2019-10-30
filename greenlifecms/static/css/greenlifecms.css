@@ -21,10 +21,6 @@ button {
     cursor: pointer;
 }
 
-.last-revision {
-    display: block;
-    text-align: right;
-}
 
 /*form[class=signup] p {*/
 /*    display: flex;*/
