@@ -22,7 +22,8 @@
 
     {{ page.body|richtext }}
 
-    <p class="author">author: {{ page.owner }}</p>
+{#    <p class="author">author: {{ page.owner }}</p>#}
+    <p class="source">{{ page.source }}</p>
 
 
     {% if page.tags.all.count %}
@@ -34,7 +35,7 @@
         </div>
     {% endif %}
 
-    <p><a href="{{ page.get_parent.url }}">Return to blog</a></p>
+{#    <p><a href="{{ page.get_parent.url }}">Return to blog</a></p>#}
 
 {% endblock %}
 

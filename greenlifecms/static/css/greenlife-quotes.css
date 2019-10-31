@@ -30,6 +30,15 @@ body {
     margin: 0 0.5rem;
 }
 
+.rich-text * {
+    font-size: 1.1rem;
+}
+
+.source {
+    align-self: flex-end;
+    margin: 1rem 2rem 1rem 1rem;
+}
+
 .author {
     font-size: 0.9rem;
     align-self: flex-end;
