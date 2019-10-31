@@ -13,7 +13,7 @@ from wagtail.api import APIField
 
 from django.contrib.auth.models import User
 
-class GreenHabitIndexPage(Page):
+class GreenHabitIndexPage(RoutablePageMixin, Page):
     # parent_page_types = []
     intro = RichTextField(blank=True)
 
