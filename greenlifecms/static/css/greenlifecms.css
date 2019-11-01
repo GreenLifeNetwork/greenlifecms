@@ -21,6 +21,12 @@ button {
     cursor: pointer;
 }
 
+.template-static-page {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
 
 /*form[class=signup] p {*/
 /*    display: flex;*/

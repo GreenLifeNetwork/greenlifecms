@@ -108,7 +108,7 @@ class GreenHabitPage(Page):
     ]
 
 
-class PrivacyTerms(Page):
+class StaticPage(Page):
     # parent_page_types = []  # make the page private
     body = StreamField([
         ('body', blocks.RawHTMLBlock()),
@@ -118,13 +118,3 @@ class PrivacyTerms(Page):
         StreamFieldPanel('body'),
     ]
 
-
-class TermAndConditions(Page):
-    # parent_page_types = []  # make the page private
-    body = StreamField([
-        ('body', blocks.RawHTMLBlock()),
-    ])
-
-    content_panels = Page.content_panels + [
-        StreamFieldPanel('body'),
-    ]
