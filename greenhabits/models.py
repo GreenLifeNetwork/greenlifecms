@@ -11,8 +11,6 @@ from wagtail.contrib.routable_page.models import RoutablePageMixin, route
 from wagtail.search import index
 from wagtail.api import APIField
 
-from django.contrib.auth.models import User
-
 class GreenHabitIndexPage(RoutablePageMixin, Page):
     # parent_page_types = []
     intro = RichTextField(blank=True)
@@ -35,6 +33,7 @@ class GreenHabitIndexPage(RoutablePageMixin, Page):
         return render(request, 'greenhabits/green_habit_page.html', {
             'page': page,
         })
+
 
 class GreenHabitTagPage(TaggedItemBase):
     content_object = ParentalKey(
@@ -64,13 +63,16 @@ class GreenHabitPage(Page):
         ('law', 'Law'), ('essential', 'Essential'), ('habit', 'Habit')
     )
     importance = models.CharField(choices=TYPES, max_length=20, default='habit')
-    summary = models.CharField(max_length=180, blank=True, help_text='Keep this short and impactful')
-    body = RichTextField(blank=True)
-    tags = ClusterTaggableManager(through=GreenHabitTagPage, blank=True)
-    link = models.URLField(blank=True)
-    source = models.CharField(max_length=120, blank=True, help_text='Original author or source. Seek approval of the owner before publishing')
-    reference = models.CharField(blank=True, max_length=250)
-    notes = models.TextField(blank=True)
+    summary = models.CharField(max_length=180, blank=True, help_text='Keep this short and effective')
+    tags = ClusterTaggableManager(through=GreenHabitTagPage,
+                                  help_text='Tags to mark the content. ie: energy, diet, household...')
+    body = RichTextField(blank=True, help_text='The body is additional content for larger devices')
+    link = models.URLField(blank=True, help_text='Link to the original content.')
+    source = models.CharField(max_length=120, blank=True,
+                              help_text='Original author or source. If website or article. Use link field but only the domain name here! Seek approval of the owner before publishing')
+    reference = models.CharField(blank=True, max_length=250, help_text='If source is not link (like paper or archives)')
+    notes = models.TextField(blank=True,
+                             help_text='Notes about the quote. Useful for drafts and moderators. Not published.')
 
     search_fields = Page.search_fields + [
         index.SearchField('header'),
@@ -89,7 +91,7 @@ class GreenHabitPage(Page):
         APIField('importance'),
         APIField('link'),
         APIField('notes'),
-        APIField('reference'),
+        # APIField('reference'),
     ]
 
     content_panels = Page.content_panels + [
@@ -114,4 +116,3 @@ class StaticPage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('body', classname="full"),
     ]
-
