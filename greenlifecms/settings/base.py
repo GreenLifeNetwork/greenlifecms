@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'wagtail.admin',
     'wagtail.core',
     'wagtail.api.v2',
+    'wagtail.contrib.routable_page',
 
     'modelcluster',
     'taggit',
@@ -50,7 +51,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.sites',
     'django.contrib.staticfiles',
-    'wagtail.contrib.routable_page',
 
     'allauth',
     'allauth.account',
