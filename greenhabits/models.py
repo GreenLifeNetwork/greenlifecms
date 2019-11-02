@@ -110,11 +110,8 @@ class GreenHabitPage(Page):
 
 class StaticPage(Page):
     # parent_page_types = []  # make the page private
-    body = StreamField([
-        ('body', blocks.RawHTMLBlock()),
-    ])
-
+    body = RichTextField()
     content_panels = Page.content_panels + [
-        StreamFieldPanel('body'),
+        FieldPanel('body', classname="full"),
     ]
 

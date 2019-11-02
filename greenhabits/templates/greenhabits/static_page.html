@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static %}
+{% load wagtailcore_tags static %}
 {% block extra_css %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/greenlifecms.css' %}">
 {% endblock %}
@@ -7,7 +7,7 @@
 {% block body_class %}template-static-page{% endblock %}
 
 {% block content %}
-    {{ page.body }}
+    {{ page.body|richtext }}
 {% endblock %}
 
 {#<p><a href="{{ page.get_parent.url }}">Return to blog</a></p>#}
