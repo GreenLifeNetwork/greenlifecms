@@ -14,6 +14,7 @@
     {#    <small>{{ page.importance  }}</small>#}
     {#  <small>{{ page|dump }}</small> #}
     {#    <p class="meta">last publish: {{ page.last_published_at}}</p>#}
+
     {% if page.summary %}
         <h1>{{ page.summary }}</h1>
     {% else %}
@@ -22,7 +23,6 @@
 
     {{ page.body|richtext }}
 
-{#    <p class="author">author: {{ page.owner }}</p>#}
     <p class="source">{{ page.source }}</p>
 
 

@@ -63,7 +63,7 @@ class GreenHabitPage(Page):
         ('law', 'Law'), ('essential', 'Essential'), ('habit', 'Habit')
     )
     importance = models.CharField(choices=TYPES, max_length=20, default='habit')
-    summary = models.CharField(max_length=180, blank=True, help_text='Keep this short and effective')
+    summary = models.CharField(max_length=180, help_text='Mobile quote! Keep this short and effective')
     tags = ClusterTaggableManager(through=GreenHabitTagPage,
                                   help_text='Tags to mark the content. ie: energy, diet, household...')
     body = RichTextField(blank=True, help_text='The body is additional content for larger devices')
