@@ -10,16 +10,12 @@ body {
     font-size: 12px;
 }
 
-h1 {
-    margin: 2rem;
-}
-
-
 .template-quotepage {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    margin: 2rem;
 }
 
 .tags {
