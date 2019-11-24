@@ -91,6 +91,7 @@ class GreenHabitPage(Page):
         APIField('importance'),
         APIField('link'),
         APIField('notes'),
+        APIField('source'),
         # APIField('reference'),
     ]
 
