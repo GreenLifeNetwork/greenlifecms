@@ -87,7 +87,7 @@ class GreenHabitPage(Page):
         # APIField('published_date'),
         APIField('summary'),
         APIField('header'),
-        # APIField('body'),
+        APIField('body'),
         APIField('importance'),
         APIField('link'),
         APIField('notes'),
