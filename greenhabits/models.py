@@ -67,7 +67,7 @@ class GreenHabitPage(Page):
     tags = ClusterTaggableManager(through=GreenHabitTagPage,
                                   help_text='Tags to mark the content. ie: energy, diet, household...')
     body = RichTextField(blank=True, help_text='The body is additional content for larger devices')
-    link = models.URLField(blank=True, help_text='Link to the original content.')
+    links = RichTextField(blank=True, help_text='Call to actions or details regarding suggestion')
     source = models.CharField(max_length=120, default='',
                               help_text='Original author or source. If website or article. Use link field but only the domain name here! Seek approval of the owner before publishing')
     reference = models.CharField(blank=True, max_length=250, help_text='If source is not link (like paper or archives)')
@@ -89,7 +89,7 @@ class GreenHabitPage(Page):
         APIField('header'),
         APIField('body'),
         APIField('importance'),
-        APIField('link'),
+        APIField('links'),
         APIField('notes'),
         APIField('source'),
         # APIField('reference'),
@@ -105,7 +105,7 @@ class GreenHabitPage(Page):
         FieldPanel('summary'),
         FieldPanel('importance'),
         FieldPanel('body', classname="full"),
-        FieldPanel('link'),
+        FieldPanel('links'),
         FieldPanel('reference'),
         FieldPanel('notes'),
     ]
