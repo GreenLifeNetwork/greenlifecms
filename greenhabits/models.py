@@ -23,6 +23,7 @@ def set_user_as_contributor(sender, instance, created, **kwargs):
         # This group should exist from last db backup.
         # TODO: check backup strategy
         instance.groups.add(Group.objects.get(name='Editors'))
+        instance.save()
 
 
 class GreenHabitIndexPage(RoutablePageMixin, Page):
