@@ -1,3 +1,13 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
 html, body {
     background-color: #1c1c1c;
     color: white;
@@ -12,6 +22,8 @@ p {
 
 a:link, a:hover, a:active, a:visited {
     color: #18be00;
+    text-decoration: none;
+    font-weight: normal;
 }
 
 button {
@@ -21,6 +33,37 @@ button {
     cursor: pointer;
 }
 
+main {
+    list-style: none;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    padding: 0 5vw;
+}
+
+p {
+    max-width: 400px;
+}
+
+p.center {
+    text-align: center;
+}
+
+
+ul {
+    list-style: none;
+    margin-top: 2em;
+    display: flex;
+    flex-flow: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+ul > li {
+    padding: 0 10px;
+}
+
 .template-static-page {
     display: flex;
     align-items: center;
@@ -28,7 +71,6 @@ button {
     margin: 0 2em;
     padding: 0 2em;
 }
-
 
 /*form[class=signup] p {*/
 /*    display: flex;*/

@@ -1,45 +1,45 @@
 {% load i18n static wagtailcore_tags %}
 
-<main class="main">
-    <div class="figure">
-        <img alt="Green Life Logo" src="{% static 'images/svg/GLlogo.svg' %}"/>
-    </div>
-    <div class="main-text">
-        <h1>{% trans "Time for change is Now" %}</h1>
-        <h1>{% trans "Change is Us" %}</h1>
-        <p></p>
-        <p>We can live a sustainable life. Our carbon trail can minimized and our soul can be saved in the process. It's
-            about the sum all of the little things. It's about
-            all of us shifting to green side. Our soul is green. There is hope because the sum of all of our habits can
-            make a tremendous different.
-            The suggestion made by GreenLife ultimately help you live a simpler life</p>
-        <p>Sustainable habits is gratitude for the wealth nature has granted us. Adopting a simple life helps you
-            connect with what matters. It naturally leads to mindfulness and happiness as we break free from every
-            enslaving aspects of modern life.
-        <p>
-    </div>
+<main>
+    <img alt="Green Life Logo" src="{% static 'images/svg/GLlogo.svg' %}"/>
+    <h1>{% trans "Time for change is now" %}</h1>
+    <!--        <h1>{% trans "Change is Us" %}</h1>-->
+    <p class="center">We can live a sustainable life. Our carbon trail can minimized and our soul can be saved in the process. It's
+        about the sum all of the little things. It's about
+        all of us shifting to green side. Our soul is green. There is hope because the sum of all of our habits can
+        make a tremendous different.
+        The suggestion made by GreenLife ultimately help you live a simpler life</p>
+    <p class="center">Sustainable habits is gratitude for the wealth nature has granted us. Adopting a simple life helps you
+        connect with what matters. It naturally leads to mindfulness and happiness as we break free from every
+        enslaving aspects of modern life.
+    <p>
+    <ul>
+        <li>
+            <img alt="Green Life Logo" src="{% static 'images/svg/app-store-download.svg' %}"/>
+        </li>
+        <li>
+            <img alt="Green Life Logo" src="{% static 'images/svg/google-play-download.svg' %}"/>
+        </li>
+    </ul>
 </main>
+
 <footer class="footer" role="contentinfo">
     <!--    <ul>-->
     <!--        <li>-->
     <!--            <h4><a href="/contribute"> {% trans "Contribute" %}</a></h4>-->
     <!--        </li>-->
     <!--    </ul>-->
-    <a class="option option-one" href="/contribute">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M9 21c0 .5.4 1 1 1h4c.6 0 1-.5 1-1v-1H9v1zm3-19C8.1 2 5 5.1 5 9c0 2.4 1.2 4.5 3 5.7V17c0 .5.4 1 1 1h6c.6 0 1-.5 1-1v-2.3c1.8-1.3 3-3.4 3-5.7 0-3.9-3.1-7-7-7zm2.9 11.1l-.9.6V16h-4v-2.3l-.9-.6C7.8 12.2 7 10.6 7 9c0-2.8 2.2-5 5-5s5 2.2 5 5c0 1.6-.8 3.2-2.1 4.1z"/>
-        </svg>
-        <div>
-            <h4> {% trans "Contribute" %}</h4>
-        </div>
-    </a>
-    <a class="option option-one" href="/about-us">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M9 21c0 .5.4 1 1 1h4c.6 0 1-.5 1-1v-1H9v1zm3-19C8.1 2 5 5.1 5 9c0 2.4 1.2 4.5 3 5.7V17c0 .5.4 1 1 1h6c.6 0 1-.5 1-1v-2.3c1.8-1.3 3-3.4 3-5.7 0-3.9-3.1-7-7-7zm2.9 11.1l-.9.6V16h-4v-2.3l-.9-.6C7.8 12.2 7 10.6 7 9c0-2.8 2.2-5 5-5s5 2.2 5 5c0 1.6-.8 3.2-2.1 4.1z"/>
-        </svg>
-        <div>
-            <h4> {% trans "About Us" %}</h4>
-        </div>
-    </a>
+    <ul>
+        <li>
+            <a class="option option-one" href="/contribute">
+                <h4> {% trans "Contribute" %}</h4>
+            </a>
+        </li>
+        <li>
+            <a class="option option-one" href="/about-us">
+                <h4> {% trans "About Us" %}</h4>
+            </a>
+        </li>
+    </ul>
 
 </footer>
