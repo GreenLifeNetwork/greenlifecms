@@ -40,30 +40,6 @@ main {
     align-items: center;
     padding: 0 5vw;
 }
-
-p {
-    max-width: 400px;
-}
-
-p.center {
-    text-align: center;
-}
-
-
-ul {
-    list-style: none;
-    margin-top: 2em;
-    display: flex;
-    flex-flow: wrap;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-direction: row;
-}
-
-ul > li {
-    padding: 0 10px;
-}
-
 .template-static-page {
     display: flex;
     align-items: center;
