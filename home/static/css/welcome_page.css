@@ -8,12 +8,11 @@ p.center {
 
 ul {
     list-style: none;
-    margin-top: 2em;
     display: flex;
     flex-flow: wrap;
+    padding: 0;
     align-items: center;
     justify-content: space-evenly;
-    flex-direction: row;
 }
 
 li {
