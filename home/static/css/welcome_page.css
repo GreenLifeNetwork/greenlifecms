@@ -16,7 +16,7 @@ ul {
     flex-direction: row;
 }
 
-ul > li {
+li {
     padding: 0 10px;
 }
 
