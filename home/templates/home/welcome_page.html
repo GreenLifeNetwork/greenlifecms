@@ -1,5 +1,6 @@
 {% load i18n static wagtailcore_tags %}
 
+{% block content %}
 <main>
     <img alt="Green Life Logo" src="{% static 'images/svg/GLlogo.svg' %}"/>
     <h1>{% trans "Time for change is now" %}</h1>
@@ -7,9 +8,9 @@
     <p class="center">We can live a sustainable life. Our carbon trail can minimized and our soul can be saved in the
         process. It's
         about the sum all of the little things. It's about
-        all of us shifting to green side. Our soul is green. There is hope because the sum of all of our habits can
+        all of us shifting to the green side. Our soul is green. There is hope because the sum of all of our habits can
         make a tremendous different.
-        The suggestion made by GreenLife ultimately help you live a simpler life</p>
+        The suggestion made by Green Life ultimately help you live a simpler life</p>
     <p class="center">Sustainable habits is gratitude for the wealth nature has granted us. Adopting a simple life helps
         you
         connect with what matters. It naturally leads to mindfulness and happiness as we break free from every
@@ -18,23 +19,18 @@
     <ul>
         <a href="https://apps.apple.com/us/app/green-lifestyle/id1484892517?ls=1">
             <li>
-                <img alt="Green Life Logo" src="{% static 'images/svg/app-store-download.svg' %}"/>
+                <img alt="Green Life on App Store" src="{% static 'images/svg/app-store-download.svg' %}"/>
             </li>
         </a>
         <a href="https://play.google.com/store/apps/details?id=lastchance.greenlife.quotes">
             <li>
-                <img alt="Green Life Logo" src="{% static 'images/svg/google-play-download.svg' %}"/>
+                <img alt="Green Life on Play Store" src="{% static 'images/svg/google-play-download.svg' %}"/>
             </li>
         </a>
     </ul>
 </main>
 
 <footer class="footer" role="contentinfo">
-    <!--    <ul>-->
-    <!--        <li>-->
-    <!--            <h4><a href="/contribute"> {% trans "Contribute" %}</a></h4>-->
-    <!--        </li>-->
-    <!--    </ul>-->
     <ul>
         <li>
             <a class="option option-one" href="/contribute">
@@ -49,3 +45,4 @@
     </ul>
 
 </footer>
+{% endblock %}
