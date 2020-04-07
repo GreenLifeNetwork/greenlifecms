@@ -1,4 +1,4 @@
-{% load static wagtailuserbar %}
+{% load static wagtailuserbar i18n %}
 
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -37,4 +37,25 @@
             {# Override this in templates to add extra javascript #}
         {% endblock %}
     </body>
+
+    <footer class="footer" role="contentinfo">
+        <ul>
+            <li>
+                <a class="option option-one" href="/">
+                    <h4> {% trans "Home" %}</h4>
+                </a>
+            </li>
+            <li>
+                <a class="option option-two" href="/contribute">
+                    <h4> {% trans "Contribute" %}</h4>
+                </a>
+            </li>
+            <li>
+                <a class="option option-one" href="/about-us">
+                    <h4> {% trans "About Us" %}</h4>
+                </a>
+            </li>
+        </ul>
+
+    </footer>
 </html>
