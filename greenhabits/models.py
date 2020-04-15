@@ -49,6 +49,13 @@ class GreenHabitIndexPage(RoutablePageMixin, Page):
             'page': page,
         })
 
+class BlogTagPage(TaggedItemBase):
+    content_object = ParentalKey(
+        'BlogPage',
+        related_name='tagged_items',
+        on_delete=models.CASCADE
+    )
+
 
 class GreenHabitTagPage(TaggedItemBase):
     content_object = ParentalKey(
@@ -56,6 +63,58 @@ class GreenHabitTagPage(TaggedItemBase):
         related_name='tagged_items',
         on_delete=models.CASCADE
     )
+
+class BlogPageIndex(RoutablePageMixin, Page):
+    # parent_page_types = []
+#     intro = RichTextField(blank=False, , default='Green Life articles')
+    intro = RichTextField(blank=True, default='Green Life articles')
+
+    def get_context(self, request):
+        # Filter by tag
+        tag = request.GET.get('tag')
+        pages_tagged = BlogPage.objects.filter(tags__name=tag)
+
+        # Update template context
+        context = super().get_context(request)
+        context['pages_tagged'] = pages_tagged
+        return context
+
+
+class BlogPage(Page):
+    body = RichTextField(blank=False)
+    summary = models.CharField(max_length=180, help_text='The article summary')
+    tags = ClusterTaggableManager(blank=True, through=BlogTagPage,
+                                  help_text='Tags to mark the content. ie: energy, diet, household...')
+    links = RichTextField(blank=True, help_text='Possible links to follow up or support discussions')
+    reference = models.CharField(blank=True, max_length=250, help_text='If source is not link (like paper or archives)')
+    notes = models.TextField(blank=True,
+                             help_text='Notes about the quote. Useful for drafts and moderators. Not published.')
+    search_fields = Page.search_fields + [
+        index.SearchField('summary'),
+        index.SearchField('tags'),
+        index.SearchField('body'),
+    ]
+
+    # Export fields over the API
+    api_fields = [
+        APIField('body'),
+        APIField('tags'),
+        APIField('links'),
+        APIField('reference'),
+        APIField('notes'),
+    ]
+
+    content_panels = Page.content_panels + [
+        MultiFieldPanel([
+            FieldPanel('tags'),
+        ], heading="Blog pages"),
+        FieldPanel('body', classname="full"),
+        FieldPanel('summary'),
+        FieldPanel('links'),
+        FieldPanel('reference'),
+        FieldPanel('notes'),
+    ]
+
 
 
 class GreenHabitTagIndexPage(Page):
