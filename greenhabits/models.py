@@ -13,7 +13,7 @@ from wagtail.search import index
 from wagtail.api import APIField
 
 from django.contrib.auth.models import User
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
 
 
@@ -82,6 +82,7 @@ class BlogPageIndex(RoutablePageMixin, Page):
         # Update template context
         context = super().get_context(request)
         context['pages_tagged'] = pages_tagged
+        context['all'] = self.get_children()
         return context
 
 
@@ -136,7 +137,6 @@ class GreenHabitTagIndexPage(Page):
 
 
 class GreenHabitPage(Page):
-    suggestion = models.CharField(max_length=180, help_text='Keep this short and effective')
     TYPES = (
         ('law', 'Law'), ('essential', 'Essential'), ('habit', 'Habit')
     )
@@ -152,16 +152,15 @@ class GreenHabitPage(Page):
                              help_text='Notes about the quote. Useful for drafts and/or moderators comment. Not published.')
 
     search_fields = Page.search_fields + [
-        index.SearchField('summary'),
-        index.SearchField('tags'),
-        index.SearchField('importance'),
-        # index.SearchField('body'),
+        index.SearchField('title'),
+        # index.SearchField('tags'),
+        # index.SearchField('importance'),
+        index.SearchField('body'),
     ]
 
     # Export fields over the API
     api_fields = [
         # APIField('published_date'),
-        APIField('suggestion'),
         APIField('body'),
         APIField('importance'),
         APIField('links'),
@@ -170,9 +169,7 @@ class GreenHabitPage(Page):
         # APIField('reference'),
     ]
 
-    # content_panels = Page.content_panels + [
-    content_panels = [
-        FieldPanel('suggestion'),
+    content_panels = Page.content_panels + [
         FieldPanel('source'),
         MultiFieldPanel([
             # FieldPanel('date'),
@@ -184,7 +181,6 @@ class GreenHabitPage(Page):
         FieldPanel('reference'),
         FieldPanel('notes'),
     ]
-
 
 class StaticPage(Page):
     # parent_page_types = []  # make the page private
