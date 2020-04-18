@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.db import models
 from django.shortcuts import render
 from modelcluster.contrib.taggit import ClusterTaggableManager
@@ -49,6 +50,7 @@ class GreenHabitIndexPage(RoutablePageMixin, Page):
             'page': page,
         })
 
+
 class BlogTagPage(TaggedItemBase):
     content_object = ParentalKey(
         'BlogPage',
@@ -64,10 +66,13 @@ class GreenHabitTagPage(TaggedItemBase):
         on_delete=models.CASCADE
     )
 
+
 class BlogPageIndex(RoutablePageMixin, Page):
-    # parent_page_types = []
-#     intro = RichTextField(blank=False, , default='Green Life articles')
     intro = RichTextField(blank=True, default='Green Life articles')
+
+    def get_blog_items(self):
+        # This returns a Django paginator of blog items in this section
+        return Paginator(self.get_children().live().type(BlogPage), 10)
 
     def get_context(self, request):
         # Filter by tag
@@ -116,7 +121,6 @@ class BlogPage(Page):
     ]
 
 
-
 class GreenHabitTagIndexPage(Page):
     # parent_page_types = []
 
@@ -132,24 +136,22 @@ class GreenHabitTagIndexPage(Page):
 
 
 class GreenHabitPage(Page):
-    header = models.CharField(max_length=250, blank=True)
+    suggestion = models.CharField(max_length=180, help_text='Keep this short and effective')
     TYPES = (
         ('law', 'Law'), ('essential', 'Essential'), ('habit', 'Habit')
     )
-    importance = models.CharField(choices=TYPES, max_length=20, default='habit')
-    summary = models.CharField(max_length=180, help_text='Mobile quote! Keep this short and effective')
-    tags = ClusterTaggableManager(through=GreenHabitTagPage,
+    source = models.CharField(max_length=120, blank=True,
+                              help_text='Original author or source. If website or article. Use link field but only the domain name here! Seek approval of the owner before publishing')
+    importance = models.CharField(choices=TYPES, max_length=20, default='habit', blank=True)
+    tags = ClusterTaggableManager(through=GreenHabitTagPage, blank=True,
                                   help_text='Tags to mark the content. ie: energy, diet, household...')
     body = RichTextField(blank=True, help_text='The body is additional content for larger devices')
     links = RichTextField(blank=True, help_text='Call to actions or details regarding suggestion')
-    source = models.CharField(max_length=120, default='',
-                              help_text='Original author or source. If website or article. Use link field but only the domain name here! Seek approval of the owner before publishing')
     reference = models.CharField(blank=True, max_length=250, help_text='If source is not link (like paper or archives)')
     notes = models.TextField(blank=True,
-                             help_text='Notes about the quote. Useful for drafts and moderators. Not published.')
+                             help_text='Notes about the quote. Useful for drafts and/or moderators comment. Not published.')
 
     search_fields = Page.search_fields + [
-        index.SearchField('header'),
         index.SearchField('summary'),
         index.SearchField('tags'),
         index.SearchField('importance'),
@@ -159,8 +161,7 @@ class GreenHabitPage(Page):
     # Export fields over the API
     api_fields = [
         # APIField('published_date'),
-        APIField('summary'),
-        APIField('header'),
+        APIField('suggestion'),
         APIField('body'),
         APIField('importance'),
         APIField('links'),
@@ -169,14 +170,14 @@ class GreenHabitPage(Page):
         # APIField('reference'),
     ]
 
-    content_panels = Page.content_panels + [
+    # content_panels = Page.content_panels + [
+    content_panels = [
+        FieldPanel('suggestion'),
+        FieldPanel('source'),
         MultiFieldPanel([
             # FieldPanel('date'),
             FieldPanel('tags'),
         ], heading="Sustainable habit details"),
-        # FieldPanel('header'),
-        FieldPanel('source'),
-        FieldPanel('summary'),
         FieldPanel('importance'),
         FieldPanel('body', classname="full"),
         FieldPanel('links'),
