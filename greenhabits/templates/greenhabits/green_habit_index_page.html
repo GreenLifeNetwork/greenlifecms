@@ -13,7 +13,8 @@
 
             <p>{{ post.intro }}</p>
             {{ post.body|richtext }}
-        {% endwith %}
+            {{ post.body|richtext }}
+{% endwith %}
     {% endfor %}
 
 {% endblock %}

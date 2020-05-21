@@ -29,6 +29,12 @@ p {
     font-size: 1rem;
 }
 
+img {
+    max-height: 300px;
+    width: auto;
+    align:center;
+}
+
 a:link, a:hover, a:active, a:visited {
     color: #18be00;
     text-decoration: none;
