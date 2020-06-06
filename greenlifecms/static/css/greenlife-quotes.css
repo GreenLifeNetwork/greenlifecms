@@ -2,20 +2,26 @@ html, body {
     background-color: #1c1c1c;
     color: white;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
-    height: 98%;
+    height: 100%;
 }
 
 body {
-    background: bottom no-repeat url("../images/svg/GLlogo.svg");
     font-size: 12px;
 }
 
-.template-quotepage {
+.app-available {
+    margin-top: 1rem;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+article {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin: 2rem;
+    margin: 2rem 0.5rem;
 }
 
 .tags {

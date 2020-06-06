@@ -10,11 +10,9 @@
     {% for post in greenhabitspages %}
         {% with post=post.specific %}
             <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
-
             <p>{{ post.intro }}</p>
             {{ post.body|richtext }}
-            {{ post.body|richtext }}
-{% endwith %}
+        {% endwith %}
     {% endfor %}
 
 {% endblock %}
