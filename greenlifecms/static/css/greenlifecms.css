@@ -56,6 +56,10 @@ main {
     padding: 0 5vw;
 }
 
+footer {
+    font-size: 1.1rem;
+}
+
 
 footer ul {
     list-style: none;
