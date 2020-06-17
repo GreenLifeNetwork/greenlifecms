@@ -10,22 +10,24 @@
 {% block body_class %}template-quotepage{% endblock %}
 
 {% block content %}
-
-<div class="app-available">
-    <div id='ios-app-available' style='display: none'>
-        <a href="https://apps.apple.com/us/app/green-lifestyle/id1484892517?ls=1">
-            <img alt="Green Life on App Store" src="{% static 'images/svg/app-store-download.svg' %}"/>
-        </a>
-    </div>
-
-    <div id='android-app-available' style='display: none'>
-        <a href="https://play.google.com/store/apps/details?id=lastchance.greenlife.quotes">
-            <img alt="Green Life on Play Store" src="{% static 'images/svg/google-play-download.svg' %}"/>
-        </a>
-    </div>
-</div>
-
 <article>
+    <img alt="Green Life Logo" src="{% static 'images/svg/GLlogo.svg' %}"/>
+
+    <div class="app-available">
+        <div id='ios-app-available' style='display: none'>
+            <a href="https://apps.apple.com/us/app/green-lifestyle/id1484892517?ls=1">
+                <img alt="Green Life on App Store" src="{% static 'images/svg/app-store-download.svg' %}"/>
+            </a>
+        </div>
+
+        <div id='android-app-available' style='display: none'>
+            <a href="https://play.google.com/store/apps/details?id=lastchance.greenlife.quotes">
+                <img alt="Green Life on Play Store" src="{% static 'images/svg/google-play-download.svg' %}"/>
+            </a>
+        </div>
+    </div>
+
+
     <h1>{{ page.title }}</h1>
 
     {{ page.body|richtext }}
