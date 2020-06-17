@@ -82,7 +82,7 @@ class BlogPageIndex(RoutablePageMixin, Page):
         # Update template context
         context = super().get_context(request)
         context['pages_tagged'] = pages_tagged
-        context['all'] = self.get_children()
+        context['all'] = self.get_children().live()
         return context
 
 
