@@ -2,9 +2,13 @@
 {% load static %}
 
 {% load wagtailcore_tags wagtailimages_tags dump_tag %}
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/greenlife-quotes.css' %}">
+    {% endblock %}
 
 {% block content %}
 
+<article class="blog">
     {% if page.summary %}
         <h1>{{ page.summary }}</h1>
     {% else %}
@@ -26,4 +30,5 @@
 
 {#    <p><a href="{{ page.get_parent.url }}">Return to blog</a></p>#}
 
+</article>
 {% endblock %}

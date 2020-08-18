@@ -17,6 +17,10 @@ article * {
     max-width: 400px;
 }
 
+article.blog * {
+    max-width: 440px;
+}
+
 .tags {
     display: flex;
     flex-direction: row;
