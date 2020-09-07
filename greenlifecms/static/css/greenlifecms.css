@@ -26,8 +26,13 @@ img {
     align:center;
 }
 
+h1, h2 {
+    text-align: center;
+}
+
 p {
     font-size: 1em;
+    max-width: 400px;
 }
 
 img {
@@ -91,3 +96,7 @@ footer li {
 /*    justify-content: center;*/
 /*    flex-grow: 1;*/
 /*}*/
+
+.responsive-object {
+    padding-bottom: 0 !important;
+}
