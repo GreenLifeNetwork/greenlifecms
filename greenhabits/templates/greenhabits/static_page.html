@@ -7,7 +7,9 @@
 {% block body_class %}template-static-page{% endblock %}
 
 {% block content %}
+    <main>
     {{ page.body|richtext }}
+    </main>
 {% endblock %}
 
 {#<p><a href="{{ page.get_parent.url }}">Return to blog</a></p>#}
