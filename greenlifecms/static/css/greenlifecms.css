@@ -20,12 +20,6 @@ html, body {
     font-size: 14px;
 }
 
-img {
-    max-height: 300px;
-    width: auto;
-    align:center;
-}
-
 h1, h2 {
     text-align: center;
 }
@@ -55,12 +49,15 @@ button {
 }
 
 main {
+    width: 100%;
+    font-size: 1em;
+}
+
+.rich-text {
     list-style: none;
     display: flex;
     flex-flow: column;
     align-items: center;
-    padding: 3vw;
-    font-size: 1rem;
 }
 
 footer {
@@ -76,17 +73,19 @@ footer ul {
     justify-content: space-evenly;
 }
 
+ul img {
+    height: 75px;
+    margin-top: 5px;
+}
+
 footer li {
     padding: 0 10px;
 }
 
 
 .template-static-page {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
     margin: 0 2em;
-    padding: 0 2em;
+    /* padding: 0 2em; */
 }
 
 /*form[class=signup] p {*/
@@ -98,5 +97,6 @@ footer li {
 /*}*/
 
 .responsive-object {
+    display: flex;
     padding-bottom: 0 !important;
 }
