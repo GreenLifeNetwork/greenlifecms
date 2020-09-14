@@ -24,7 +24,7 @@ h1, h2 {
     text-align: center;
 }
 
-p {
+p, ul {
     font-size: 1em;
     max-width: 400px;
 }
@@ -58,6 +58,7 @@ main {
     display: flex;
     flex-flow: column;
     align-items: center;
+    margin: 2em;
 }
 
 footer {
@@ -71,6 +72,7 @@ footer ul {
     padding: 0;
     align-items: center;
     justify-content: center;
+    max-width: initial;
 }
 
 ul img {
