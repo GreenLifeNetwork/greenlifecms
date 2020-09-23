@@ -30,7 +30,7 @@ p, ul {
 }
 
 img {
-    max-height: 300px;
+    max-width: 400px;
     width: auto;
     align:center;
 }
@@ -76,8 +76,9 @@ footer ul {
 }
 
 ul img {
-    height: 75px;
+    height: 45px;
     margin-top: 5px;
+    max-width: auto;
 }
 
 footer li {

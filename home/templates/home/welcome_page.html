@@ -1,16 +1,17 @@
+{% extends "base.html" %}
 {% load i18n static wagtailcore_tags %}
 
 {% block content %}
 <main>
     <img alt="Green Life Logo" src="{% static 'images/svg/GLlogo.svg' %}"/>
-    <h1>
+    <h2>
         <a href="https://www.crowdfunder.co.uk/green-life">
             22 DAYS LEFT IN OUR CROWDFUNDING <br/>
             Share if you care 🤝<br/>
-            <br/>
-        ️</a>
+            ️</a>
         <a href="https://greenlife.cloud/contribute">Help if you can 🕊</a><br/>
-    </h1>
+    </h2>
+
     <h2>{% trans "Time for change is now" %}</h2>
     <!--        <h1>{% trans "Change is Us" %}</h1>-->
     <p class="center">We can live a sustainable life. Our carbon trail can be reduced and our soul can be saved in the
@@ -37,4 +38,8 @@
         </a>
     </ul>
 </main>
+{% endblock %}
+
+{% block post_footer %}
+<!--<img src="https://greenlife.cloud/media/images/Homepage_Its_in_our_Hands.original.png" alt="it's in our hands">-->
 {% endblock %}
