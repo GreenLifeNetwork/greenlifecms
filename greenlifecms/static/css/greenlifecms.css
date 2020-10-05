@@ -103,3 +103,13 @@ footer li {
     display: flex;
     padding-bottom: 0 !important;
 }
+
+.page {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.page span, .page a {
+    margin: 1rem;
+}

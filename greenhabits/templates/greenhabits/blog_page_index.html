@@ -1,13 +1,10 @@
 {% extends "base.html" %}
-
 {% load wagtailcore_tags wagtailimages_tags dump_tag %}
-
 {% block body_class %}template-static-page{% endblock %}
-
 {% block content %}
     <h1>{{ page.title }}</h1>
 
-    {% for post in all %}
+    {% for post in posts %}
         {% with post=post.specific %}
             <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
 
@@ -16,6 +13,18 @@
             {{ post.links|richtext }}
         {% endwith %}
     {% endfor %}
+
+<div class="page">
+{% if posts.has_previous %}
+    <a href="?page=1">&laquo; first</a>
+    <a href="?page={{ posts.previous_page_number }}">previous</a>
+{% endif %}
+    <span class="current"> {{ posts.number }} of {{ posts.paginator.num_pages }} </span>
+{% if posts.has_next %}
+    <a href="?page={{ posts.next_page_number }}">next</a>
+    <a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
+{% endif %}
+</div>
 
 {% endblock %}
 
