@@ -24,7 +24,7 @@ h1, h2 {
     text-align: center;
 }
 
-p, ul {
+p, ul, ol {
     font-size: 1em;
     max-width: 400px;
 }
