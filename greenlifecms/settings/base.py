@@ -196,4 +196,4 @@ BASE_URL = 'https://greenlife.cloud'
 
 SITE_ID = 1
 
-# WAGTAILAPI_LIMIT_MAX = None
+WAGTAILAPI_LIMIT_MAX = None
