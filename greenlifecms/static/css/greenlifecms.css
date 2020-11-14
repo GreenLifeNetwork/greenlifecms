@@ -24,7 +24,7 @@ h1, h2 {
     text-align: center;
 }
 
-p, ul {
+p, ul, ol {
     font-size: 1em;
     max-width: 400px;
 }
@@ -102,4 +102,14 @@ footer li {
 .responsive-object {
     display: flex;
     padding-bottom: 0 !important;
+}
+
+.page {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.page span, .page a {
+    margin: 1rem;
 }

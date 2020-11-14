@@ -1,6 +1,7 @@
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db import models
 from django.shortcuts import render
+from django.views.generic import ListView
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey
 from taggit.models import TaggedItemBase
@@ -70,9 +71,9 @@ class GreenHabitTagPage(TaggedItemBase):
 class BlogPageIndex(RoutablePageMixin, Page):
     intro = RichTextField(blank=True, default='Green Life articles')
 
-    def get_blog_items(self):
-        # This returns a Django paginator of blog items in this section
-        return Paginator(self.get_children().live().type(BlogPage), 10)
+    # def get_blog_items(self):
+    #     # This returns a Django paginator of blog items in this section
+    #     return Paginator(self.get_children().live().type(BlogPage), 1)
 
     def get_context(self, request):
         # Filter by tag
@@ -82,7 +83,17 @@ class BlogPageIndex(RoutablePageMixin, Page):
         # Update template context
         context = super().get_context(request)
         context['pages_tagged'] = pages_tagged
-        context['all'] = self.get_children().live()
+        posts = self.get_children().live().reverse()
+        page = request.GET.get('page', 1)
+        paginator = Paginator(posts, 1)
+        try:
+            posts = paginator.page(page)
+        except PageNotAnInteger:
+            posts = paginator.page(1)
+        except EmptyPage:
+            posts = paginator.page(paginator.num_pages)
+
+        context['posts'] = posts
         return context
 
 
@@ -120,6 +131,11 @@ class BlogPage(Page):
         FieldPanel('reference'),
         FieldPanel('notes'),
     ]
+
+
+class BlogList(ListView):
+    model = BlogPage
+    paginate_by = 1
 
 
 class GreenHabitTagIndexPage(Page):
@@ -181,6 +197,7 @@ class GreenHabitPage(Page):
         FieldPanel('reference'),
         FieldPanel('notes'),
     ]
+
 
 class StaticPage(Page):
     # parent_page_types = []  # make the page private
