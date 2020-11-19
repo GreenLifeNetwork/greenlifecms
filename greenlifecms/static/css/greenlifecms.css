@@ -58,7 +58,6 @@ main {
     display: flex;
     flex-flow: column;
     align-items: center;
-    margin: 2em;
 }
 
 footer {
@@ -79,6 +78,10 @@ ul img {
     height: 45px;
     margin-top: 5px;
     max-width: auto;
+}
+
+ul {
+    margin: 0
 }
 
 footer li {
