@@ -156,8 +156,6 @@ class GreenHabitPage(Page):
     TYPES = (
         ('law', 'Law'), ('essential', 'Essential'), ('habit', 'Habit')
     )
-    source = models.CharField(max_length=120, blank=True,
-                              help_text='Original author or source. If website or article. Use link field but only the domain name here! Seek approval of the owner before publishing')
     importance = models.CharField(choices=TYPES, max_length=20, default='habit', blank=True)
     tags = ClusterTaggableManager(through=GreenHabitTagPage, blank=True,
                                   help_text='Tags to mark the content. ie: energy, diet, household...')
@@ -166,6 +164,9 @@ class GreenHabitPage(Page):
     reference = models.CharField(blank=True, max_length=250, help_text='If source is not link (like paper or archives)')
     notes = models.TextField(blank=True,
                              help_text='Notes about the quote. Useful for drafts and/or moderators comment. Not published.')
+    # obsolete since we usually link back
+    source = models.CharField(max_length=120, blank=True,
+                              help_text='Original author or source. If website or article. Use link field but only the domain name here! Seek approval of the owner before publishing')
 
     search_fields = Page.search_fields + [
         index.SearchField('title'),
