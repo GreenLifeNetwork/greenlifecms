@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/greenlife-quotes.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/greenlife-quotes.css' %}">
 {% endblock %}
 
 {% load wagtailcore_tags wagtailimages_tags dump_tag %}
@@ -31,7 +31,10 @@
     <h1>{{ page.title }}</h1>
 
     {{ page.body|richtext }}
-    {{ page.links|richtext}}
+
+    <div id="nudge-links">
+        {{ page.links|richtext}}
+    </div>
 
     {% if false and page.tags.all.count %}
     <div class="tags">
@@ -43,6 +46,6 @@
     </div>
     {% endif %}
 
-    {#    <p><a href="{{ page.get_parent.url }}">Return to blog</a></p>#}
+    {# <p><a href="{{ page.get_parent.url }}">Return to blog</a></p>#}
 </article>
 {% endblock %}

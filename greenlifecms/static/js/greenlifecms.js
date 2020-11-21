@@ -14,6 +14,8 @@ const GreenLifeApp = () => {
         isDesktop = true
     }
 
+
+    const isApp = location.search.indexOf('format=app') > -1
     const overrideLinksWithAppStoreLink = () => {
         const articleLinks = document.querySelectorAll('article a')
         articleLinks.forEach(link => {
@@ -21,16 +23,22 @@ const GreenLifeApp = () => {
         })
     }
 
-
-    if(isIOS || isAndroid) {
-        overrideLinksWithAppStoreLink()
-        if(isIOS) {
-            document.querySelector('#ios-app-available').style.display = 'block'
-        }
-        if(isAndroid) {
-            document.querySelector('#android-app-available').style.display = 'block'
+    if(isApp) {
+        document.querySelector('#nudge-links').style.display = 'none'
+        setTimeout(() => document.querySelector('footer').style.display = 'none')
+        console.log('isApp')
+    } else {
+        if (isIOS || isAndroid) {
+            overrideLinksWithAppStoreLink()
+            if(isIOS) {
+                document.querySelector('#ios-app-available').style.display = 'block'
+            }
+            if(isAndroid) {
+                document.querySelector('#android-app-available').style.display = 'block'
+            }
         }
     }
+
 
 }
 
