@@ -1,8 +1,6 @@
 const isNativeApp = window.isNativeApp || location.search.indexOf("isNativeApp") > -1
 const GreenLifeApp = () => {
   const md = new MobileDetect(window.navigator.userAgent)
-  const ios_url = "https://apps.apple.com/us/app/green-lifestyle/id1484892517"
-  const android_url = "https://play.google.com/store/apps/details?id=lastchance.greenlife.quotes"
   let isDesktop = false
   let isAndroid = false
   let isIOS = false
@@ -14,21 +12,14 @@ const GreenLifeApp = () => {
     isDesktop = true
   }
 
-  const overrideLinksWithAppStoreLink = () => {
-    const articleLinks = document.querySelectorAll("article a")
-    articleLinks.forEach(link => {
-      link.href = isIOS ? ios_url : android_url
-    })
-  }
-
   if (isIOS || isAndroid) {
-    overrideLinksWithAppStoreLink()
     if (isIOS) {
       document.querySelector("#ios-app-available").style.display = "block"
     }
     if (isAndroid) {
       document.querySelector("#android-app-available").style.display = "block"
     }
+    document.querySelector('.content').style.display = "none"
   }
 }
 
