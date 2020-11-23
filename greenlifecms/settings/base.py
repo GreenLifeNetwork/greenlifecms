@@ -149,8 +149,7 @@ USE_L10N = True
 USE_TZ = True
 
 ADMINS = [
-            ('Yann VR', 'yannvr@gmail.com'),
-            
+            ('Yann VR', 'yann@greenlife.cloud'),
         ]
 MANAGERS = ADMINS
 LOGIN_REDIRECT_URL = 'https://greenlife.cloud/admin/pages/add/greenhabits/greenhabitpage/4/'
