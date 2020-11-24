@@ -10,21 +10,15 @@ article {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin: 2rem 0.5rem;
-}
-
-article * {
-    max-width: 400px;
 }
 
 @media (min-width: 1024px) {
     p, ul, ol {
         max-width: 560px;
     }
-}
-
-article.blog * {
-    max-width: 440px;
+    article * {
+        max-width: 400px;
+    }
 }
 
 .tags {

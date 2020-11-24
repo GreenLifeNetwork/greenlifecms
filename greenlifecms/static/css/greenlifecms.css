@@ -26,8 +26,14 @@ h1, h2 {
 
 p, ul, ol {
     font-size: 1.05rem;
-    max-width: 400px;
     margin: 0.5em;
+    width: 80vw;
+}
+
+@media (min-width: 768px) {
+    p, ul, ol {
+        max-width: 400px;
+    }
 }
 
 @media (min-width: 1024px) {
