@@ -29,6 +29,12 @@ p, ul, ol {
     max-width: 400px;
 }
 
+@media (min-width: 1024px) {
+    p, ul, ol {
+        max-width: 560px;
+    }
+}
+
 img {
     max-width: 400px;
     height: auto;

@@ -17,6 +17,12 @@ article * {
     max-width: 400px;
 }
 
+@media (min-width: 1024px) {
+    p, ul, ol {
+        max-width: 560px;
+    }
+}
+
 article.blog * {
     max-width: 440px;
 }

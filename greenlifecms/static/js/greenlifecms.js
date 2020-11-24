@@ -11,7 +11,6 @@ const GreenLifeApp = () => {
   } else {
     isDesktop = true
   }
-
   if (isIOS || isAndroid) {
     if (isIOS) {
       document.querySelector("#ios-app-available").style.display = "block"
