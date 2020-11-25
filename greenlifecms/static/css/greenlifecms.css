@@ -110,3 +110,8 @@ footer li {
 .page span, .page a {
     margin: 1rem;
 }
+
+div#app-available * {
+    display: flex;
+    justify-content: center;
+}
