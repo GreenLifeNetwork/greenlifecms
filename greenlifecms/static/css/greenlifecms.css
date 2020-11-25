@@ -1,15 +1,19 @@
-html {
-    box-sizing: border-box;
-}
-
-h1 {
-    text-align: center;
-}
-
 *,
 *:before,
 *:after {
     box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+ul {
+    margin: 0
 }
 
 html, body {
@@ -18,34 +22,29 @@ html, body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
     height: 98%;
     font-size: 14px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
 }
 
-h1, h2 {
-    text-align: center;
-}
-
-p, ul, ol {
-    font-size: 1.05rem;
+main, .template-static-page .rich-text {
+    display: flex;
+    font-size: 1rem;
     margin: 0.5em;
     width: 80vw;
+    flex-flow: column;
+    align-items: center;
 }
 
-@media (min-width: 768px) {
-    p, ul, ol {
-        max-width: 400px;
+@media (min-width: 425px) {
+    main, .template-static-page .rich-text {
+        max-width: 470px;
+        font-size: 1.075em;
     }
-}
-
-@media (min-width: 1024px) {
-    p, ul, ol {
-        max-width: 560px;
+    img {
+        max-width: 470px;
+        height: auto;
     }
-}
-
-img {
-    max-width: 400px;
-    height: auto;
-    align:center;
 }
 
 a:link, a:hover, a:active, a:visited {
@@ -61,31 +60,16 @@ button {
     cursor: pointer;
 }
 
-main {
-    width: 100%;
-    font-size: 1em;
-}
-
-.rich-text {
-    list-style: none;
+ul {
     display: flex;
-    flex-flow: column;
-    align-items: center;
-    padding: 1rem;
-}
-
-footer {
-}
-
-
-footer ul {
+    flex: 1;
     list-style: none;
-    display: flex;
-    flex-flow: wrap;
+    flex-flow: nowrap;
     padding: 0;
-    align-items: center;
-    justify-content: center;
-    max-width: initial;
+}
+
+ul li {
+    margin: 0 1em;
 }
 
 ul img {
@@ -94,19 +78,11 @@ ul img {
     max-width: auto;
 }
 
-ul {
-    margin: 0
-}
 
 footer li {
     padding: 0 10px;
 }
 
-
-.template-static-page {
-    margin: 0 2em;
-    /* padding: 0 2em; */
-}
 
 /*form[class=signup] p {*/
 /*    display: flex;*/
@@ -119,6 +95,10 @@ footer li {
 .responsive-object {
     display: flex;
     padding-bottom: 0 !important;
+}
+
+.template-welcome-page footer {
+    margin-bottom: 1em;
 }
 
 .page {

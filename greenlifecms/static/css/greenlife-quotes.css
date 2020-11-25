@@ -1,24 +1,40 @@
-.app-available {
-    margin-top: 1rem;
-    justify-content: center;
-    display: flex;
-    align-items: center;
+h1 {
+    text-align: center;
 }
 
 article {
     display: flex;
+    font-size: 1.1rem;
+    margin: 0.5em;
+    width: 80vw;
+    flex-flow: column;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
 }
 
-@media (min-width: 1024px) {
-    p, ul, ol {
-        max-width: 560px;
+@media (min-width: 768px) {
+    article {
+        max-width: 500px;
     }
-    article * {
+    img {
         max-width: 400px;
+        height: auto;
     }
+}
+
+article ul {
+    display: flex;
+    flex: 1;
+    list-style: circle;
+    flex-flow: column;
+    padding: 0;
+}
+
+.app-available {
+    margin-top: 1rem;
+    justify-content: center;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
 }
 
 .tags {
@@ -33,13 +49,8 @@ article {
     margin: 0 0.5rem;
 }
 
-.rich-text * {
-    font-size: 1.1rem;
-}
-
-.source {
-    align-self: flex-end;
-    margin: 1rem 2rem 1rem 1rem;
+.rich-text {
+    font-size: 1.1em;
 }
 
 .author {
@@ -47,7 +58,6 @@ article {
     align-self: flex-end;
     margin: 1rem;
 }
-
 
 /*form[class=signup] p {*/
 /*    display: flex;*/
