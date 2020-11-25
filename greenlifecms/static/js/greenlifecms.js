@@ -3,7 +3,7 @@ const GreenLifeApp = () => {
   const md = new MobileDetect(window.navigator.userAgent)
   let isDesktop = false
   let isAndroid = false
-  let isIOS = true
+  let isIOS = false
   if (md.os() === "iOS") {
     isIOS = true
   } else if (md.os() === "AndroidOS") {
