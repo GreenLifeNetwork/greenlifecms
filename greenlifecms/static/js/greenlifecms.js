@@ -59,10 +59,10 @@ var ringer = {
       max: 100
     }
    },
-  r_count: 5,
+  r_count: 4,
   r_spacing: 10, // px
   r_size: 100, // px
-  r_thickness: 2, // px
+  r_thickness: 5, // px
   update_interval: 11, // ms
 
 
@@ -85,7 +85,11 @@ var ringer = {
     $r.ctx.textAlign = 'center';
     $r.actual_size = $r.r_size + $r.r_thickness;
     $r.countdown_to_time = new Date($r.countdown_to).getTime();
-    $r.cvs.css({ width: $r.size.w+"px", height: $r.size.h+"px" });
+//    $r.cvs.css({ width: $r.size.w+"px", height: $r.size.h+"px" });
+//    setTimeout(() => {
+        document.querySelector('.countdown-container canvas').style.width = 'auto'
+        document.querySelector('.countdown-container canvas').style.height = '50px'
+//    }, 0)
     $r.go();
   },
   ctx: null,
@@ -128,7 +132,7 @@ var ringer = {
     $r.ctx.stroke();
 
     // second circle
-    $r.ctx.strokeStyle = "rgba(253, 128, 1, 0.9)";
+    $r.ctx.strokeStyle = "rgba(24, 190, 0, 0.9)";
     $r.ctx.beginPath();
     $r.ctx.arc(0,0,$r.r_size/2,0,endAngle, 1);
     $r.ctx.lineWidth =$r.r_thickness;
@@ -148,4 +152,4 @@ var ringer = {
   }
 }
 
-//ringer.init();
+ringer.init();
