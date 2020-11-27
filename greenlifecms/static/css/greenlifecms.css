@@ -94,7 +94,6 @@ ul li {
 div.app-banner img, .app-banner img {
     height: 45px;
     margin-top: 5px;
-    max-width: auto;
     width: unset;
 }
 
