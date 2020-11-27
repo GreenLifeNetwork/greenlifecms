@@ -66,7 +66,7 @@ main img, #app-available-desktop-banner ul {
 }
 
 img.logo {
- height: 100px !important;
+ height: 120px !important;
 }
 
 a:link, a:hover, a:active, a:visited {
@@ -218,6 +218,13 @@ footer ul, #app-available-desktop-banner ul {
 .last-revision {
     display: block;
     text-align: right;
+}
+
+.countdown-caption {
+    text-align: center;
+    margin-top: 5px;
+    color: #00BCD4;
+    margin-bottom: 2px;
 }
 
 #app-available {

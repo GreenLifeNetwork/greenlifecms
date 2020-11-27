@@ -44,12 +44,20 @@ if (!isNativeApp) {
 // https://codepen.io/l422y/pen/cdwhm
 var ringer = {
   //countdown_to: "10/31/2014",
-  countdown_to: "10/31/2027",
+  countdown_to: "01/01/2028",
   rings: {
-    'DAYS': {
-      s: 86400000, // mseconds in a day,
-      max: 365
+    'YEARS': {
+      s: 86400000 * 365, // mseconds in a day,
+      max: 100
     },
+    'MONTHS': {
+      s: (86400000 * 365) / 12, // mseconds in a day,
+      max: 12
+    },
+//    'DAYS': {
+//      s: 86400000, // mseconds in a day,
+//      max: 365
+//    },
     'HOURS': {
       s: 3600000, // mseconds per hour,
       max: 24
@@ -67,7 +75,7 @@ var ringer = {
       max: 100
     }
    },
-  r_count: 4,
+  r_count: 5,
   r_spacing: 10, // px
   r_size: 100, // px
   r_thickness: 5, // px
