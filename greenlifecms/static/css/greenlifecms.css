@@ -8,12 +8,18 @@ html {
     box-sizing: border-box;
 }
 
-h1, h2 {
+h1,h2,h3,h4,h5 {
     text-align: center;
+    max-width: 90%;
+}
+
+h1, h2 {
+    font-size: 1.1rem;
 }
 
 ul {
-    margin: 0
+    margin: 0;
+    padding: 0.5em;
 }
 
 html, body {
@@ -27,7 +33,7 @@ html, body {
     align-items: center;
 }
 
-main, .template-static-page .rich-text {
+main {
     display: flex;
     font-size: 1rem;
     margin: 0.5em;
@@ -36,8 +42,16 @@ main, .template-static-page .rich-text {
     align-items: center;
 }
 
+.template-static-page .rich-text {
+}
+
+main img, #app-available-desktop-banner ul {
+    max-width: 470px;
+    height: auto;
+}
+
 @media (min-width: 425px) {
-    main, .template-static-page .rich-text {
+    main, .article {
         max-width: 470px;
         font-size: 1.075em;
     }
@@ -45,6 +59,14 @@ main, .template-static-page .rich-text {
         max-width: 470px;
         height: auto;
     }
+
+    .article img {
+        width: 80vw;
+    }
+}
+
+img.logo {
+ height: 100px !important;
 }
 
 a:link, a:hover, a:active, a:visited {
@@ -60,27 +82,24 @@ button {
     cursor: pointer;
 }
 
-ul {
-    display: flex;
-    flex: 1;
-    list-style: none;
-    flex-flow: nowrap;
-    padding: 0;
-}
 
 ul li {
     margin: 0 1em;
 }
 
-ul img {
+.app-banner {
+    display: flex;
+}
+
+div.app-banner img, .app-banner img {
     height: 45px;
     margin-top: 5px;
     max-width: auto;
+    width: unset;
 }
 
-
-footer li {
-    padding: 0 10px;
+.app-banner li {
+    list-style: none;
 }
 
 
@@ -111,8 +130,102 @@ footer li {
     margin: 1rem;
 }
 
-div#app-available * {
+.content {
+    width: 90%;
+}
+
+.rich-text {
+   width: 100%;
+}
+
+/* the blog page */
+.article, .rich-text {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.template-static-page .rich-text {
+    display: flex;
+    flex-flow: column;
+}
+
+.template-quotepage .rich-text p {
+    margin: 1rem;
+}
+
+.article img {
+    width: 90vw;
+    height: unset;
+}
+
+/*
+@media (min-width: 768px) {
+    .article {
+        max-width: 500px;
+    }
+    .article img {
+        max-width: 400px;
+        height: auto;
+    }
+}
+*/
+
+.article ul {
+    display: flex;
+    flex: 1;
+    list-style: circle;
+    flex-flow: column;
+    padding: 0;
+}
+
+.tags {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.tags > * {
+    margin: 0 0.5rem;
+}
+
+.rich-text {
+    font-size: 1.1em;
+}
+
+.author {
+    font-size: 0.9rem;
+    align-self: flex-end;
+    margin: 1rem;
+}
+
+footer ul, #app-available-desktop-banner ul {
+    display: flex;
+    list-style: none;
+    flex-direction: row;
+    padding: 0.5em;
+}
+
+/*form[class=signup] p {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    flex-grow: 1;*/
+/*}*/
+
+.last-revision {
+    display: block;
+    text-align: right;
+}
+
+#app-available {
     display: flex;
     justify-content: center;
 }
+
+#app-available-desktop-banner {
+    margin-top: 2em;
 }

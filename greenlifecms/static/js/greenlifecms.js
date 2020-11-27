@@ -1,6 +1,9 @@
 const isNativeApp = window.isNativeApp || location.search.indexOf("isNativeApp") > -1
 const GreenLifeApp = () => {
   const md = new MobileDetect(window.navigator.userAgent)
+  const isNudgePage = location.href.indexOf('/g/') > -1
+  console.log('isNudgePage', isNudgePage)
+  if(!isNudgePage) return
   let isDesktop = false
   let isAndroid = false
   let isIOS = false
@@ -11,6 +14,9 @@ const GreenLifeApp = () => {
   } else {
     isDesktop = true
   }
+  console.log('isIOS', isIOS)
+  console.log('isAndroid', isAndroid)
+  console.log('isDesktop', isDesktop)
   if (isIOS || isAndroid) {
     document.querySelector("#app-available").style.display = "block"
     if (isIOS) {
@@ -22,6 +28,8 @@ const GreenLifeApp = () => {
       document.querySelector("#ios-app-available").style.display = "none"
     }
     document.querySelector('.content').style.display = "none"
+  } else if (isDesktop) {
+    document.querySelector("#app-available-desktop-banner").style.display = "block"
   }
 }
 
@@ -152,4 +160,6 @@ var ringer = {
   }
 }
 
+if(location.search === "") {
 ringer.init();
+}
