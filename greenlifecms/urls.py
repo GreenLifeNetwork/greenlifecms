@@ -1,6 +1,8 @@
 from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.urls import path
+from django.views.generic.base import TemplateView
 
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
@@ -21,6 +23,10 @@ urlpatterns = [
     url(r'^search/$', search_views.search, name='search'),
 
     url(r'^api/v2/', api_router.urls),
+    path(
+        "robots.txt",
+        TemplateView.as_view(template_name="robots.txt", content_type="text/plain"),
+    ),
 
 
     # For anything not caught by a more specific rule above, hand over to
