@@ -228,3 +228,7 @@ footer ul, #app-available-desktop-banner ul {
 #app-available-desktop-banner {
     margin-top: 2em;
 }
+
+#ios-app-available h4 {
+    white-space: nowrap;
+}
