@@ -1,4 +1,4 @@
-,
+*,
 *:before,
 *:after {
     box-sizing: inherit;
@@ -12,8 +12,11 @@ h1,h2,h3,h4,h5 {
     text-align: center;
 }
 
+h1 {
+    max-width: 90%;
+}
 
-h1,h2 {
+h1, h2 {
     font-size: 1.1rem;
 }
 
@@ -238,8 +241,4 @@ footer ul, #app-available-desktop-banner ul {
 
 #ios-app-available h4 {
     white-space: nowrap;
-}
-
-#st-1 .st-btn[data-network='facebook'], #st-1 .st-btn[data-network='twitter'] {
-    background-color: #0bc116 !important;
 }
