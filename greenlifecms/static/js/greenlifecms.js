@@ -106,11 +106,11 @@ var ringer = {
     $r.ctx.textAlign = 'center';
     $r.actual_size = $r.r_size + $r.r_thickness;
     $r.countdown_to_time = new Date($r.countdown_to).getTime();
-//    $r.cvs.css({ width: $r.size.w+"px", height: $r.size.h+"px" });
-//    setTimeout(() => {
+    $r.cvs.css({ width: $r.size.w+"px", height: $r.size.h+"px" });
+    if (document.querySelector('.countdown-container canvas')) {
         document.querySelector('.countdown-container canvas').style.width = 'auto'
         document.querySelector('.countdown-container canvas').style.height = '50px'
-//    }, 0)
+    }
     $r.go();
   },
   ctx: null,

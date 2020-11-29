@@ -153,6 +153,11 @@ div.app-banner img, .app-banner img {
     flex-flow: column;
 }
 
+
+.template-blog-page .article {
+    display: block !important;
+}
+
 .template-quotepage .rich-text p {
     margin: 1rem;
 }
@@ -227,7 +232,7 @@ footer ul, #app-available-desktop-banner ul {
 .countdown-caption {
     text-align: center;
     margin-top: 5px;
-    color: #00BCD4;
+    color: #2bf502;
     margin-bottom: 2px;
 }
 
