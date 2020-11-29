@@ -27,6 +27,10 @@
             {# Override this in templates to add extra stylesheets #}
         {% endblock %}
 
+        <!—- ShareThis BEGIN -—>
+                <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5fc2db2431564700129f78e8" async="async"></script>
+        <!—- ShareThis END -—>
+
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-QMK9R5ZBZF"></script>
         <script>
@@ -78,10 +82,10 @@
                     </a>
                 </li>
             </ul>
+{% block post_footer %}
+{% endblock %}
         </footer>
 
     </body>
-{% block post_footer %}
-{% endblock %}
 
 </html>
