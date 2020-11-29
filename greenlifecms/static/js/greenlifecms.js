@@ -40,7 +40,9 @@ if (!isNativeApp) {
     document.querySelector("footer").style.display = "none"
     document.querySelector(".app-banner").style.display = "none"
     document.querySelector(".sharethis-inline-share-buttons").style.display = "none"
-    document.querySelector(".app-banner-intro").style.display = "none"
+    if(document.querySelector(".app-banner-intro")) {
+        document.querySelector(".app-banner-intro").style.display = "none"
+    }
   })
 }
 
