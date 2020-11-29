@@ -249,4 +249,5 @@ footer ul, #app-available-desktop-banner ul {
 
 #st-1 .st-btn[data-network='facebook'], #st-1 .st-btn[data-network='twitter'] {
     background-color: #0bc116 !important;
+    display: inline-block !important;
 }
