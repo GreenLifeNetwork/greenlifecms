@@ -92,6 +92,7 @@ ul li {
 
 .app-banner {
     display: flex;
+    justify-content: center;
 }
 
 div.app-banner img, .app-banner img {

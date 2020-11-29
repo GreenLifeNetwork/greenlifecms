@@ -9,10 +9,11 @@
 
 {% block content %}
 <main>
-    <img class="logo" alt="Green Life: sustainable tips to save the environment" src="{% static 'images/svg/GLlogo.svg' %}"/>
+    <img class="logo" alt="Green Life: sustainable tips to save the environment"
+         src="{% static 'images/svg/GLlogo.svg' %}"/>
 
     <div class="countdown-container">
-    <h2>{% trans "Time for change is now" %}</h2>
+        <h2>{% trans "Time for change is now" %}</h2>
         <div class="countdown"></div>
     </div>
     <small class="countdown-caption">Time left to achieve zero emissions...</small>
@@ -24,15 +25,19 @@
     <p><b>Welcome to GreenLife!</b></p>
 
     <p>
-        Every day we forage, handpick and curate from the database of eco-friendly information out there. Then our science team litmus tests the facts from the claims.
+        Every day we forage, handpick and curate from the database of eco-friendly information out there. Then our
+        science team litmus tests the facts from the claims.
     </p>
+
     <p>
-        The best part? You receive simple and easy tips, daily, so you too can embrace zero-waste living before the Arctic melts!
+        The best part? You receive simple and easy tips, daily, so you too can embrace zero-waste living before the
+        Arctic melts!
     </p>
 
-    <p>Oh, and we know you would love to get involved. That is why Green Life is an open platform where you can <a href="/contribute">contribute your own content ideas</a></p>
+    <p>Oh, and we know you would love to get involved. That is why Green Life is an open platform where you can <a
+            href="/contribute">contribute your own content ideas</a></p>
 
-    <p>Install the app to begin the journey!</p>
+    <p class="app-banner-intro">Install the app to begin the journey!</p>
 
     <ul class="app-banner">
         <li>
@@ -47,8 +52,8 @@
         </li>
     </ul>
 
-        <!--        <img title="Become can become of an actor of positive climate action!" src="/media/images/climate-hero-740x385_SBhteUe.original.jpg" width="400"-->
-        <!--             alt="become a climate hero">-->
+    <!--        <img title="Become can become of an actor of positive climate action!" src="/media/images/climate-hero-740x385_SBhteUe.original.jpg" width="400"-->
+    <!--             alt="become a climate hero">-->
     <!--        Join us and become an actor of positive climate action-->
     <!--    </p>-->
     <!--    <p class="center">Sustainable habits is gratitude for the wealth nature has granted us. Adopting a simple life helps-->
@@ -60,7 +65,7 @@
 {% endblock %}
 
 {% block post_footer %}
-        <div class="sharethis-inline-share-buttons"></div>
+<div class="sharethis-inline-share-buttons"></div>
 <!--<img src="https://greenlife.cloud/media/images/Homepage_Its_in_our_Hands.original.png" alt="it's in our hands">-->
 <!--<climate-clock/>-->
 {% endblock %}

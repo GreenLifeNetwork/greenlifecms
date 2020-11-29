@@ -38,6 +38,9 @@ if (!isNativeApp) {
 } else {
   window.addEventListener("DOMContentLoaded", (event) => {
     document.querySelector("footer").style.display = "none"
+    document.querySelector(".app-banner").style.display = "none"
+    document.querySelector(".sharethis-inline-share-buttons").style.display = "none"
+    document.querySelector(".app-banner-intro").style.display = "none"
   })
 }
 
