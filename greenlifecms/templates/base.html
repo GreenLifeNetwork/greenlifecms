@@ -1,4 +1,4 @@
-{% load static wagtailuserbar i18n %}
+{% load static i18n %}
 
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -43,7 +43,6 @@
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
-        {% wagtailuserbar %}
 
         {% block content %}{% endblock %}
 
