@@ -103,6 +103,13 @@ div.app-banner img, .app-banner img {
 
 .app-banner li {
     list-style: none;
+    margin: 0 0.5rem;
+    padding: 0;
+}
+
+ul.app-banner {
+    margin: 0;
+    padding: 0;
 }
 
 
@@ -216,6 +223,11 @@ footer ul, #app-available-desktop-banner ul {
     padding: 0.5em;
 }
 
+footer ul {
+    display: flex;
+    flex-flow: row;
+}
+
 /*form[class=signup] p {*/
 /*    display: flex;*/
 /*    flex-direction: row;*/
@@ -243,6 +255,10 @@ footer ul, #app-available-desktop-banner ul {
 
 #app-available-desktop-banner {
     margin-top: 2em;
+}
+
+.app-banner img {
+    max-width: 35vw;
 }
 
 #ios-app-available h4 {
