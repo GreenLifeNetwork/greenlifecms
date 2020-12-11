@@ -1,7 +1,7 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{{request.scheme}}://{{request.META.HTTP_HOST}}{% static 'css/greenlifecms.css' %}">
+<link rel="stylesheet" href="https://{{request.META.HTTP_HOST}}{% static 'css/greenlifecms.css' %}">
 {% endblock extra_css %}
 
 {% block content %}

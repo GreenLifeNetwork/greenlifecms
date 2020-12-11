@@ -8,7 +8,7 @@
 {% block content %}
 <div class="article">
     <a href="/" class="href">
-        <img class="logo" alt="Green Life Logo" src="{{request.scheme}}://{{request.META.HTTP_HOST}}{% static 'images/svg/GLlogo.svg' %}"/>
+        <img class="logo" alt="Green Life Logo" src="https://{{request.META.HTTP_HOST}}{% static 'images/svg/GLlogo.svg' %}"/>
     </a>
 
     <h1>{{ page.title }}</h1>
@@ -17,14 +17,14 @@
         <div id='ios-app-available' style='display: none'>
             <h4>Read more on the app</h4>
             <a href="https://apps.apple.com/us/app/green-lifestyle/id1484892517">
-                <img alt="Green Life on App Store" src="{{request.scheme}}://{{request.META.HTTP_HOST}}{% static 'images/images/svg/app-store-download.svg' %}"/>
+                <img alt="Green Life on App Store" src="https://{{request.META.HTTP_HOST}}{% static 'images/images/svg/app-store-download.svg' %}"/>
             </a>
         </div>
 
         <div id='android-app-available' style='display: none'>
             <h4>Read more on the app</h4>
             <a href="https://play.google.com/store/apps/details?id=lastchance.greenlife.quotes">
-                <img alt="Green Life on Play Store" src="{{request.scheme}}://{{request.META.HTTP_HOST}}{% static 'images/images/svg/google-play-download.svg' %}"/>
+                <img alt="Green Life on Play Store" src="https://{{request.META.HTTP_HOST}}{% static 'images/images/svg/google-play-download.svg' %}"/>
             </a>
         </div>
     </div>
@@ -52,12 +52,12 @@
         <ul>
             <li>
                 <a href="https://apps.apple.com/us/app/green-lifestyle/id1484892517?ls=1">
-                    <img alt="Green Life on App Store" src="{{request.scheme}}://{{request.META.HTTP_HOST}}{% static 'images/svg/app-store-download.svg' %}"/>
+                    <img alt="Green Life on App Store" src="https://{{request.META.HTTP_HOST}}{% static 'images/svg/app-store-download.svg' %}"/>
                 </a>
             </li>
             <li>
                 <a href="https://play.google.com/store/apps/details?id=lastchance.greenlife.quotes">
-                    <img alt="Green Life on Play Store" src="{{request.scheme}}://{{request.META.HTTP_HOST}}{% static 'images/svg/google-play-download.svg' %}"/>
+                    <img alt="Green Life on Play Store" src="https://{{request.META.HTTP_HOST}}{% static 'images/svg/google-play-download.svg' %}"/>
                 </a>
             </li>
         </ul>
