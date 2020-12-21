@@ -1,3 +1,6 @@
+
+
+
 {% extends "base.html" %}
 {% load static %}
 
@@ -34,8 +37,9 @@
         <div id="nudge-links">
             {{ page.links|richtext }}
         </div>
-        <div class="sharethis-inline-share-buttons"></div>
-    </div>
+
+<!--        TODO-->
+<!--        <div class="sharethis-inline-share-buttons"></div>-->
 
     {% if false and page.tags.all.count %}
     <div class="tags">
