@@ -186,6 +186,15 @@ ul.app-banner {
 }
 */
 
+
+footer .article ul {
+    display: flex;
+    flex: 1;
+    list-style: none;
+    flex-flow: row;
+    padding: 0;
+}
+
 .article ul {
     display: flex;
     flex: 1;
