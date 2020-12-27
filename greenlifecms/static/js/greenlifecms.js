@@ -1,8 +1,16 @@
 const isNativeApp = window.isNativeApp || location.search.indexOf("isNativeApp") > -1
+
+function addScript(href) {
+    var s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.src = href;
+    document.getElementsByTagName('head')[0].appendChild(s);
+    console.log('add script', href)
+}
+
 const GreenLifeApp = () => {
   const md = new MobileDetect(window.navigator.userAgent)
   const isNudgePage = location.href.indexOf('/g/') > -1
-  console.log('isNudgePage', isNudgePage)
   if(!isNudgePage) return
   let isDesktop = false
   let isAndroid = false
@@ -29,7 +37,10 @@ const GreenLifeApp = () => {
     }
     document.querySelector('.content').style.display = "none"
   } else if (isDesktop) {
-    document.querySelector("#app-available-desktop-banner").style.display = "block"
+    if (document.querySelector("#app-available-desktop-banner")) {
+        document.querySelector("#app-available-desktop-banner").style.display = "block"
+    }
+    addScript("https://platform-api.sharethis.com/js/sharethis.js#property=5fc2db2431564700129f78e8")
   }
 }
 
