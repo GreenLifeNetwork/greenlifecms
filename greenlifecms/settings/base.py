@@ -58,7 +58,11 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.twitter',
 
-    'rest_framework'
+    'rest_framework',
+
+    # only used locally to represent correct absolute http scheme when developing
+    # https://medium.com/@millienakiganda/creating-an-ssl-certificate-for-localhost-in-django-framework-45290d905b88
+    'sslserver'
 ]
 
 MIDDLEWARE = [
