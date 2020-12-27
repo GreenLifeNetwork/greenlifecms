@@ -1,6 +1,3 @@
-
-
-
 {% extends "base.html" %}
 {% load static %}
 
@@ -38,36 +35,37 @@
             {{ page.links|richtext }}
         </div>
 
-<!--        TODO-->
-<!--        <div class="sharethis-inline-share-buttons"></div>-->
+        <!--        TODO-->
+        <!--        <div class="sharethis-inline-share-buttons"></div>-->
 
-    {% if false and page.tags.all.count %}
-    <div class="tags">
-        <h4>Tags:</h4>
-        {% for tag in page.tags.all %}
-        <!-- FIXME -->
-        <!-- <a href="{% slugurl 'tags' %}?tag={{ tag }}">{{ tag }}</a> -->
-        {% endfor %}
+        {% if false and page.tags.all.count %}
+        <div class="tags">
+            <h4>Tags:</h4>
+            {% for tag in page.tags.all %}
+            <!-- FIXME -->
+            <!-- <a href="{% slugurl 'tags' %}?tag={{ tag }}">{{ tag }}</a> -->
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <div id="app-available-desktop-banner" class="app-banner" style='display: none'>
+            <h4>Become carbon neutral the easy way</h4>
+            <ul>
+                <li>
+                    <a href="https://apps.apple.com/us/app/green-lifestyle/id1484892517?ls=1">
+                        <img alt="Green Life on App Store" src="https://{{request.META.HTTP_HOST}}{% static 'images/svg/app-store-download.svg' %}"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://play.google.com/store/apps/details?id=lastchance.greenlife.quotes">
+                        <img alt="Green Life on Play Store" src="https://{{request.META.HTTP_HOST}}{% static 'images/svg/google-play-download.svg' %}"/>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        {# <p><a href="{{ page.get_parent.url }}">Return to blog</a></p>#}
     </div>
-    {% endif %}
-
-    <div id="app-available-desktop-banner" class="app-banner" style='display: none'>
-        <h4>Become carbon neutral the easy way</h4>
-        <ul>
-            <li>
-                <a href="https://apps.apple.com/us/app/green-lifestyle/id1484892517?ls=1">
-                    <img alt="Green Life on App Store" src="https://{{request.META.HTTP_HOST}}{% static 'images/svg/app-store-download.svg' %}"/>
-                </a>
-            </li>
-            <li>
-                <a href="https://play.google.com/store/apps/details?id=lastchance.greenlife.quotes">
-                    <img alt="Green Life on Play Store" src="https://{{request.META.HTTP_HOST}}{% static 'images/svg/google-play-download.svg' %}"/>
-                </a>
-            </li>
-        </ul>
-    </div>
-
-    {# <p><a href="{{ page.get_parent.url }}">Return to blog</a></p>#}
 </div>
 
 {% endblock %}

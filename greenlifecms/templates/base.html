@@ -32,7 +32,6 @@
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
-
         {% block content %}{% endblock %}
 
         {# Global javascript #}
@@ -41,39 +40,37 @@
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
         {% endblock %}
-
-        <footer class="footer" role="contentinfo">
-            <ul>
-                <li>
-                    <a class="option" title="Where change takes place"  href="/">
-                        <h4> {% trans "Home" %}</h4>
-                    </a>
-                </li>
-<!--                <li>-->
-<!--                    <a class="option"  title="Green Life is run by the community. Come join us!"  href="/contribute">-->
-<!--                        <h4> {% trans "Contribute" %}</h4>-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <a class="option" title="Add your own suggestion!" href="/admin/pages/add/greenhabits/greenhabitpage/4/">-->
-<!--                        <h4><b> {% trans "+ new green habit" %}</b></h4>-->
-<!--                    </a>-->
-<!--                </li>-->
-                <li>
-                    <a class="option" title="Green Life blog" href="/blog">
-                        <h4><b> {% trans "Blog" %}</b></h4>
-                    </a>
-                </li>
-                <li>
-                    <a class="option" title="About Green Life" href="/about-us">
-                        <h4> {% trans "About" %}</h4>
-                    </a>
-                </li>
-            </ul>
-{% block post_footer %}
-{% endblock %}
-        </footer>
-
     </body>
 
+    <footer class="footer" role="contentinfo">
+        <ul>
+            <li>
+                <a class="option" title="Where change takes place"  href="/">
+                    <h4> {% trans "Home" %}</h4>
+                </a>
+            </li>
+            <!--                <li>-->
+            <!--                    <a class="option"  title="Green Life is run by the community. Come join us!"  href="/contribute">-->
+            <!--                        <h4> {% trans "Contribute" %}</h4>-->
+            <!--                    </a>-->
+            <!--                </li>-->
+            <!--                <li>-->
+            <!--                    <a class="option" title="Add your own suggestion!" href="/admin/pages/add/greenhabits/greenhabitpage/4/">-->
+            <!--                        <h4><b> {% trans "+ new green habit" %}</b></h4>-->
+            <!--                    </a>-->
+            <!--                </li>-->
+            <li>
+                <a class="option" title="Green Life blog" href="/blog">
+                    <h4><b> {% trans "Blog" %}</b></h4>
+                </a>
+            </li>
+            <li>
+                <a class="option" title="About Green Life" href="/about-us">
+                    <h4> {% trans "About" %}</h4>
+                </a>
+            </li>
+        </ul>
+        {% block post_footer %}
+        {% endblock %}
+    </footer>
 </html>
