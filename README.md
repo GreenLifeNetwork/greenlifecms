@@ -10,6 +10,11 @@ The biggest driver for mindless consumerism is living "uncounsciously" (as in "t
 
 Simple habits and a simple life remind us about what we really are. We are children of the earth.
 
+## Install
+- Requires Python3
+- `pip -r install requirements.txt`
+- `python manage.py runserver`
+
 ## Contribution
 
 To provide green habits that lead to co2 emission reduction. You can go to: https://greenlife.cloud/admin/pages/4/. Please contact me for registration
