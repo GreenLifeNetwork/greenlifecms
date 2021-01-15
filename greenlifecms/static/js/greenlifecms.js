@@ -11,7 +11,6 @@ function addScript(href) {
 const GreenLifeApp = () => {
   const md = new MobileDetect(window.navigator.userAgent)
   const isNudgePage = location.href.indexOf('/g/') > -1
-  if(!isNudgePage) return
   let isDesktop = false
   let isAndroid = false
   let isIOS = false
@@ -42,6 +41,12 @@ const GreenLifeApp = () => {
     }
     addScript("https://platform-api.sharethis.com/js/sharethis.js#property=5fc2db2431564700129f78e8")
   }
+
+  addScript("https://cdn.branch.io/branch-latest.min.js")
+  setTimeout(() => {
+  console.log('branch', branch)
+    branch.init('key_live_dhJ1Y7Xg8VsRsfLNzrRo7loayFgKElc6');
+  }, 100)
 }
 
 if (!isNativeApp) {
