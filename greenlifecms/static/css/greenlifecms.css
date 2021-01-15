@@ -234,6 +234,7 @@ footer ul, #app-available-desktop-banner ul {
 footer ul {
     display: flex;
     flex-flow: row;
+    align-items: baseline;
 }
 
 /*form[class=signup] p {*/

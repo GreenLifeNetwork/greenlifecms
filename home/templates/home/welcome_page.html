@@ -9,8 +9,10 @@
 
 {% block content %}
 <main>
-    <img class="logo" alt="Green Life: sustainable tips to save the environment"
-         src="https://{{request.META.HTTP_HOST}}{% static 'images/svg/GLlogo.svg' %}"/>
+    <a title="Tip of the day" href="https://greenlife.cloud/notifications/today">
+        <img class="logo" alt="Green Life: sustainable tips to save the environment"
+             src="https://{{request.META.HTTP_HOST}}{% static 'images/svg/GLlogo.svg' %}"/>
+    </a>
 
     <div class="countdown-container">
         <h2>{% trans "Time for change is now" %}</h2>
