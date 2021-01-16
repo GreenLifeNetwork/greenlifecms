@@ -11,6 +11,7 @@ function addScript(href) {
 const GreenLifeApp = () => {
   const md = new MobileDetect(window.navigator.userAgent)
   const isNudgePage = location.href.indexOf('/g/') > -1
+  if(!isNudgePage) return
   let isDesktop = false
   let isAndroid = false
   let isIOS = false
@@ -42,10 +43,6 @@ const GreenLifeApp = () => {
     addScript("https://platform-api.sharethis.com/js/sharethis.js#property=5fc2db2431564700129f78e8")
   }
 
-    (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode autoAppIndex banner closeBanner closeJourney creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode trackCommerceEvent logEvent disableTracking".split(" "), 0);
-
-  console.log('branch', branch)
-    branch.init('key_live_dhJ1Y7Xg8VsRsfLNzrRo7loayFgKElc6');
 }
 
 if (!isNativeApp) {
@@ -59,6 +56,9 @@ if (!isNativeApp) {
         document.querySelector(".app-banner-intro").style.display = "none"
     }
   })
+  (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode autoAppIndex banner closeBanner closeJourney creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode trackCommerceEvent logEvent disableTracking".split(" "), 0);
+  console.log('branch', branch)
+    branch.init('key_live_dhJ1Y7Xg8VsRsfLNzrRo7loayFgKElc6');
 }
 
 // https://codepen.io/l422y/pen/cdwhm
