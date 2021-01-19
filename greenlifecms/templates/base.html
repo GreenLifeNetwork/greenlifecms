@@ -8,11 +8,7 @@
             {% block title %}
                 {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
             {% endblock %}
-            {% block title_suffix %}
-                {% with self.get_site.site_name as site_name %}
-                    {% if site_name %} - {{ site_name }}{% endif %}
-                {% endwith %}
-            {% endblock %}
+            {% block title_suffix %} {% with self.get_site.site_name as site_name %} {% if site_name %} - {{ site_name }}{% endif %} {% endwith %} {% endblock %}
         </title>
         <meta name="description" content="Daily tips about sustainability" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -53,7 +49,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="option"  title="Tip of the day"  href="https://greenlife.cloud/notifications/today">
+                    <a class="option"  title="Tip of the day"  href="https://greenlife.page.link/Pa9g">
                         <h4><b>🌱 {% trans "Tip of the day" %}</b></h4>
                     </a>
                 </li>
