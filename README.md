@@ -15,8 +15,10 @@ Simple habits and a simple life remind us about what we really are. We are child
 - `pip -r install requirements.txt`
 - `python manage.py runserver`
 
-## Windows issues
+## Windows issues
+
 Andy?
 
-## Run locally with SSL
+## Run locally with SSL
+
 Because we're caching images with SSL. We need to run on SSL to display the image. You need to run `python manage.py runsslserver --certificate cert.pem --key key.pem` after going through the install as described on: [https://medium.com/@millienakiganda/creating-an-ssl-certificate-for-localhost-in-django-framework-45290d905b88](Creating an SSL certificate for localhost in Django framework)
