@@ -11,10 +11,12 @@ The biggest driver for mindless consumerism is living "uncounsciously" (as in "t
 Simple habits and a simple life remind us about what we really are. We are children of the earth.
 
 ## Install
-- Requires Python3
+- Requires Python3 (<=3.8 on Windows)
 - `pip -r install requirements.txt`
 - `python manage.py runserver`
 
-## Contribution
+## Windows issues
+Andy?
 
-To provide green habits that lead to co2 emission reduction. You can go to: https://greenlife.cloud/admin/pages/4/. Please contact me for registration
+## Run locally with SSL
+Because we're caching images with SSL. We need to run on SSL to display the image. You need to run `python manage.py runsslserver --certificate cert.pem --key key.pem` after going through the install as described on: [https://medium.com/@millienakiganda/creating-an-ssl-certificate-for-localhost-in-django-framework-45290d905b88](Creating an SSL certificate for localhost in Django framework)
