@@ -1,0 +1,376 @@
+.icon-clock-green,
+.icon-clock-amber,
+.icon-clock-red,
+.icon-people,
+.icon-globe-green,
+.icon-multipax,
+.icon-warning,
+.icon-solid-warning,
+.icon-solid-alert,
+.icon-alert,
+.icon-info,
+.icon-solid-extreme {
+    background: transparent url(/Content/images/sprite16.png) no-repeat;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+}
+.icon-clock-green { }
+.icon-clock-amber {
+    background-position: -16px 0;
+}
+.icon-clock-red {
+    background-position: -32px 0;
+}
+.icon-multipax {
+    background-position: -48px 0;
+}
+.icon-people {
+    background-position: 0 -16px;
+}
+.icon-warning {
+    background-position: -16px -16px;
+}
+.icon-globe-green {
+    background-position: -32px -16px;
+}
+.icon-solid-warning {
+    background-position: -64px 0;
+}
+.icon-solid-alert {
+    background-position: -64px -16px;
+}
+.icon-solid-extreme {
+    background-position: -48px -16px;
+}
+.icon-alert {
+    background-position: -16px -32px;
+}
+.icon-info {
+    background-position: 0px -32px;
+}
+.large.icon-home-user {
+    margin-top:6px;
+    margin-left:7px;
+}
+.active .large.icon-home-user {
+    margin:0;
+}
+.icon-home-user {
+    background: url('/Content/images/sprite18.png') no-repeat;
+    height: 18px;
+    width: 18px;
+}
+
+.icon__block {
+    margin: 5px auto;
+    height: 50px;
+    width: 50px;
+}
+
+.icon-ijet-security,
+.icon-ijet-travel,
+.icon-ijet-medical,
+.icon-ijet-info,
+.icon-ijet-europe,
+.icon-ijet-africa,
+.icon-ijet-asia,
+.icon-ijet-southpacific,
+.icon-ijet-russia,
+.icon-ijet-caribbean,
+.icon-ijet-northamerica,
+.icon-ijet-southamerica,
+.icon-ijet-risklow,
+.icon-ijet-riskmedium,
+.icon-ijet-riskhigh,
+.icon-ijet-riskextreme {
+    background: url('/Content/images/sprite50.png') no-repeat;
+}
+.icon-ijet-security {
+    background-position: -50px 0;
+}
+.icon-ijet-travel {
+    background-position: -100px 0;
+}
+.icon-ijet-medical {
+    background-position: -150px 0;
+}
+.icon-ijet-europe {
+    background-position: 0 -50px;
+}
+.icon-ijet-africa {
+    background-position: -50px -50px;
+}
+.icon-ijet-asia {
+    background-position: -100px -50px;
+}
+.icon-ijet-southpacific {
+    background-position: -150px -50px;
+}
+.icon-ijet-russia {
+    background-position: -200px -50px;
+}
+.icon-ijet-caribbean {
+    background-position: -250px -50px;
+}
+.icon-ijet-northamerica {
+    background-position: -300px -50px;
+}
+.icon-ijet-southamerica {
+    background-position: -350px -50px;
+}
+.icon-ijet-risklow {
+    background-position: -200px 0;
+}
+.icon-ijet-riskmedium {
+    background-position: -250px 0;
+}
+.icon-ijet-riskhigh {
+    background-position: -300px 0;
+}
+.icon-ijet-riskextreme {
+    background-position: -350px 0;
+}
+
+.icon-profile0,
+.icon-profile12,
+.icon-profile25,
+.icon-profile37,
+.icon-profile50,
+.icon-profile62,
+.icon-profile75,
+.icon-profile87,
+.icon-profile100 {
+    background: url('/Content/images/sprite24.png') no-repeat;
+    height: 24px;
+    width: 24px;
+}
+.icon-profile0 {
+    background-position: 0 0;
+}
+.icon-profile12 {
+    background-position: -24px 0;
+}
+.icon-profile25 {
+    background-position: -48px 0;
+}
+.icon-profile37 {
+    background-position: -72px 0;
+}
+.icon-profile50 {
+    background-position: -96px 0;
+}
+.icon-profile62 {
+    background-position: -120px 0;
+}
+.icon-profile75 {
+    background-position: -144px 0;
+}
+.icon-profile87 {
+    background-position: -168px 0;
+}
+.icon-profile100 {
+    background-position: -192px 0;
+}
+
+.icon-green-profile0,
+.icon-green-profile12,
+.icon-green-profile25,
+.icon-green-profile37,
+.icon-green-profile50,
+.icon-green-profile62,
+.icon-green-profile75,
+.icon-green-profile87,
+.icon-green-profile100 {
+    background: url('/Content/images/sprite24-green.png') no-repeat;
+    height: 24px;
+    width: 24px;
+    display: block;
+}
+.icon-green-profile0 {
+    background-position: 0 0;
+}
+.icon-green-profile12 {
+    background-position: -24px 0;
+}
+.icon-green-profile25 {
+    background-position: -48px 0;
+}
+.icon-green-profile37 {
+    background-position: -72px 0;
+}
+.icon-green-profile50 {
+    background-position: -96px 0;
+}
+.icon-green-profile62 {
+    background-position: -120px 0;
+}
+.icon-green-profile75 {
+    background-position: -144px 0;
+}
+.icon-green-profile87 {
+    background-position: -168px 0;
+}
+.icon-green-profile100 {
+    background-position: -192px 0;
+}
+
+.icon-amber-profile0,
+.icon-amber-profile12,
+.icon-amber-profile25,
+.icon-amber-profile37,
+.icon-amber-profile50,
+.icon-amber-profile62,
+.icon-amber-profile75,
+.icon-amber-profile87,
+.icon-amber-profile100 {
+    background: url('/Content/images/sprite24-amber.png') no-repeat;
+    height: 24px;
+    width: 24px;
+}
+.icon-amber-profile0 {
+    background-position: 0 0;
+}
+.icon-amber-profile12 {
+    background-position: -24px 0;
+}
+.icon-amber-profile25 {
+    background-position: -48px 0;
+}
+.icon-amber-profile37 {
+    background-position: -72px 0;
+}
+.icon-amber-profile50 {
+    background-position: -96px 0;
+}
+.icon-amber-profile62 {
+    background-position: -120px 0;
+}
+.icon-amber-profile75 {
+    background-position: -144px 0;
+}
+.icon-amber-profile87 {
+    background-position: -168px 0;
+}
+.icon-amber-profile100 {
+    background-position: -192px 0;
+}
+
+.icon-red-profile0,
+.icon-red-profile12,
+.icon-red-profile25,
+.icon-red-profile37,
+.icon-red-profile50,
+.icon-red-profile62,
+.icon-red-profile75,
+.icon-red-profile87,
+.icon-red-profile100 {
+    background: url('/Content/images/sprite24-red.png') no-repeat;
+    height: 24px;
+    width: 24px;
+}
+.icon-red-profile0 {
+    background-position: 0 0;
+}
+.icon-red-profile12 {
+    background-position: -24px 0;
+}
+.icon-red-profile25 {
+    background-position: -48px 0;
+}
+.icon-red-profile37 {
+    background-position: -72px 0;
+}
+.icon-red-profile50 {
+    background-position: -96px 0;
+}
+.icon-red-profile62 {
+    background-position: -120px 0;
+}
+.icon-red-profile75 {
+    background-position: -144px 0;
+}
+.icon-red-profile87 {
+    background-position: -168px 0;
+}
+.icon-red-profile100 {
+    background-position: -192px 0;
+}
+
+.icon-dashmenu-railticket,
+.icon-dashmenu-bookonline,
+.icon-dashmenu-schedule,
+.icon-dashmenu-hotel,
+.icon-dashmenu-rail,
+.icon-dashmenu-reports,
+.icon-dashmenu-invoices_GBP,
+.icon-dashmenu-invoices_USD,
+.icon-dashmenu-document,
+.icon-dashmenu-documentUrl {
+    background: url('/Content/images/spriteDashLink.png') no-repeat;
+    height: 24px;
+    width: 24px;
+}
+.icon-dashmenu-bookonline
+{
+    background-position: -24px 0;
+}
+.icon-dashmenu-schedule
+{
+    background-position: -48px 0;
+}
+.icon-dashmenu-hotel
+{
+    background-position: -72px 0;
+}
+.icon-dashmenu-rail
+{
+    background-position: -96px 0;
+}
+.icon-dashmenu-reports
+{
+    background-position: 0 -24px;
+}
+.icon-dashmenu-invoices_GBP
+{
+    background-position: -24px -24px;
+}
+.icon-dashmenu-invoices_USD
+{
+    background-position: -48px -24px;
+}
+.icon-dashmenu-document{
+    background-position: -72px -24px;
+}
+.icon-dashmenu-documentUrl{
+    background-position: -96px -24px;
+}
+
+.icon-bookerdash {
+    background: url('/Content/images/sprite32.png') no-repeat;
+    height: 32px;
+    width: 32px;
+
+    .prev {
+        background-position: -96px -24px;
+    }
+
+    .next {
+        background-position: -128px -24px;
+    }
+}
+
+
+.icon-edit {
+    height: 16px;
+    width: 16px;
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.icon-delete {
+    height: 18px;
+    width: 16px;
+    display: inline-block;
+    vertical-align: text-top;
+}

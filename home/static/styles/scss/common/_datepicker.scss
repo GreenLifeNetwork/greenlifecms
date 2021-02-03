@@ -1,0 +1,192 @@
+﻿
+.ui-state-default {
+    @include transition(150ms);
+}
+
+.ui-datepicker-calendar {
+    .ui-state-hover {
+        background-color: $primary !important;
+        border: 0 !important;
+        color: $white;
+    }
+
+    .highlight {
+        .ui-state-default {
+            background-color: $primary !important;
+            color: $white;
+
+            &.ui-state-active {
+                color: $white;
+            }
+        }
+    }
+}
+
+.highlight + td > .ui-state-default, .ui-datepicker-week-end > .ui-state-hover {
+    border-radius: 0 4px 4px 0 !important;
+}
+
+.highlight + .highlight, .ui-datepicker-week-end + .highlight {
+    > .ui-state-default {
+        border-radius: 0 !important;
+    }
+}
+
+.ui-state-disabled + td > .ui-state-active, .ui-state-disabled + .highlight > .ui-state-default {
+    border-radius: 4px 0 0 4px;
+}
+
+
+.ui-datepicker {
+    border: 0;
+    border-radius: 3px;
+    box-shadow: 0 10px 30px 0px rgba(0,0,0,0.3);
+
+    .ui-datepicker-header {
+        border: 0;
+        padding: 0;
+
+        .ui-datepicker-title {
+            line-height: 38px;
+            height: 38px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+    }
+
+    .ui-datepicker-prev, .ui-datepicker-next {
+        top: 0;
+        width: 38px;
+        height: 38px;
+        border: 0 !important;
+        cursor: pointer;
+
+        .ui-icon {
+            background: transparent;
+            display: block;
+            position: relative;
+            margin-left: 0;
+            top: 13px;
+            left: 14px;
+            margin-top: 0;
+            width: 12px;
+            height: 12px;
+            overflow: hidden;
+            &:before {
+                content: "";
+                width: 12px;
+                height: 12px;
+                display: block;
+                background: transparent url('../../../images/icons.svg#chevron-up-white') no-repeat center !important;
+                background-size: 100% !important;
+            }
+        }
+    }
+
+    .ui-datepicker-next {
+        right: 0;
+
+        .ui-icon {
+            left: 14px;
+
+            &:before {
+                transform: rotate(90deg);
+            }
+        }
+    }
+
+    .ui-datepicker-prev {
+        left: 0;
+
+        .ui-icon {
+
+            &:before {
+                transform: rotate(-90deg);
+            }
+        }
+    }
+
+
+    table {
+        width: auto;
+        margin: 10px 0 17px 20px;
+
+        tr, td {
+            margin: 0;
+            padding: 0;
+            display: block;
+        }
+
+        td, th {
+            float: left;
+            width: 32px;
+            background: transparent;
+        }
+
+        .ui-state-default {
+            border: 0;
+            background: $grey-5;
+            text-align: right;
+            height: 28px;
+            width: 28px;
+            display: block;
+            border-radius: 2px;
+            margin: 0 4px 4px 0;
+            line-height: 16px;
+            font-weight: 700;
+            padding: 0 3px 0 0;
+
+            &.ui-state-active {
+                color: $black;
+                border: 2px solid $primary;
+                box-sizing: border-box;
+                padding: 0 1px 0 0;
+                line-height: 12px;
+
+                &.ui-state-hover {
+                    border: 2px solid $primary !important;
+                    color: $white;
+                }
+            }
+        }
+
+        .ui-datepicker-week-end {
+            .ui-state-default {
+                background: $primary-5;
+            }
+        }
+
+        tr {
+            clear: left;
+
+            &:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+        }
+    }
+}
+
+.ui-state-disabled, .ui-widget-content .ui-state-disabled, .ui-widget-header .ui-state-disabled {
+    opacity: .5;
+}
+
+.ui-datepicker-multi {
+    position: relative;
+
+    &:before {
+        content: "";
+        height: 158px;
+        width: 1px;
+        position: absolute;
+        left: 50%;
+        top: 76px;
+        background: $grey;
+    }
+
+    .ui-datepicker-group table {
+        width: auto;
+        margin: 10px 0 17px 20px;
+    }
+}

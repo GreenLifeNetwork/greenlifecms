@@ -1,0 +1,384 @@
+
+
+//form elements
+
+.input__label {
+    font-size: 1.07em;
+    display: block;
+    line-height: 1.3em;
+    color: $black;
+    &.required{
+        &:after{
+            content: "*";
+            color: $primary;
+            font-weight: 700;
+            margin-left: 4px;
+        }
+    }
+}
+
+.input__container {
+    margin-bottom: 12px;
+    position: relative;
+
+
+    .input__field {
+        display: block;
+        width: 100%;
+        line-height: 38px;
+        height: 38px;
+        border: 1px solid $grey;
+        padding: 0 0 0 12px;
+    }
+
+    &.contains-icon {
+        .input__field {
+            padding: 0 0 0 38px;
+        }
+    }
+
+    .input__icon {
+        position: absolute;
+        line-height: 38px;
+        width: 38px;
+        text-align: center;
+        bottom: 0;
+        left: 0;
+
+        i {
+            display: block;
+        }
+
+        .icon-svg-calendarpicker {
+            width: 20px;
+            height: 28px;
+            margin: 0 auto;
+        }
+    }
+}
+
+
+//custom checkbox
+.checkbox__container, .radio__container {
+    margin-bottom: 12px;
+
+    input[type=checkbox], input[type=radio] {
+        opacity: 0;
+        position: absolute;
+        width: auto;
+
+
+        &:checked + .input__label, &:checked + input[type=hidden] + .input__label {
+            &:before {
+                border-color: $primary;
+            }
+
+            &:after {
+                opacity: 1;
+            }
+        }
+
+        &:disabled + .input__label, &:disabled + input[type=hidden] + .input__label {
+            opacity: .4;
+        }
+    }
+
+    .input__label {
+        padding-left: 25px;
+        vertical-align: middle;
+        cursor: pointer;
+        position: relative;
+        font-size: 1.07em;
+
+        &:before {
+            content: "";
+            height: 16px;
+            width: 16px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #fff;
+            border: 2px solid $grey;
+            border-radius: 3px;
+            @include transition(100ms all ease-in-out);
+        }
+
+        &:after {
+            content: "";
+            position: absolute;
+            left: 4px;
+            top: 4px;
+            height: 12px;
+            width: 12px;
+            background: url('../../images/icons.svg#check-mark') no-repeat center center;
+            opacity: 0;
+            @include transition(100ms all ease-in-out);
+        }
+    }
+}
+
+//custom radio
+.radio__container {
+
+    input[type=radio] {
+
+        + .input__label {
+            padding-left: 43px;
+
+            &:before {
+                width: 32px;
+                border-radius: 10px;
+            }
+
+            &:after {
+                border-radius: 6px;
+                opacity: 1;
+                background: $grey;
+            }
+        }
+
+        &:checked + .input__label {
+            &:before {
+                border-color: $primary;
+            }
+
+            &:after {
+                left: 20px;
+                background: $primary;
+            }
+        }
+    }
+}
+
+//custom dropdown
+
+.select__container-default {
+    background: url('../../images/icons.svg#chevron-down-silk') no-repeat center center;
+    background-size: 36px 12px;
+    background-position: 100% 14px;
+    display: block;
+    width: 100%;
+    position: relative;
+    margin-bottom: 12px;
+
+    &.contains-label {
+        background-position: 100% 33px;
+    }
+
+    select {
+        line-height: 38px;
+        height: 38px;
+        border: 1px solid #d1d4d5;
+        background: transparent;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        width: 100%;
+        padding: 0 0 0 10px;
+        border-radius: 0;
+        outline: 0;
+        @include transition(250ms);
+    }
+}
+
+.select__container {
+    display: block;
+    width: 100%;
+    position: relative;
+
+
+    .select__toggle {
+        line-height: 38px;
+        min-height: 38px;
+        border: 1px solid #d1d4d5;
+        padding: 0 0 0 12px;
+        position: relative;
+        cursor: pointer;
+
+        &:before {
+            content: "";
+            background: url('../../images/icons.svg#chevron-down-silk') no-repeat center center;
+            background-size: 12px;
+            width: 38px;
+            display: block;
+            position: absolute;
+            right: 0;
+            top: 0;
+            line-height: 38px;
+            height: 38px;
+            @include transition(all 250ms ease-in-out);
+        }
+    }
+
+    &.active {
+        .select__toggle {
+            &:before {
+                transform: rotate(-180deg);
+            }
+        }
+
+        .select__list {
+            max-height: 202px;
+            opacity: 1;
+        }
+    }
+
+    .select__list {
+        margin: 0;
+        overflow: auto;
+        max-height: 0;
+        background: #fff;
+        border: 1px solid #d1d4d5;
+        border-top: 0;
+        opacity: 0;
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        z-index: 1;
+        @include transition(all 250ms ease-in-out);
+
+
+        .radio__container, .checkbox_container {
+            margin-bottom: 2px;
+
+            input[type=radio], input[type=checkbox] {
+
+                + .input__label {
+                    padding: 0 0 0 12px;
+                    line-height: 38px;
+                    height: 38px;
+                    display: block;
+                    @include transition(all 250ms ease-in-out);
+
+                    &:before, &:after {
+                        display: none;
+                    }
+
+                    &:hover {
+                        background: #daf9fb;
+                    }
+                }
+
+                &:checked + .input__label {
+                    background: $primary;
+                    color: #fff;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}
+
+
+//dynamic add/remove form element
+
+.dynamic-input__wrapper {
+
+    .input-icon .icon {
+        height: 21px;
+        width: 21px;
+        display: block;
+        float: right;
+    }
+}
+
+//multi checkbox container
+
+.multi-check__wrapper {
+    .select-all__container {
+        border: 1px solid $grey;
+        line-height: 20px;
+        padding: 12px 12px 0;
+        background: #f5f5f5;
+    }
+
+    .multi-check__search {
+        .input__container, .input__field {
+            margin-bottom: 0;
+        }
+    }
+
+    .multi-check__container {
+        border: 1px solid $grey;
+        border-top: 0;
+        padding: 12px 12px 0;
+        max-height: 200px;
+        overflow: auto;
+    }
+}
+
+.input__container, .input__field {
+    .input__icon {
+        i {
+            height: 38px;
+            width: 20px;
+            display: block;
+            margin: 0 auto;
+        }
+    }
+}
+
+
+
+//table styles
+
+
+table {
+    border-spacing: 0;
+    width: 100%;
+    margin-bottom: 20px;
+
+    th {
+        text-align: left;
+        padding: 0 0 12px;
+        font-weight: 400;
+        color: $black;
+
+        .sort_asc,
+        .sort_desc {
+            position: relative;
+            color: $black;
+            font-weight: 400;
+
+            &:after {
+                content: "";
+                border-top: 5px solid $error-bg;
+                border-left: 4px solid transparent;
+                border-right: 4px solid transparent;
+                position: absolute;
+                top: 7px;
+                right: -13px;
+            }
+        }
+
+        .sort_desc {
+            &:after {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    tbody {
+        th,
+        td {
+            line-height: 1.4em;
+            vertical-align: middle;
+            padding: 5px 0;
+            border-bottom: 2px solid $grey;
+
+            .input__container, .input__field {
+                margin-bottom: 0;
+            }
+        }
+
+        tr:last-child {
+            td {
+                border-bottom: 0;
+            }
+        }
+
+        .table__label {
+            color: $grey-5;
+            width: 200px;
+        }
+    }
+}

@@ -1,0 +1,141 @@
+/*** REBRAND COLOURS ***/
+
+/* Primary */
+$primary: #0cc117;
+
+/* Secondary */
+$secondary: #9e15c2;
+
+/* Grey */
+$grey: #303030;
+
+
+$white: #fff;
+$black: #1C1C1C;
+
+
+$red: #f00;
+$amber: #f00;
+$green: #f00;
+
+/*gradients*/
+
+//primary
+$primary-1: lighten($primary, 10%);
+$primary-2: lighten($primary, 20%);
+$primary-3: lighten($primary, 30%);
+$primary-4: lighten($primary, 40%);
+$primary-5: lighten($primary, 50%);
+$primary-6: lighten($primary, 60%);
+$primary-7: lighten($primary, 70%);
+$primary-8: lighten($primary, 80%);
+$primary-9: lighten($primary, 90%);
+$primary-11: darken($primary, 10%);
+$primary-12: darken($primary, 20%);
+$primary-13: darken($primary, 30%);
+$primary-14: darken($primary, 40%);
+$primary-15: darken($primary, 50%);
+$primary-16: darken($primary, 60%);
+$primary-17: darken($primary, 70%);
+$primary-18: darken($primary, 80%);
+$primary-19: darken($primary, 90%);
+
+//secondary
+$secondary-1: lighten($secondary, 10%); 
+$secondary-2: lighten($secondary, 20%);
+$secondary-3: lighten($secondary, 30%);
+$secondary-4: lighten($secondary, 40%);
+$secondary-5: lighten($secondary, 50%);
+$secondary-6: lighten($secondary, 60%);
+$secondary-7: lighten($secondary, 70%);
+$secondary-8: lighten($secondary, 80%);
+$secondary-9: lighten($secondary, 90%);
+$secondary-11: darken($secondary, 10%);
+$secondary-12: darken($secondary, 20%);
+$secondary-13: darken($secondary, 30%);
+$secondary-14: darken($secondary, 40%);
+$secondary-15: darken($secondary, 50%);
+$secondary-16: darken($secondary, 60%);
+$secondary-17: darken($secondary, 70%);
+$secondary-18: darken($secondary, 80%);
+$secondary-19: darken($secondary, 90%);
+
+//grey
+$grey-1: lighten($grey, 10%);
+$grey-2: lighten($grey, 20%);
+$grey-3: lighten($grey, 30%);
+$grey-4: lighten($grey, 40%);
+$grey-5: lighten($grey, 50%);
+$grey-6: lighten($grey, 60%);
+$grey-7: lighten($grey, 70%);
+$grey-8: lighten($grey, 80%);
+$grey-9: lighten($grey, 90%);
+
+
+
+/*semantic styles*/
+
+$text-color: $white;
+
+$body-bg: $black;
+
+/* Status Colors */
+
+// Warning
+$warning-color: $white;
+$warning-bg: $amber;
+
+// Error
+$error-color: $white;
+$error-bg: $red;
+
+// Success
+$success-color: $white;
+$success-bg: $green;
+
+
+/* Controls */
+// Btns
+$btn-primary-color: $primary;
+$btn-primary-hover-color: darken($primary, 10%);
+$btn-danger-color: $red;
+$btn-danger-hover-color: darken($red, 10%);
+$btn-warning-color: $amber;
+$btn-warning-hover-color: darken($amber, 10%);
+$btn-success-color: $green;
+$btn-success-hover-color: darken($green, 10%);
+
+$btn-disabled-color: #ccc;
+
+
+// Anchors
+$anchor-color: $primary;
+$anchor-hover-color: darken($primary, 10%);
+$anchor-active-color: $primary;
+
+
+// Dropdown
+$dropdown-menu-color: $white;
+$dropdown-menu-border: $grey-9;
+
+$dropdown-text-color: $black;
+$dropdown-border: $primary;
+
+// Header
+$header-bg: $primary;
+
+// Footer
+$footer-bg: $primary;
+$footer-text-color: $white;
+
+
+// Ordered/Unordered List
+$ul-ol-bg: $white;
+$li-bg: $white;
+$li-color: $black;
+
+
+// Tooltip
+$tooltip-bg: $grey;
+$tooltip-border-highlight-color: $primary;
+$tooltip-border: $grey;

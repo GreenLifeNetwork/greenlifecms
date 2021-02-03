@@ -1,0 +1,57 @@
+
+[class*="btn__"] {
+    border-radius: 3px;
+    border: 0;
+    line-height: 38px;
+    height: 38px;
+    min-width: 70px;
+    padding: 0 20px;
+    font-size: 0.95em;
+    letter-spacing: .05em;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: 600;
+    color: $primary;
+    @include transition();
+    text-align: center;
+
+    &:hover {
+        color: $primary-1;
+    }
+
+    &[class*="primary"] {
+        background: $primary;
+        color: $white;
+
+        &:hover {
+            background: $primary-1;
+        }
+    }
+
+    &[class*="secondary"] {
+        background: $secondary;
+
+        &:hover {
+            background: $secondary-1;
+        }
+    }
+
+    &[class*="alternative"] {
+        background: $white;
+        border: 1px solid $primary;
+
+        &:hover {
+            background: $primary-9;
+        }
+    }
+
+    &[class*="error"] {
+        background: $error-bg;
+        color: $white;
+
+        &:hover {
+            background: darken($error-bg, 10%);
+        }
+    }
+}

@@ -1,0 +1,231 @@
+
+
+.ui-widget-overlay {
+    background: $black-two;
+    opacity: 0.4;
+}
+
+.ui-widget-content {
+    font-family: "Segoe UI", Verdana, Helvetica, sans-serif;
+}
+.ui-dialog {
+    -webkit-box-shadow: 0 0 25px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 0 25px 5px rgba(0,0,0,0.2);
+    padding: 0;
+}
+.ui-widget-header {
+    background: #981d97;
+    border: 1px solid #ddd;
+    border-radius: 0;
+    font-weight: normal;
+    color: #666;
+    font-size: 12px;
+}
+.ui-widget-header.ui-corner-all {
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    border: 1px solid #981d97;
+    border-bottom: none;
+}
+.ui-datepicker {
+    padding: 0;
+
+    th {
+        background-color: $white;
+        line-height: 1em;
+    }
+
+    span, div {
+        font-size: 12px;
+    }
+}
+.ui-autocomplete-category {
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 0.8em;
+    line-height: 1.5;
+    margin: .8em 0 .2em;
+    padding: .2em .4em;
+}
+
+// Customize jQuery dialog buttons
+.ui-dialog .ui-dialog-buttonpane button {
+    background: $btn-color;
+    border: 1px solid $btn-color;
+    border-radius: 0;
+    height: 30px;
+    margin: 5px 10px;
+    padding: 0 10px;
+
+    span {
+        color: $btn-text-color;
+        font-size: 13.33px;
+    }
+
+    &:hover {
+        background: $btn-hover-color;
+        border: 1px solid $btn-hover-color;
+    }
+
+    &:last-child {
+        background: $btn-primary-color;
+        border: 1px solid $btn-primary-color;
+
+        &:hover {
+            background: $btn-primary-hover-color;
+            border: 1px solid $btn-primary-hover-color !important;
+        }
+    }
+}
+
+.ui-widget-content .ui-state-default {
+    background: #eee;
+}
+.ui-datepicker-week-end .ui-state-default {
+    background: #ddd;
+}
+
+.ui-datepicker select.ui-datepicker-month{
+	width: 40% !important;
+    margin-right:10px !important;
+}
+
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-content .ui-state-focus {
+    background: $btn-primary-hover-color;
+    border: 1px solid $btn-primary-hover-color;
+    color: $white;
+}
+
+
+.ui-widget-content .ui-state-active {
+    background: $btn-primary-color;
+    border: 1px solid $btn-primary-color;
+    color: $white;
+}
+.ui-corner-all,
+.ui-corner-top,
+.ui-corner-bottom,
+.ui-corner-left,
+.ui-corner-right,
+.ui-corner-br, .ui-corner-bl, .ui-corner-tr, .ui-corner-tl {
+    border-radius: 0;
+}
+.ui-autocomplete .ui-menu .ui-menu-item a {
+    color: #333;
+    font-size: 13px;
+}
+
+.ui-autocomplete.ui-front {
+    max-height:300px;
+    overflow-y:auto;
+}
+
+// Customize jQuery dialog
+.ui-dialog {
+    border-radius: 3px;
+
+    &.ui-widget-content {
+        border: none;
+
+        .ui-state-focus {
+            border: none !important;
+        }
+    }
+
+    .ui-dialog-buttonpane {
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+        background-color: $refresh-grey;
+        border-top: 1px solid $greyish;
+        height: 67px;
+        padding: 0 17px;
+        margin: 0;
+
+        button {
+            @include transition(all 0.3s ease);
+            text-align: center;
+            letter-spacing: 0.1px !important;
+            border: none;
+            background-color: $greyish;
+            margin: 16px 0 16px 12px;
+            padding: 0 20px;
+            border-radius: 3px;
+            height: 36px;
+
+            span {
+                color: #fff;
+                font-weight: 700 !important;
+                font-size: 13px !important;
+                min-width: 110px;
+            }
+
+            &:hover {
+                background-color: #888;
+            }
+
+            &:last-child {
+                background: $Button-Primary;
+
+                &:hover {
+                    background: $Button-Primary-hover;
+                }
+            }
+
+            &[disabled], &[disabled]:last-child {
+                background-color: $light-grey;
+                color: $white;
+                cursor: default;
+
+                &:hover {
+                    background-color: $light-grey;
+                    color: $white;
+                    cursor: default;
+                }
+            }
+        }
+    }
+
+    .ui-button-text-only .ui-button-text {
+        padding: 0;
+    }
+
+    .ui-dialog-title {
+        font-size: 22px;
+        font-weight: 600;
+        color: $white;
+    }
+
+    .ui-dialog-titlebar {
+        padding: 14px 19px;
+    }
+
+    .ui-dialog-buttonpane {
+    }
+
+    .ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-icon-only.ui-dialog-titlebar-close {
+        &.ui-state-focus, &.ui-state-hover, &.ui-state-default {
+            border: none !important;
+            background-color: $primary-silk;
+            background-image: none;
+        }
+    }
+
+    .ui-dialog-titlebar-close {
+        width: 14px;
+        height: 14px;
+        margin: 0;
+        right: 19px;
+        top: 24px;
+        z-index: 100;
+    }
+
+    .icon-svg-14 {
+        height: 14px;
+        width: 14px;
+    }
+}
+
+.ui-datepicker-title {
+    color: #ffffff;
+}
