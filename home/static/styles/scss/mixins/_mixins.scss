@@ -104,7 +104,7 @@ $fontSize: 14px;
 @mixin standardFont(){
     font-family: "Montserrat", sans-serif;
     font-size: $fontSize;
-    line-height: 16px;
+    line-height: calc(#{$grid} * 2.5);
 }
 
 

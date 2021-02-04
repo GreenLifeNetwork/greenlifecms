@@ -1,15 +1,8 @@
 
-.main__container {
+.main__container, .main__footer {
     margin: 0 auto;
     max-width: 470px;
-    width: #{"calc((100%) - 24px)"};
-    
-}
-
-
-.button__container {
-    margin: 20px 0;
-    text-align: right;
+    width: calc((100%) - calc(#{$grid} * 4) );
 }
 
 .ellipse{
@@ -119,4 +112,72 @@
     text-align: center;
     right: 0px;
     top: 0;
+}
+
+
+//navigation
+.nav__container{
+    text-align: center;
+    .nav__item{
+        display: inline-block;
+        margin: 0 calc(#{$grid} * 3) calc(#{$grid} * 4) 0;
+        &:last-child{
+            margin: 0;
+        }
+    }
+}
+
+
+//app download
+.app-download__container{
+    margin: calc(#{$grid} * 6) auto;
+    .app-download__item{
+        display: inline-block;
+        margin: 0 4px;
+        > img{
+            width: 140px;
+        }
+    }
+}
+
+
+//header + footer
+.main__header{
+    margin: calc(#{$grid} * 5) auto calc(#{$grid} * 3);
+}
+.main__footer{
+    margin: calc(#{$grid} * 6) auto calc(#{$grid} * 4);
+}
+
+
+//logo
+
+.logo__container{
+    display: inline-block;
+    .logo{
+        width: 100%;
+    }
+}
+
+
+//app download icons
+
+.app-download__container{
+    .app-download__intro{
+        margin: 0 auto $grid;
+    }
+}
+
+
+//list items within content
+
+
+.rich-text {
+    ul{
+        margin: 0 auto;
+        > li{
+            margin-left: calc(#{$grid} * 3);
+            list-style: circle;
+        }
+    }
 }

@@ -29,8 +29,8 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 }
 
 p {
-    margin-block-start: 1em;
-    margin-block-end: 1em;
+    margin-block-end: calc(#{$grid} * 2);
+    margin-block-start: calc(#{$grid} * 4);
     display: block;
     box-sizing: content-box;
 }
@@ -61,7 +61,7 @@ table {
 }
 
 html, body {
-    height: 100%;
+    min-height: 100%;
     margin: 0;
     padding: 0;
 }
@@ -81,20 +81,18 @@ select, textarea, input[type='text'], input[type='password'], input[type='dateti
 /* Headings */
 h1, h2, h3, h4, h5 {
     font-weight: 600;
+    margin: calc(#{$grid} * 5) auto calc(#{$grid} * 3);
 }
 
 
 h1 {
     font-size: 1.57em;
-    margin-top: 0;
+    line-height: calc(#{$grid} * 4);
 }
 
 h2 {
     font-size: 1.29em;
-    margin-top: 0; /* Used for profile page titles */
-    &.sub-heading {
-        margin-top: 15px;
-    }
+    line-height: calc(#{$grid} * 3);
 }
 
 h3 {

@@ -1,3 +1,25 @@
-.main__container.welcome_page{
+.welcome__page{
+    @extend .main__container;
+
+    .main__header{
+        .logo__container{
+            width: 150px;
+            @media screen and (min-width: 600px) {
+                width: 200px;
+            }
+        }
+    }
     text-align: center;
+    .countdown__container{
+        canvas{
+            height: 50px;
+        }
+        .countdown-caption{
+            color: $primary;
+            font-weight: 600;
+            margin: 0;
+        }
+        margin: 40px 0;
+    }
+
 }

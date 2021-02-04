@@ -1,0 +1,29 @@
+.GHIndex__page{
+    @extend .main__container;
+
+    .main__header{
+        text-align: center;
+    }
+
+    .main__content{
+        h2 {
+            position: relative;
+            margin-top: calc(#{$grid} * 8);
+            &:after{
+                content: "-----";
+                display: block;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: -40px;
+                text-align: center;
+            }
+            &:first-child{
+                margin: inherit;
+                &:after{
+                    display: none;
+                }
+            }
+        }
+    }
+}

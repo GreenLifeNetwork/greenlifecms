@@ -392,7 +392,6 @@ It should only be used on dynamic elements such as modals or dropdowns which are
   display: inline-block;
   vertical-align: text-top; }
 
-/*** REBRAND COLOURS ***/
 /* Primary */
 /* Secondary */
 /* Grey */
@@ -426,8 +425,8 @@ table, caption, tbody, tfoot, thead, tr, th, td {
   box-sizing: border-box; }
 
 p {
-  margin-block-start: 1em;
-  margin-block-end: 1em;
+  margin-block-end: calc(8px * 2);
+  margin-block-start: calc(8px * 4);
   display: block;
   box-sizing: content-box; }
 
@@ -452,7 +451,7 @@ table {
   border-spacing: 0; }
 
 html, body {
-  height: 100%;
+  min-height: 100%;
   margin: 0;
   padding: 0; }
 
@@ -461,27 +460,25 @@ body {
   background: #1C1C1C;
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
-  line-height: 16px; }
+  line-height: calc(8px * 2.5); }
 
 select, textarea, input[type='text'], input[type='password'], input[type='datetime'], input[type='datetime-local'], input[type='date'], input[type='month'], input[type='time'], input[type='week'], input[type='number'], input[type='email'], input[type='url'], input[type='search'], input[type='tel'], input[type='color'], .uneditable-input {
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
-  line-height: 16px; }
+  line-height: calc(8px * 2.5); }
 
 /* Headings */
 h1, h2, h3, h4, h5 {
-  font-weight: 600; }
+  font-weight: 600;
+  margin: calc(8px * 5) auto calc(8px * 3); }
 
 h1 {
   font-size: 1.57em;
-  margin-top: 0; }
+  line-height: calc(8px * 4); }
 
 h2 {
   font-size: 1.29em;
-  margin-top: 0;
-  /* Used for profile page titles */ }
-  h2.sub-heading {
-    margin-top: 15px; }
+  line-height: calc(8px * 3); }
 
 h3 {
   font-size: 1em; }
@@ -566,14 +563,10 @@ a.active {
 @media print {
   .hidden-print {
     display: none !important; } }
-.main__container {
+.main__container, .welcome__page, .nudge__page, .GHIndex__page, .main__footer {
   margin: 0 auto;
   max-width: 470px;
-  width: calc((100%) - 24px); }
-
-.button__container {
-  margin: 20px 0;
-  text-align: right; }
+  width: calc((100%) - calc(8px * 4) ); }
 
 .ellipse {
   overflow: hidden;
@@ -647,6 +640,42 @@ a.active {
   text-align: center;
   right: 0px;
   top: 0; }
+
+.nav__container {
+  text-align: center; }
+  .nav__container .nav__item {
+    display: inline-block;
+    margin: 0 calc(8px * 3) calc(8px * 4) 0; }
+    .nav__container .nav__item:last-child {
+      margin: 0; }
+
+.app-download__container {
+  margin: calc(8px * 6) auto; }
+  .app-download__container .app-download__item {
+    display: inline-block;
+    margin: 0 4px; }
+    .app-download__container .app-download__item > img {
+      width: 140px; }
+
+.main__header {
+  margin: calc(8px * 5) auto calc(8px * 3); }
+
+.main__footer {
+  margin: calc(8px * 6) auto calc(8px * 4); }
+
+.logo__container {
+  display: inline-block; }
+  .logo__container .logo {
+    width: 100%; }
+
+.app-download__container .app-download__intro {
+  margin: 0 auto 8px; }
+
+.rich-text ul {
+  margin: 0 auto; }
+  .rich-text ul > li {
+    margin-left: calc(8px * 3);
+    list-style: circle; }
 
 /*
  Menu and Sidebar Styles
@@ -813,16 +842,16 @@ a.active {
 [class*="btn__"] {
   border-radius: 3px;
   border: 0;
-  line-height: 38px;
-  height: 38px;
+  line-height: 32px;
+  height: 32px;
   min-width: 70px;
-  padding: 0 20px;
-  font-size: 0.95em;
+  padding: 0 16px;
+  font-size: 1em;
   letter-spacing: .05em;
   cursor: pointer;
   display: inline-block;
   vertical-align: middle;
-  font-weight: 600;
+  font-weight: 700;
   color: #0cc117;
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
@@ -830,21 +859,21 @@ a.active {
   transition: all 0.3s ease;
   text-align: center; }
   [class*="btn__"]:hover {
-    color: #10f01d; }
+    color: #099111; }
   [class*="btn__"][class*="primary"] {
     background: #0cc117;
     color: #fff; }
     [class*="btn__"][class*="primary"]:hover {
-      background: #10f01d; }
+      background: #099111; }
   [class*="btn__"][class*="secondary"] {
     background: #9e15c2; }
     [class*="btn__"][class*="secondary"]:hover {
-      background: #be23e7; }
+      background: #791094; }
   [class*="btn__"][class*="alternative"] {
     background: #fff;
     border: 1px solid #0cc117; }
     [class*="btn__"][class*="alternative"]:hover {
-      background: white; }
+      background: #10f01d; }
   [class*="btn__"][class*="error"] {
     background: #f00;
     color: #fff; }
@@ -1109,7 +1138,68 @@ table {
     color: #b0b0b0;
     width: 200px; }
 
-.main__container.welcome_page {
+.welcome__page {
   text-align: center; }
+  .welcome__page .main__header .logo__container {
+    width: 150px; }
+    @media screen and (min-width: 600px) {
+      .welcome__page .main__header .logo__container {
+        width: 200px; } }
+  .welcome__page .countdown__container {
+    margin: 40px 0; }
+    .welcome__page .countdown__container canvas {
+      height: 50px; }
+    .welcome__page .countdown__container .countdown-caption {
+      color: #0cc117;
+      font-weight: 600;
+      margin: 0; }
+
+.nudge__page .main__header {
+  text-align: center; }
+  .nudge__page .main__header .logo__container {
+    width: 100px; }
+.nudge__page .richtext-image {
+  width: calc(100% + calc(8px * 6) );
+  margin: 0 calc(-8px * 3);
+  height: auto;
+  display: inline-block; }
+.nudge__page .nudge__links {
+  margin: calc(8px * 3) auto; }
+  .nudge__page .nudge__links p {
+    margin: 0; }
+  .nudge__page .nudge__links a {
+    padding: 0 0 0 calc(8px * 6);
+    display: block;
+    position: relative; }
+    .nudge__page .nudge__links a:before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: calc(8px * 2);
+      background: url("/static/images/svg/link.svg") no-repeat;
+      width: calc(8px * 2);
+      height: calc(8px * 2); }
+  .nudge__page .nudge__links ul > li {
+    margin: 0;
+    list-style: none; }
+
+.GHIndex__page .main__header {
+  text-align: center; }
+.GHIndex__page .main__content h2 {
+  position: relative;
+  margin-top: calc(8px * 8); }
+  .GHIndex__page .main__content h2:after {
+    content: "-----";
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -40px;
+    text-align: center; }
+  .GHIndex__page .main__content h2:first-child {
+    margin: inherit; }
+    .GHIndex__page .main__content h2:first-child:after {
+      display: none; }
 
 /*# sourceMappingURL=styles.css.map */
