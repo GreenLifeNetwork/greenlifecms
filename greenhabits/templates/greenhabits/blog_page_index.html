@@ -2,31 +2,37 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 {% block body_class %}template-blog-page{% endblock %}
 {% block content %}
-<div class="article">
-    <h1>{{ page.title }}</h1>
+<main class="main__container blog__page">
+        
+    <section class="article">
+        <div class="main__header">
+            <h1 class="main__title">{{ page.title }}</h1>
+        </div>
 
-    {% for post in posts %}
-        {% with post=post.specific %}
-            <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
+        {% for post in posts %}
+            {% with post=post.specific %}
+                <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
 
-            <p>{{ post.intro }}</p>
-            {{ post.body|richtext }}
-            {{ post.links|richtext }}
-        {% endwith %}
-    {% endfor %}
-</div>
+                <p>{{ post.intro }}</p>
+                {{ post.body|richtext }}
+                {{ post.links|richtext }}
+            {% endwith %}
+        {% endfor %}
+    </section>
 
-<div class="page">
-{% if posts.has_previous %}
-    <a href="?page=1">&laquo; first</a>
-    <a href="?page={{ posts.previous_page_number }}">previous</a>
-{% endif %}
-    <span class="current"> {{ posts.number }} of {{ posts.paginator.num_pages }} </span>
-{% if posts.has_next %}
-    <a href="?page={{ posts.next_page_number }}">next</a>
-    <a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
-{% endif %}
-</div>
+    <div class="page">
+    {% if posts.has_previous %}
+        <a href="?page=1">&laquo; first</a>
+        <a href="?page={{ posts.previous_page_number }}">previous</a>
+    {% endif %}
+        <span class="current"> {{ posts.number }} of {{ posts.paginator.num_pages }} </span>
+    {% if posts.has_next %}
+        <a href="?page={{ posts.next_page_number }}">next</a>
+        <a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
+    {% endif %}
+    </div>
+
+</main>
 
 {% endblock %}
 

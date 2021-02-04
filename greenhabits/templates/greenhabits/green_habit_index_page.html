@@ -5,15 +5,20 @@
 {% block body_class %}template-greenhabitsindexpage{% endblock %}
 
 {% block content %}
-    <h1>{{ page.title }} </h1>
-
-    {% for post in greenhabitspages %}
-        {% with post=post.specific %}
-            <h2> {{ post.id }} <a href="{% pageurl post %}">{{ post.title }}</a> {{ forloop.counter }}</h2>
-            {{ post.body|richtext }}
-            {{ post.links|richtext }}
-        {% endwith %}
-    {% endfor %}
-
+    <main class="main__container GHIndex__page">
+        <header class="main__header">
+            <h1 class="main__title">{{ page.title }}</h1>
+        </header>
+        <section class="main__content">
+            {% for post in greenhabitspages %}
+                {% with post=post.specific %}
+                    <h2> {{ post.id }} <a href="{% pageurl post %}">{{ post.title }}</a> {{ forloop.counter }}</h2>
+                    {{ post.body|richtext }}
+                    {{ post.links|richtext }}
+                {% endwith %}
+            {% endfor %}
+        </section>
+    
+    </main>
 {% endblock %}
 

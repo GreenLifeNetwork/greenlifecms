@@ -18,7 +18,7 @@
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 
         {# Global stylesheets #}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/greenlifecms.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/compiled/styles.css' %}">
 
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
@@ -28,7 +28,7 @@
 
     </head>
 
-    <body class="{% block body_class %}{% endblock %}">
+    <body class="{% block body_class %}{% endblock %} dark">
         {% block content %}{% endblock %}
 
         {# Global javascript #}
@@ -41,35 +41,37 @@
 
 
         {% block footer %}
-                <footer role="contentinfo">
-            <ul>
-                <li>
-                    <a class="option" title="Where change takes place"  href="/">
-                        <h4> {% trans "Home" %}</h4>
-                    </a>
-                </li>
-                <li>
-                    <a class="option"  title="Tip of the day"  href="https://greenlife.page.link/Pa9g">
-                        <h4><b>🌱 {% trans "Tip of the day" %}</b></h4>
-                    </a>
-                </li>
-                <!--                <li>-->
-                <!--                    <a class="option" title="Add your own suggestion!" href="/admin/pages/add/greenhabits/greenhabitpage/4/">-->
-                <!--                        <h4><b> {% trans "+ new green habit" %}</b></h4>-->
-                <!--                    </a>-->
-                <!--                </li>-->
-                <li>
-                    <a class="option" title="Green Life blog" href="/blog">
-                        <h4><b> {% trans "Blog" %}</b></h4>
-                    </a>
-                </li>
-                <li>
-                    <a class="option" title="About Green Life" href="/about-us">
-                        <h4> {% trans "About" %}</h4>
-                    </a>
-                </li>
-            </ul>
-        </footer>
+            <footer class="main__footer" role="contentinfo">
+                <nav class="footer__nav">
+                    <ul class="nav__container group">
+                        <li class="nav__item">
+                            <a class="item__link" title="Where change takes place"  href="/">
+                                {% trans "Home" %}
+                            </a>
+                        </li>
+                        <li class="nav__item">
+                            <a class="item__link" title="Tip of the day"  href="https://greenlife.page.link/Pa9g">
+                                🌱 {% trans "Tip of the day" %}
+                            </a>
+                        </li>
+                        <!-- <li class="nav__item">
+                            <a class="item__link" title="Add your own suggestion!" href="/admin/pages/add/greenhabits/greenhabitpage/4/">
+                                {% trans "+ new green habit" %}
+                            </a>
+                        </li> -->
+                        <li class="nav__item">
+                            <a class="item__link" title="Green Life blog" href="/blog">
+                                {% trans "Blog" %}
+                            </a>
+                        </li>
+                        <li class="nav__item">
+                            <a class="item__link" title="About Green Life" href="/about-us">
+                                {% trans "About" %}
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </footer>
         {% endblock %}
     </body>
 </html>

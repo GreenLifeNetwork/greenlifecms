@@ -60,7 +60,7 @@ if (!isNativeApp) {
     }
 } else {
     window.addEventListener("DOMContentLoaded", (event) => {
-        document.querySelector("footer").style.display = "none"
+        document.querySelector(".main__footer").style.display = "none"
         document.querySelector(".app-banner").style.display = "none"
         document.querySelector(".sharethis-inline-share-buttons").style.display = "none"
         if(document.querySelector(".app-banner-intro")) {
@@ -129,11 +129,6 @@ var ringer = {
         $r.ctx.textAlign = 'center';
         $r.actual_size = $r.r_size + $r.r_thickness;
         $r.countdown_to_time = new Date($r.countdown_to).getTime();
-        $r.cvs.css({ width: $r.size.w+"px", height: $r.size.h+"px" });
-        if (document.querySelector('.countdown-container canvas')) {
-            document.querySelector('.countdown-container canvas').style.width = 'auto'
-            document.querySelector('.countdown-container canvas').style.height = '50px'
-        }
         $r.go();
     },
     ctx: null,
@@ -185,11 +180,11 @@ var ringer = {
         // label
         $r.ctx.fillStyle = "#ffffff";
 
-        $r.ctx.font = '12px Helvetica';
+        $r.ctx.font = '12px Montserrat';
         $r.ctx.fillText(label, 0, 23);
         $r.ctx.fillText(label, 0, 23);
 
-        $r.ctx.font = 'bold 40px Helvetica';
+        $r.ctx.font = 'bold 40px Montserrat';
         $r.ctx.fillText(Math.floor(value), 0, 10);
 
         $r.ctx.restore();

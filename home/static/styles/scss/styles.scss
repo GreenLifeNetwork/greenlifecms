@@ -1,0 +1,65 @@
+/**************
+**** RULES ****
+***************
+
+----
+DO's
+
+All styles should be set using the BEM naming convention
+eg .block__element {color: #FFFF00;}
+
+Individual areas should have their own overriding scss file, (e.g _homepage.scss & _nudge.scss)
+
+File naming: seperate scss files should have an _ infront of it, this prevents them being compiled into their own CSS file. (This can be ignored when adding it to the includes bellow).
+
+Page styles should only be used as overrides for the main styles. ask yourself if this could be used elsewhere, if so, then it should go in '_commons.scss'
+
+Start your 'page' stylesheeds with the body class of that page. This will allow overrides and all non-essential CSS will be skipped when read.
+
+
+----
+DONT's
+
+NEVER user !imporant. If you need to use !important, then you're covering for bad CSS. BEM should remove all need for this.
+
+NEVER style an ID (e.g. #idName). Styles should be reusable, ID's are not.
+
+NEVER style to a DOM element (e.g. div{border: 1px solid #f00); ) - these should all be covered in the _base.scss.
+
+use clearfix. There is now a ".group" class which works wonders.
+
+
+----
+AVOID
+
+Avoid setting a z-index on constantly static components.
+It should only be used on dynamic elements such as modals or dropdowns which are hidden again once interaction has ceased.
+(e.g. .main__header{z-index: 999})
+
+*/
+
+
+//mixins
+@import "mixins/mixins.scss";
+@import "includes/icons.scss";
+
+//variables
+@import "variables/variables.scss"; 
+
+//reset
+@import "includes/base.scss";
+
+//commons 
+@import "common/common.scss";
+@import "common/header.scss";
+@import "common/footer.scss";
+@import "common/menu.scss";
+@import "common/alerts.scss";
+@import "common/datepicker.scss";
+@import "common/buttons.scss";
+@import "common/formElements.scss";
+
+//pages
+@import "pages/welcome.scss";
+@import "pages/nudge.scss";
+@import "pages/GHIndexPage.scss";

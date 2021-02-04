@@ -1,0 +1,183 @@
+
+.main__container, .main__footer {
+    margin: 0 auto;
+    max-width: 470px;
+    width: calc((100%) - calc(#{$grid} * 4) );
+}
+
+.ellipse{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    padding-right: 8px;
+    display: inline-block;
+}
+
+//panels
+
+.panel__block {
+    padding: 20px;
+    background: $white;
+    border-radius: 3px;
+    margin-bottom: 20px;
+
+    .panel__heading {
+        margin: 0;
+        font-size: 2em;
+    }
+
+    .panel__title {
+        margin-top: 0;
+    }
+
+    > .button__container {
+        margin-top: 0;
+    }
+
+    .panel__footer {
+        margin: 0 0 -20px -20px;
+        @include calc(width, 100%, "+", 40px);
+        background: $black;
+        padding: 20px;
+        border-radius: 0 0 3px 3px;
+        .button__container {
+            margin: 0;
+        }
+    }
+}
+
+
+.panel__container {
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 3px;
+    padding: 20px;
+    position: relative;
+
+    .panel__title {
+        font-size: 1.2em;
+        margin: 0 0 8px;
+        line-height: 1em;
+    }
+}
+
+
+
+//star
+[class^="favourite"] {
+    width: 24px;
+    height: 20px;
+    background: url('/Content/images/tripquotes/icons.svg#star-empty') no-repeat center center;
+    background-size: 20px;
+
+    &[class$="-active"] {
+        background: url('/Content/images/tripquotes/icons.svg#star-full') no-repeat center center;
+        background-size: 20px;
+    }
+}
+
+
+
+
+/* loading */
+.loading__container {
+    text-align: center;
+    padding-bottom: 0 0 20px;
+
+    .loading__gif {
+        width: 70px;
+    }
+    .loading__message{
+        font-weight: 600;
+        display: block;
+        color: $primary;
+    }
+}
+
+
+//notification settings
+
+
+.notification__dot {
+    color: $primary;
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    border-radius: 8px;
+    display: block;
+    line-height: 16px;
+    font-size: 10px;
+    cursor: pointer;
+    text-align: center;
+    right: 0px;
+    top: 0;
+}
+
+
+//navigation
+.nav__container{
+    text-align: center;
+    .nav__item{
+        display: inline-block;
+        margin: 0 calc(#{$grid} * 3) calc(#{$grid} * 4) 0;
+        &:last-child{
+            margin: 0;
+        }
+    }
+}
+
+
+//app download
+.app-download__container{
+    margin: calc(#{$grid} * 6) auto;
+    .app-download__item{
+        display: inline-block;
+        margin: 0 4px;
+        > img{
+            width: 140px;
+        }
+    }
+}
+
+
+//header + footer
+.main__header{
+    margin: calc(#{$grid} * 5) auto calc(#{$grid} * 3);
+}
+.main__footer{
+    margin: calc(#{$grid} * 6) auto calc(#{$grid} * 4);
+}
+
+
+//logo
+
+.logo__container{
+    display: inline-block;
+    .logo{
+        width: 100%;
+    }
+}
+
+
+//app download icons
+
+.app-download__container{
+    .app-download__intro{
+        margin: 0 auto $grid;
+    }
+}
+
+
+//list items within content
+
+
+.rich-text {
+    ul{
+        margin: 0 auto;
+        > li{
+            margin-left: calc(#{$grid} * 3);
+            list-style: circle;
+        }
+    }
+}

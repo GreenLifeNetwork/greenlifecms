@@ -1,0 +1,145 @@
+// Mix-ins
+/**/
+
+$fontSize: 14px;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+@mixin borderRadius($radius){
+	   -moz-border-radius: $radius;
+	-webkit-border-radius: $radius;
+			border-radius: $radius;
+}
+
+@mixin borderRadiusCustom($topRight, $bottomRight, $topLeft, $bottomLeft){
+	-moz-border-radius-topright: $topRight;
+	-webkit-border-top-right-radius: $topRight;
+	border-top-right-radius: $topRight;
+
+    -moz-border-radius-bottomright: $bottomRight;
+	-webkit-border-bottom-right-radius: $bottomRight;
+    border-bottom-right-radius: $bottomRight;
+
+    -moz-border-radius-topleft: $topLeft;
+	-webkit-border-top-left-radius: $topLeft;
+	border-top-left-radius: $topLeft;
+
+    -moz-border-radius-bottomleft: $bottomLeft;
+	-webkit-border-bottom-left-radius: $bottomLeft;
+    border-bottom-left-radius: $bottomLeft;
+}
+
+@mixin boxShadow($boxShadow){
+	   -moz-box-shadow: $boxShadow;
+	-webkit-box-shadow: $boxShadow;
+			box-shadow: $boxShadow;
+}
+
+@mixin opacity($opacity){
+	$opacityPercent: $opacity * 100;
+	opacity: $opacity;
+	-ms-filter: #{"progid:DXImageTransform.Microsoft.Alpha(Opacity=${opacityPercent})"};
+		filter: #{"alpha(opacity=${opacityPercent})"};
+}
+
+@mixin wordWrap($wordWrap: break-word){
+	-ms-word-wrap: $wordWrap;
+	word-wrap: $wordWrap;
+}
+
+@mixin central(){
+	margin:0 auto;
+}
+
+@mixin transition($transition: all 0.3s ease){
+	-moz-transition: $transition; 
+	-o-transition: $transition; 
+	-webkit-transition: $transition;
+	transition: $transition; 
+}
+
+@mixin text-overflow(){
+	-ms-text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	text-overflow: ellipsis;
+}
+
+
+@mixin rotate(){
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+}
+
+@mixin flexbox(){
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+@mixin flex-align-items($align: stretch){
+    @include flexbox();
+    -webkit-box-align: $align;
+    -moz-box-align: $align;
+    -ms-flex-align: $align;
+    align-items: $align;
+}
+
+@mixin flex-align-self($align: stretch){
+    align-self: $align;
+}
+
+@mixin flex-flow-items($flow: row wrap, $justify: flex-start){
+    @include flexbox();
+    -webkit-flex-flow: $flow;
+    -ms-flex-flow: $flow;
+    flex-flow: $flow;
+    justify-content: $justify;
+}
+
+
+@mixin standardFont(){
+    font-family: "Montserrat", sans-serif;
+    font-size: $fontSize;
+    line-height: calc(#{$grid} * 2.5);
+}
+
+
+
+@mixin imageGradient(){
+    background: -moz-linear-gradient(bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%, rgba(0,0,0,0) 100%);
+    background: -webkit-linear-gradient(bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%, rgba(0,0,0,0) 100%);
+    background: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%, rgba(0,0,0,0) 100%);
+}
+
+
+//calc mixin
+@mixin calc($param, $val1, $equation, $val2) {
+    @if $equation == "-"{
+        $param: #{"calc(($val1) - ($val2))"};
+    }
+}
+
+@mixin calc($param, $val1, $equation, $val2) {
+    
+    @if $equation == "+"{
+        $param: #{"calc(($val1) - (-$val2))"};
+    }
+}
+
+@mixin calc($param, $val1, $equation, $val2) {
+    
+    @if $equation == "*"{
+        $param: #{"calc(($val1) * ($val2))"};
+    }
+}
+
+@mixin calc($param, $val1, $equation, $val2) {
+    
+    @if $equation == "*"{
+        $param: #{"calc(($val1) / (-$val2))"};
+    }
+}

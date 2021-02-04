@@ -1,0 +1,49 @@
+/*
+ Menu and Sidebar Styles
+*/
+
+
+.menu__container {
+    list-style-type: none;
+    padding-left: 0px;
+    margin: 0;
+
+    .menu__item {
+        float: left;
+        font-size: 0.94em;
+        position: relative;
+
+        a {
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: inline-block;
+        }
+
+        &:first-child a {
+            padding-left: 0;
+        }
+
+        &.-sub {
+            padding-left: 20px;
+        }
+    }
+}
+
+
+//breadcrumb
+.breadcrumb__wrapper {
+    background: #fff;
+
+    .breadcrumb__container {
+        width: calc(100% - 30px);
+        max-width: 1180px;
+        margin: 0 auto;
+        font-size: .83em;
+        line-height: 29px;
+        .breadcrumb__divider{
+            margin: 0 6px;
+        }
+    }
+}
