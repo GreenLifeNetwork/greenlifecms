@@ -52,12 +52,12 @@ const GreenLifeApp = () => {
 
 if (!isNativeApp) {
     GreenLifeApp()
-    if(isNudgePage) {
-        addScript("https://cdn.branch.io/branch-latest.min.js")
-        setTimeout(()=> {
-            branch.init('key_live_dhJ1Y7Xg8VsRsfLNzrRo7loayFgKElc6');
-        }, 200)
-    }
+    // if(isNudgePage) {
+    //     addScript("https://cdn.branch.io/branch-latest.min.js")
+    //     setTimeout(()=> {
+    //         branch.init('key_live_dhJ1Y7Xg8VsRsfLNzrRo7loayFgKElc6');
+    //     }, 200)
+    // }
 } else {
     window.addEventListener("DOMContentLoaded", (event) => {
         document.querySelector("footer").style.display = "none"
