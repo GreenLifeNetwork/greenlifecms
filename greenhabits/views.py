@@ -9,12 +9,15 @@ from wagtail.search.models import Query
 from .models import GreenHabitPage
 from django.http import HttpResponse
 
+NUDGE_FIELDS = ('id', 'body', 'last_published_at')
+# TODO after nudge model refactor
+# NUDGE_FIELDS = ('id', 'body', 'last_published_at', 'importance', 'image', 'headline')
 
 def json_week(request, id):
     # Grabs a QuerySet of dicts
     week_offset = id * 7
     week_limit = week_offset + 7
-    qs = GreenHabitPage.objects.order_by('-id').all()[week_offset:week_limit].values()
+    qs = GreenHabitPage.objects.live().order_by('-id').all()[week_offset:week_limit].values(*NUDGE_FIELDS)
 
     # Convert the QuerySet to a List
     list_of_dicts = list(qs)
@@ -26,7 +29,7 @@ def json_week(request, id):
 
 def json_last_week(request):
     # Grabs a QuerySet of dicts
-    qs = GreenHabitPage.objects.order_by('-id')[:7].values()
+    qs = GreenHabitPage.objects.live().order_by('-id')[:7].values(*NUDGE_FIELDS)
 
     # Convert the QuerySet to a List
     list_of_dicts = list(qs)
