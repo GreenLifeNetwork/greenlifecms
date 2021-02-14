@@ -44,6 +44,22 @@ class GreenHabitIndexPage(RoutablePageMixin, Page):
         context['all'] = self.get_children()
         return context
 
+    # this route needs to be protected
+    @route(r'^week/(\d+)/$', name='week')
+    def render_page_by_week(self, request, week):
+        week_offset = int(week) * 7
+        GreenHabitPages = GreenHabitPage.objects.order_by('-id').all()[week_offset:week_offset + 7]
+        return render(request, 'greenhabits/green_habit_index_page.html', {
+            'greenhabitspages': GreenHabitPages,
+        })
+
+    @route(r'^lastweek/$', name='lastweek')
+    def render_page_by_last_week(self, request):
+        GreenHabitPages = GreenHabitPage.objects.order_by('-id')[:7]
+        return render(request, 'greenhabits/green_habit_index_page.html', {
+            'greenhabitspages': GreenHabitPages,
+        })
+
     @route(r'^(\d+)/$', name='id')
     def render_page_by_id(self, request, id):
         page = GreenHabitPage.objects.get(id=int(id))
