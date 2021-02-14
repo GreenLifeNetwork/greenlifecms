@@ -9,7 +9,7 @@ from wagtail.search.models import Query
 from .models import GreenHabitPage
 from django.http import HttpResponse
 
-NUDGE_FIELDS = ('id', 'body', 'last_published_at')
+NUDGE_FIELDS = ('id', 'body', 'last_published_at', 'title')
 # TODO after nudge model refactor
 # NUDGE_FIELDS = ('id', 'body', 'last_published_at', 'importance', 'image', 'headline')
 
