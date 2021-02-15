@@ -25,6 +25,7 @@ urlpatterns = [
 
     url(r'^json/last_week/$', views.json_last_week, name='json_last_week'),
     path(r'json/week/<int:id>/', views.json_week, name='json_week'),
+    path(r'json/ids/<str:ids>/', views.json_ids, name='json_ids'),
 
     url(r'^api/v2/', api_router.urls),
     path(

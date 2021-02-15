@@ -8,16 +8,39 @@ from wagtail.core.models import Page
 from wagtail.search.models import Query
 from .models import GreenHabitPage
 from django.http import HttpResponse
+from django.db.models import Q
 
 NUDGE_FIELDS = ('id', 'body', 'last_published_at', 'title')
-# TODO after nudge model refactor
+
+
 # NUDGE_FIELDS = ('id', 'body', 'last_published_at', 'importance', 'image', 'headline')
+
+
+# TODO nudge model refactor: headline
+# TODO nudge model refactor: body to stream!
+# TODO: check valid header token in request
+
 
 def json_week(request, id):
     # Grabs a QuerySet of dicts
     week_offset = id * 7
     week_limit = week_offset + 7
     qs = GreenHabitPage.objects.live().order_by('-id').all()[week_offset:week_limit].values(*NUDGE_FIELDS)
+
+    # Convert the QuerySet to a List
+    list_of_dicts = list(qs)
+
+    # Convert List of Dicts to JSON
+    data = json.dumps(list_of_dicts, cls=DjangoJSONEncoder)
+    return HttpResponse(data, content_type="application/json")
+
+
+def json_ids(request, ids):
+    # Grabs all the ids
+    q_query_str = [f"Q(id={id})|" for id in ids.split(',')]
+    q_query_str = ''.join(q_query_str).rstrip('|')
+    q_query = eval(q_query_str)
+    qs = GreenHabitPage.objects.live().filter(q_query).values(*NUDGE_FIELDS)
 
     # Convert the QuerySet to a List
     list_of_dicts = list(qs)
