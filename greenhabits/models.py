@@ -1,21 +1,22 @@
+from urllib.parse import urlparse
+
+from django.contrib.auth.models import User
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.forms import ValidationError
 from django.shortcuts import render
 from django.views.generic import ListView
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey
 from taggit.models import TaggedItemBase
-from wagtail.core import blocks
-from wagtail.core.models import Page, Orderable, Group
-from wagtail.core.fields import RichTextField, StreamField
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, StreamFieldPanel
-from wagtail.contrib.routable_page.models import RoutablePageMixin, route
-from wagtail.search import index
+from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, RichTextFieldPanel
 from wagtail.api import APIField
-
-from django.contrib.auth.models import User
-from django.db.models.signals import post_save, pre_save
-from django.dispatch import receiver
+from wagtail.contrib.routable_page.models import RoutablePageMixin, route
+from wagtail.core.fields import RichTextField
+from wagtail.core.models import Page, Group
+from wagtail.search import index
 
 
 # See how long it takes before that becomes too lax..
@@ -168,26 +169,64 @@ class GreenHabitTagIndexPage(Page):
         return context
 
 
-class GreenHabitPage(Page):
-    TYPES = (
-        ('law', 'Law'), ('essential', 'Essential'), ('habit', 'Habit')
+class Link(models.Model):
+    name = models.URLField()
+    choices = (
+        ('headline', 'headline'),
+        ('study', 'Study'),
+        ('source', 'Source'),
     )
-    importance = models.CharField(choices=TYPES, max_length=20, default='habit', blank=True)
-    tags = ClusterTaggableManager(through=GreenHabitTagPage, blank=True,
+    typeOf = models.CharField(max_length=15, choices=choices)
+
+
+def validate_url(value):
+    if not value:
+        return  # Required error is done the field
+    obj = urlparse(value)
+    if obj.scheme != 'https':
+        raise ValidationError(f'Only secure links can be used: https://...')
+
+
+class GreenHabitPage(Page):
+    CARBON_FOOTPRINT_IMPACT_TYPES = (
+        ('high', 'High co2e reduction'), ('medium', 'Medium co2e reduction'), ('low', 'Low co2e reduction')
+    )
+    headline = models.CharField(blank=True,
+                                max_length=50,
+                                help_text='Attractive one-liner to trigger compulsive tap')
+    carbon_footprint_impact = models.CharField(choices=CARBON_FOOTPRINT_IMPACT_TYPES, max_length=20, default='low')
+    tags = ClusterTaggableManager(through=GreenHabitTagPage,
+                                  blank=True,
                                   help_text='Tags to mark the content. ie: energy, diet, household...')
-    body = RichTextField(blank=True, help_text='The body is additional content for larger devices')
-    links = RichTextField(blank=True, help_text='Call to actions or details regarding suggestion')
-    reference = models.CharField(blank=True, max_length=250, help_text='If source is not link (like paper or archives)')
+    body = RichTextField(blank=True,
+                         max_length=1000,
+                         help_text='This should be a short paragraph where the carbon reduction habits '
+                                   'should be highlighted')
+    hero_image = models.ImageField(blank=True,
+                                   upload_to="nudge_post_heros")
+
+    headline_link = models.URLField(help_text="headline link", blank=True, validators=[validate_url])
+    study_link = models.URLField(help_text="study link", blank=True, validators=[validate_url])
+    footnote = RichTextField(blank=True,
+                             max_length=100,
+                             help_text='Inspirational quote or funny facts to leave the user on high note and'
+                                       ' strongly encourage sharing/saving ')
     notes = models.TextField(blank=True,
-                             help_text='Notes about the quote. Useful for drafts and/or moderators comment. Not published.')
+                             help_text='Notes about the quote. '
+                                       'Useful for drafts and/or moderators comment. '
+                                       'Not published.')
+    other_link = models.URLField(help_text="other link", blank=True, validators=[validate_url])
     # obsolete since we usually link back
-    source = models.CharField(max_length=120, blank=True,
-                              help_text='Original author or source. If website or article. Use link field but only the domain name here! Seek approval of the owner before publishing')
+    source = models.CharField(max_length=120,
+                              blank=True,
+                              help_text='Original author or source. '
+                                        'If website or article. '
+                                        'Use link field but only the domain name here! ')
 
     search_fields = Page.search_fields + [
         index.SearchField('title'),
-        # index.SearchField('tags'),
-        # index.SearchField('importance'),
+        index.SearchField('headline'),
+        index.SearchField('carbon_footprint_impact'),
         index.SearchField('body'),
     ]
 
@@ -195,23 +234,30 @@ class GreenHabitPage(Page):
     api_fields = [
         # APIField('published_date'),
         APIField('body'),
-        APIField('importance'),
-        APIField('links'),
+        APIField('carbon_footprint_impact'),
+        APIField('study_link'),
+        APIField('headline_link'),
+        APIField('other_link'),
         APIField('notes'),
         APIField('source'),
         # APIField('reference'),
     ]
 
     content_panels = Page.content_panels + [
-        FieldPanel('source'),
+        FieldPanel('headline'),
         MultiFieldPanel([
             # FieldPanel('date'),
             FieldPanel('tags'),
         ], heading="Sustainable habit details"),
-        FieldPanel('importance'),
-        FieldPanel('body', classname="full"),
-        FieldPanel('links'),
-        FieldPanel('reference'),
+        FieldPanel('carbon_footprint_impact'),
+        RichTextFieldPanel('body', classname="full"),
+        FieldPanel('hero_image', classname="full"),
+        # FieldPanel('links'),
+        FieldPanel('study_link'),
+        FieldPanel('headline_link'),
+        FieldPanel('other_link'),
+        # FieldPanel('source'),
+        # FieldPanel('reference'),
         FieldPanel('notes'),
     ]
 
