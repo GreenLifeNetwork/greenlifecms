@@ -9,3 +9,8 @@
 {% block branding_favicon %}
     <link rel="shortcut icon" href="https://{{request.META.HTTP_HOST}}{% static 'favicon.ico' %}" />
 {% endblock %}
+
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/wagtail-admin.css' %}">
+{% endblock %}
