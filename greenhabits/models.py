@@ -223,6 +223,9 @@ class GreenHabitPage(Page):
                                         'If website or article. '
                                         'Use link field but only the domain name here! ')
 
+    # Kept for reference
+    links = RichTextField(blank=True, help_text='Call to actions or details regarding suggestion')
+
     search_fields = Page.search_fields + [
         index.SearchField('title'),
         index.SearchField('headline'),
@@ -240,6 +243,7 @@ class GreenHabitPage(Page):
         APIField('other_link'),
         APIField('notes'),
         APIField('source'),
+        APIField('links'),
         # APIField('reference'),
     ]
 
@@ -252,7 +256,7 @@ class GreenHabitPage(Page):
         FieldPanel('carbon_footprint_impact'),
         RichTextFieldPanel('body', classname="full"),
         FieldPanel('hero_image', classname="full"),
-        # FieldPanel('links'),
+        FieldPanel('links'),
         FieldPanel('study_link'),
         FieldPanel('headline_link'),
         FieldPanel('other_link'),
