@@ -140,6 +140,10 @@ ul.app-banner {
 
 .content {
     width: 90%;
+    justify-content: center;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
 }
 
 .rich-text {
