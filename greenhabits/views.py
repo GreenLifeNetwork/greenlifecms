@@ -10,7 +10,7 @@ from .models import GreenHabitPage
 from django.http import HttpResponse
 from django.db.models import Q
 
-NUDGE_FIELDS = ('id', 'body', 'last_published_at', 'title')
+NUDGE_FIELDS = ('id', 'body',   'hero_image','last_published_at', 'title')
 
 
 # NUDGE_FIELDS = ('id', 'body', 'last_published_at', 'importance', 'image', 'headline')
@@ -107,4 +107,4 @@ def search(request):
     return render(request, 'search/search.html', {
         'search_query': search_query,
         'search_results': search_results,
-    })
+        })

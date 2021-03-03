@@ -242,6 +242,7 @@ class GreenHabitPage(Page):
         APIField('headline_link'),
         APIField('other_link'),
         APIField('notes'),
+        APIField('hero_image'),
         APIField('source'),
         APIField('links'),
         # APIField('reference'),
