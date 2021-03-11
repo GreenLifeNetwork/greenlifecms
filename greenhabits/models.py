@@ -206,8 +206,8 @@ class GreenHabitPage(Page):
                                    'should be highlighted')
     hero_image = models.ImageField(blank=True,
                                    upload_to="nudge_post_heros")
+    headline_link = RichTextField(blank=True, help_text='headline link: source content')
 
-    # headline_link = RichTextField(help_text="headline link: source content", blank=True)
     study_link = RichTextField(help_text="study link: study/paper supporting content (can be pdf, diagram...) ", blank=True)
     other_link = RichTextField(help_text="other link: any links related to content", blank=True)
     footnote = RichTextField(blank=True,
@@ -225,8 +225,6 @@ class GreenHabitPage(Page):
                                         'If website or article. '
                                         'Use link field but only the domain name here! ')
 
-    # Kept for reference
-    headline_link = RichTextField(blank=True, help_text='DO NOT USE')
 
     search_fields = Page.search_fields + [
         index.SearchField('title'),
@@ -239,13 +237,13 @@ class GreenHabitPage(Page):
     api_fields = [
         # APIField('published_date'),
         APIField('body'),
-        APIField('carbon_footprint_impact'),
-        APIField('study_link'),
-        APIField('headline_link'),
-        APIField('other_link'),
-        APIField('footnote'),
-        APIField('notes'),
         APIField('hero_image'),
+        APIField('carbon_footprint_impact'),
+        APIField('headline_link'),
+        APIField('study_link'),
+        APIField('footnote'),
+        APIField('other_link'),
+        APIField('notes'),
         APIField('source'),
         # APIField('links'),
         # APIField('reference'),
@@ -260,10 +258,9 @@ class GreenHabitPage(Page):
         FieldPanel('carbon_footprint_impact'),
         RichTextFieldPanel('body', classname="full"),
         FieldPanel('hero_image', classname="full"),
-        FieldPanel('study_link'),
         FieldPanel('headline_link'),
+        FieldPanel('study_link'),
         FieldPanel('other_link'),
-        # FieldPanel('links'),
         FieldPanel('footnote'),
         # FieldPanel('source'),
         # FieldPanel('reference'),
