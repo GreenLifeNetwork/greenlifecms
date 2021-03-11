@@ -32,10 +32,12 @@
     <div class="content">
         {{ page.body|richtext }}
         <div id="nudge-links">
-            {{ page.links|richtext }}
+            {{ page.headline_link|richtext }}
+            {{ page.study_link|richtext }}
+            {{ page.other_link|richtext }}
         </div>
 
-        <div class="sharethis-inline-share-buttons"></div>
+        <!-- <div class="sharethis-inline-share-buttons"></div> -->
 
         {% if false and page.tags.all.count %}
         <div class="tags">

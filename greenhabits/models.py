@@ -189,11 +189,13 @@ def validate_url(value):
 
 class GreenHabitPage(Page):
     CARBON_FOOTPRINT_IMPACT_TYPES = (
-        ('high', 'High co2e reduction'), ('medium', 'Medium co2e reduction'), ('low', 'Low co2e reduction')
+        ('high', 'High co2e reduction'), 
+        ('medium', 'Medium co2e reduction'),
+        ('low', 'Low co2e reduction')
     )
     headline = models.CharField(blank=True,
-                                max_length=50,
-                                help_text='Attractive one-liner to trigger compulsive tap')
+                                max_length=100,
+                                help_text='Title of the nudge as it appears on history and favourites.')
     carbon_footprint_impact = models.CharField(choices=CARBON_FOOTPRINT_IMPACT_TYPES, max_length=20, default='low')
     tags = ClusterTaggableManager(through=GreenHabitTagPage,
                                   blank=True,
@@ -205,9 +207,9 @@ class GreenHabitPage(Page):
     hero_image = models.ImageField(blank=True,
                                    upload_to="nudge_post_heros")
 
-    headline_link = models.URLField(help_text="headline link: source content", blank=True, validators=[validate_url])
-    study_link = models.URLField(help_text="study link: study/paper supporting content (can be pdf, diagram...) ", blank=True, validators=[validate_url])
-    other_link = models.URLField(help_text="other link: any links related to content", blank=True, validators=[validate_url])
+    # headline_link = RichTextField(help_text="headline link: source content", blank=True)
+    study_link = RichTextField(help_text="study link: study/paper supporting content (can be pdf, diagram...) ", blank=True)
+    other_link = RichTextField(help_text="other link: any links related to content", blank=True)
     footnote = RichTextField(blank=True,
                              max_length=100,
                              help_text='Inspirational quote or funny facts to leave the user on high note and'
@@ -224,7 +226,7 @@ class GreenHabitPage(Page):
                                         'Use link field but only the domain name here! ')
 
     # Kept for reference
-    links = RichTextField(blank=True, help_text='Call to actions or details regarding suggestion')
+    headline_link = RichTextField(blank=True, help_text='DO NOT USE')
 
     search_fields = Page.search_fields + [
         index.SearchField('title'),
@@ -245,7 +247,7 @@ class GreenHabitPage(Page):
         APIField('notes'),
         APIField('hero_image'),
         APIField('source'),
-        APIField('links'),
+        # APIField('links'),
         # APIField('reference'),
     ]
 
@@ -258,10 +260,10 @@ class GreenHabitPage(Page):
         FieldPanel('carbon_footprint_impact'),
         RichTextFieldPanel('body', classname="full"),
         FieldPanel('hero_image', classname="full"),
-        FieldPanel('links'),
         FieldPanel('study_link'),
         FieldPanel('headline_link'),
         FieldPanel('other_link'),
+        # FieldPanel('links'),
         FieldPanel('footnote'),
         # FieldPanel('source'),
         # FieldPanel('reference'),
