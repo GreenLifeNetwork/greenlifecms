@@ -205,8 +205,9 @@ class GreenHabitPage(Page):
     hero_image = models.ImageField(blank=True,
                                    upload_to="nudge_post_heros")
 
-    headline_link = models.URLField(help_text="headline link", blank=True, validators=[validate_url])
-    study_link = models.URLField(help_text="study link", blank=True, validators=[validate_url])
+    headline_link = models.URLField(help_text="headline link: source content", blank=True, validators=[validate_url])
+    study_link = models.URLField(help_text="study link: study/paper supporting content (can be pdf, diagram...) ", blank=True, validators=[validate_url])
+    other_link = models.URLField(help_text="other link: any links related to content", blank=True, validators=[validate_url])
     footnote = RichTextField(blank=True,
                              max_length=100,
                              help_text='Inspirational quote or funny facts to leave the user on high note and'
@@ -215,7 +216,6 @@ class GreenHabitPage(Page):
                              help_text='Notes about the quote. '
                                        'Useful for drafts and/or moderators comment. '
                                        'Not published.')
-    other_link = models.URLField(help_text="other link", blank=True, validators=[validate_url])
     # obsolete since we usually link back
     source = models.CharField(max_length=120,
                               blank=True,
@@ -241,6 +241,7 @@ class GreenHabitPage(Page):
         APIField('study_link'),
         APIField('headline_link'),
         APIField('other_link'),
+        APIField('footnote'),
         APIField('notes'),
         APIField('hero_image'),
         APIField('source'),
@@ -261,6 +262,7 @@ class GreenHabitPage(Page):
         FieldPanel('study_link'),
         FieldPanel('headline_link'),
         FieldPanel('other_link'),
+        FieldPanel('footnote'),
         # FieldPanel('source'),
         # FieldPanel('reference'),
         FieldPanel('notes'),
