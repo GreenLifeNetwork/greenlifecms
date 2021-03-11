@@ -10,7 +10,7 @@ from .models import GreenHabitPage
 from django.http import HttpResponse
 from django.db.models import Q
 
-NUDGE_FIELDS = ('id', 'body', 'hero_image', 'headline_link', 'study_link', 'other_link', 'last_published_at', 'title')
+NUDGE_FIELDS = ('id', 'body', 'hero_image', 'headline_link', 'study_link', 'other_link',  'footnote', 'last_published_at', 'title')
 
 
 # NUDGE_FIELDS = ('id', 'body', 'last_published_at', 'importance', 'image', 'headline')
