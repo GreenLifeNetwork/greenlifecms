@@ -46,7 +46,7 @@ def json_ids(request, ids):
     # Convert the QuerySet to a List
     list_of_dicts = list(qs)
     # Ensure the list is returned in the same order as requested (required for history)
-    sorted_list = [list(filter(lambda n: n.get('id') == id, list_of_dicts)) for id in list_ids]
+    sorted_list = [list(filter(lambda n: n.get('id') == id, list_of_dicts))[0] for id in list_ids]
     # Convert List of Dicts to JSON
     data = json.dumps(sorted_list, cls=DjangoJSONEncoder)
     return HttpResponse(data, content_type="application/json")
