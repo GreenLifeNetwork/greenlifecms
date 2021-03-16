@@ -85,6 +85,13 @@ class GreenHabitTagPage(TaggedItemBase):
     )
 
 
+class GreenHabitIdeas(Page):
+    idea = models.CharField(blank=True, max_length=1000, help_text='The idea summary')
+    content_panels = Page.content_panels + [
+        FieldPanel('idea', classname="full"),
+    ]
+
+
 class BlogPageIndex(RoutablePageMixin, Page):
     intro = RichTextField(blank=True, default='Green Life articles')
 
@@ -202,7 +209,7 @@ class GreenHabitPage(Page):
                                   blank=True,
                                   help_text='Tags to mark the content. ie: energy, diet, household...')
     body = RichTextField(blank=True,
-                         max_length=780,
+                         max_length=1000,
                          help_text='This should be a short paragraph where the carbon reduction habits '
                                    'should be highlighted. Avoid lists. Keep the message focused. '
                                    'One day. One change.')

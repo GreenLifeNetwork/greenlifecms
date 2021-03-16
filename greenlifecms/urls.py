@@ -24,14 +24,16 @@ urlpatterns = [
     url(r'^search/$', search_views.search, name='search'),
 
     url(r'^json/last_week/$', views.json_last_week, name='json_last_week'),
+    url(r'^json/favourites/$', views.json_favourites, name='json_favourites'),
+    url(r'^api/v2/', api_router.urls),
+
     path(r'json/week/<int:id>/', views.json_week, name='json_week'),
     path(r'json/ids/<str:ids>/', views.json_ids, name='json_ids'),
 
-    url(r'^api/v2/', api_router.urls),
     path(
         "robots.txt",
         TemplateView.as_view(template_name="robots.txt", content_type="text/plain"),
-    ),
+        ),
 
 
     # For anything not caught by a more specific rule above, hand over to
@@ -42,7 +44,7 @@ urlpatterns = [
     # Alternatively, if you want Wagtail pages to be served from a subpath
     # of your site, rather than the site root:
     #    url(r'^pages/', include(wagtail_urls)),
-]
+    ]
 
 
 if settings.DEBUG:

@@ -1,5 +1,6 @@
 import json
 
+from django.views.decorators.csrf import csrf_exempt
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.core.serializers.json import DjangoJSONEncoder
 from django.shortcuts import render
@@ -32,6 +33,30 @@ def json_week(request, id):
 
     # Convert List of Dicts to JSON
     data = json.dumps(list_of_dicts, cls=DjangoJSONEncoder)
+    return HttpResponse(data, content_type="application/json")
+
+
+@csrf_exempt
+def json_favourites(request):
+    # Grabs all the ids
+    data = json.loads(request.body.decode('utf-8'))
+    ids = data.get('ids', None)
+    if not ids:
+        return HttpResponse(status=404, reason='Missing ids')
+
+    q_query_str = [f"Q(id={id})|" for id in ids]
+    q_query_str = ''.join(q_query_str).rstrip('|')
+    q_query = eval(q_query_str)
+    qs = GreenHabitPage.objects.live().filter(q_query).values(*NUDGE_FIELDS)
+
+    # Convert the QuerySet to a List
+    list_of_dicts = list(qs)
+    # Ensure the list is returned in the same order as requested (required for history)
+    sorted_list = [list(filter(lambda n: n.get('id') == id, list_of_dicts)) for id in ids]
+    # Safeguard against deleted nudges 
+    sorted_list = [nudge[0] for nudge in sorted_list if len(nudge)>0]
+    # Convert List of Dicts to JSON
+    data = json.dumps(sorted_list, cls=DjangoJSONEncoder)
     return HttpResponse(data, content_type="application/json")
 
 

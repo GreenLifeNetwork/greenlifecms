@@ -159,8 +159,10 @@ MANAGERS = ADMINS
 LOGIN_REDIRECT_URL = 'https://greenlife.cloud/admin/pages/add/greenhabits/greenhabitpage/4/'
 EMAIL_SUBJECT_PREFIX = '[GreenLife] '
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-
-
+WAGTAILADMIN_NOTIFICATION_FROM_EMAIL='contact@greenlife.cloud'
+WAGTAILADMIN_NOTIFICATION_INCLUDE_SUPERUSERS = True
+# CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_NAME = "XSRF-TOKEN"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
