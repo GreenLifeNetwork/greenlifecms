@@ -189,29 +189,31 @@ def validate_url(value):
 
 class GreenHabitPage(Page):
     CARBON_FOOTPRINT_IMPACT_TYPES = (
-        ('high', 'High co2e reduction'), 
+        ('high', 'High co2e reduction'),
         ('medium', 'Medium co2e reduction'),
         ('low', 'Low co2e reduction')
     )
-    headline = models.CharField(blank=True,
+    headline = models.CharField(blank=False,
                                 max_length=100,
-                                help_text='Title of the nudge as it appears on history and favourites.')
+                                help_text='Title of the nudge as it appears on history and favourites. This is what the user will save and search.')
     carbon_footprint_impact = models.CharField(choices=CARBON_FOOTPRINT_IMPACT_TYPES, max_length=20, default='low')
+    delivered = models.BooleanField(default=False, help_text='Set to false once delivered with scheduler')
     tags = ClusterTaggableManager(through=GreenHabitTagPage,
                                   blank=True,
                                   help_text='Tags to mark the content. ie: energy, diet, household...')
     body = RichTextField(blank=True,
-                         max_length=1000,
+                         max_length=780,
                          help_text='This should be a short paragraph where the carbon reduction habits '
-                                   'should be highlighted')
-    hero_image = models.ImageField(blank=True,
+                                   'should be highlighted. Avoid lists. Keep the message focused. '
+                                   'One day. One change.')
+    hero_image = models.ImageField(blank=False,
                                    upload_to="nudge_post_heros")
     headline_link = RichTextField(blank=True, help_text='headline link: source content')
 
     study_link = RichTextField(help_text="study link: study/paper supporting content (can be pdf, diagram...) ", blank=True)
     other_link = RichTextField(help_text="other link: any links related to content", blank=True)
     footnote = RichTextField(blank=True,
-                             max_length=100,
+                             max_length=300,
                              help_text='Inspirational quote or funny facts to leave the user on high note and'
                                        ' strongly encourage sharing/saving ')
     notes = models.TextField(blank=True,
@@ -256,6 +258,7 @@ class GreenHabitPage(Page):
             FieldPanel('tags'),
         ], heading="Sustainable habit details"),
         FieldPanel('carbon_footprint_impact'),
+        FieldPanel('delivered'),
         RichTextFieldPanel('body', classname="full"),
         FieldPanel('hero_image', classname="full"),
         FieldPanel('headline_link'),
