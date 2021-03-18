@@ -13,14 +13,7 @@ from django.db.models import Q
 
 NUDGE_FIELDS = ('id', 'body', 'hero_image', 'headline_link', 'study_link', 'other_link', 'headline','footnote', 'last_published_at', 'title')
 
-
-# NUDGE_FIELDS = ('id', 'body', 'last_published_at', 'importance', 'image', 'headline')
-
-
-# TODO nudge model refactor: headline
-# TODO nudge model refactor: body to stream!
 # TODO: check valid header token in request
-
 
 def json_week(request, id):
     # Grabs a QuerySet of dicts
@@ -53,17 +46,21 @@ def json_favourites(request):
     list_of_dicts = list(qs)
     # Ensure the list is returned in the same order as requested (required for history)
     sorted_list = [list(filter(lambda n: n.get('id') == id, list_of_dicts)) for id in ids]
-    # Safeguard against deleted nudges 
-    sorted_list = [nudge[0] for nudge in sorted_list if len(nudge)>0]
+    # Safeguard against deleted nudges
+    sorted_list = [nudge[0] for nudge in sorted_list if len(nudge) > 0]
     # Convert List of Dicts to JSON
     data = json.dumps(sorted_list, cls=DjangoJSONEncoder)
     return HttpResponse(data, content_type="application/json")
 
 
 def json_ids(request, ids):
-    # Grabs all the ids
-    list_ids = list(eval(ids))
-    q_query_str = [f"Q(id={id})|" for id in ids.split(',')]
+  # Grabs all the ids
+    ids = eval(ids)
+    if isinstance(ids, int):
+      ids = [ids]
+    else:
+      ids = ids
+    q_query_str = [f"Q(id={id})|" for id in ids]
     q_query_str = ''.join(q_query_str).rstrip('|')
     q_query = eval(q_query_str)
     qs = GreenHabitPage.objects.live().filter(q_query).values(*NUDGE_FIELDS)
@@ -71,7 +68,9 @@ def json_ids(request, ids):
     # Convert the QuerySet to a List
     list_of_dicts = list(qs)
     # Ensure the list is returned in the same order as requested (required for history)
-    sorted_list = [list(filter(lambda n: n.get('id') == id, list_of_dicts))[0] for id in list_ids]
+    sorted_list = [list(filter(lambda n: n.get('id') == id, list_of_dicts)) for id in ids]
+    # Safeguard against deleted nudges
+    sorted_list = [nudge[0] for nudge in sorted_list if len(nudge) > 0]
     # Convert List of Dicts to JSON
     data = json.dumps(sorted_list, cls=DjangoJSONEncoder)
     return HttpResponse(data, content_type="application/json")
