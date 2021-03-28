@@ -11,7 +11,7 @@ from .models import GreenHabitPage
 from django.http import HttpResponse
 from django.db.models import Q
 
-NUDGE_FIELDS = ('id', 'body', 'hero_image', 'headline_link', 'study_link', 'other_link', 'headline','footnote', 'last_published_at', 'title')
+NUDGE_FIELDS = ('id', 'body', 'hero_image', 'headline_link', 'headline', 'study_link', 'other_link', 'headline','footnote', 'last_published_at', 'title')
 
 # TODO: check valid header token in request
 
@@ -68,6 +68,7 @@ def json_ids(request, ids):
     # Convert the QuerySet to a List
     list_of_dicts = list(qs)
     # Ensure the list is returned in the same order as requested (required for history)
+    # print(list_of_dicts)
     sorted_list = [list(filter(lambda n: n.get('id') == id, list_of_dicts)) for id in ids]
     # Safeguard against deleted nudges
     sorted_list = [nudge[0] for nudge in sorted_list if len(nudge) > 0]
