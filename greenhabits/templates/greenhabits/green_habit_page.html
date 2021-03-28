@@ -17,6 +17,9 @@
     <div class="content">
         {{ page.body|richtext }}
         <div id="nudge-links">
+            <i>{{ page.footnote|richtext }}</i>
+        </div>
+        <div id="nudge-links">
             {{ page.headline_link|richtext }}
             {{ page.study_link|richtext }}
             {{ page.other_link|richtext }}
