@@ -200,6 +200,11 @@ class GreenHabitPage(Page):
         ('medium', 'Medium co2e reduction'),
         ('low', 'Low co2e reduction')
     )
+    AUDIENCE = (
+        ('global', 'Global'),
+        ('UK', 'UK'),
+        ('US', 'US')
+    )
     headline = models.CharField(blank=False,
                                 max_length=100,
                                 help_text='Title of the nudge as it appears on history and favourites. This is what the user will save and search.')
@@ -227,6 +232,11 @@ class GreenHabitPage(Page):
                              help_text='Notes about the quote. '
                                        'Useful for drafts and/or moderators comment. '
                                        'Not published.')
+    audience = models.CharField(choices=AUDIENCE,
+                                max_length=20,
+                                default='global', 
+                                help_text="Content can be global or country specific. Our main audience is UK for now but global is preferred for reusability and we're not restricting distribution. Be mindful of links used. Some might not be accessible in every country")
+
     # obsolete since we usually link back
     source = models.CharField(max_length=120,
                               blank=True,
