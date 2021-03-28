@@ -12,22 +12,7 @@
     </a>
 
     <h1>{{ page.title }}</h1>
-
-    <div id="app-available" class="app-banner" style='display: none'>
-        <div id='ios-app-available' style='display: none'>
-            <h4>Read more on the app</h4>
-            <a href="https://apps.apple.com/us/app/green-lifestyle/id1484892517">
-                <img alt="Green Life on App Store" src="https://{{request.META.HTTP_HOST}}{% static 'images/images/svg/app-store-download.svg' %}"/>
-            </a>
-        </div>
-
-        <div id='android-app-available' style='display: none'>
-            <h4>Read more on the app</h4>
-            <a href="https://play.google.com/store/apps/details?id=lastchance.greenlife.quotes">
-                <img alt="Green Life on Play Store" src="https://{{request.META.HTTP_HOST}}{% static 'images/images/svg/google-play-download.svg' %}"/>
-            </a>
-        </div>
-    </div>
+    {% if page.headline %}<h2>{{ page.headline }}</h2>{% endif %}
 
     <div class="content">
         {{ page.body|richtext }}
