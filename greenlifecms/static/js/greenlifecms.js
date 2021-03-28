@@ -50,25 +50,6 @@ const GreenLifeApp = () => {
 
 }
 
-if (!isNativeApp) {
-    GreenLifeApp()
-    // if(isNudgePage) {
-    //     addScript("https://cdn.branch.io/branch-latest.min.js")
-    //     setTimeout(()=> {
-    //         branch.init('key_live_dhJ1Y7Xg8VsRsfLNzrRo7loayFgKElc6');
-    //     }, 200)
-    // }
-} else {
-    window.addEventListener("DOMContentLoaded", (event) => {
-        document.querySelector("footer").style.display = "none"
-        document.querySelector(".app-banner").style.display = "none"
-        document.querySelector(".sharethis-inline-share-buttons").style.display = "none"
-        if(document.querySelector(".app-banner-intro")) {
-            document.querySelector(".app-banner-intro").style.display = "none"
-        }
-    })
-}
-
 // https://codepen.io/l422y/pen/cdwhm
 var ringer = {
     //countdown_to: "10/31/2014",
