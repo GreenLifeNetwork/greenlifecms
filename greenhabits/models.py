@@ -258,6 +258,7 @@ class GreenHabitPage(Page):
         APIField('body'),
         APIField('hero_image'),
         APIField('carbon_footprint_impact'),
+        APIField('headline'),
         APIField('headline_link'),
         APIField('study_link'),
         APIField('footnote'),
