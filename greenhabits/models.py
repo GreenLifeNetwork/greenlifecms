@@ -235,7 +235,7 @@ class GreenHabitPage(Page):
     audience = models.CharField(choices=AUDIENCE,
                                 max_length=20,
                                 default='global', 
-                                help_text="Content can be global or country specific. Our main audience is UK for now but global is preferred for reusability and we're not restricting distribution. Be mindful of links used. Some might not be accessible in every country")
+                                help_text="Content can be global or country specific. Our main audience is UK for now but global is preferred for reusability and we're not restricting add distribution. Be mindful of links used (metrics used, GDPR like restrictions); Some might not be accessible in every country")
 
     # obsolete since we usually link back
     source = models.CharField(max_length=120,
@@ -270,6 +270,7 @@ class GreenHabitPage(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('headline'),
+        FieldPanel('audience'),
         MultiFieldPanel([
             # FieldPanel('date'),
             FieldPanel('tags'),
