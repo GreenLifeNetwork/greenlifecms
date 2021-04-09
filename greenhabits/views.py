@@ -72,6 +72,9 @@ def json_ids(request, ids):
     sorted_list = [list(filter(lambda n: n.get('id') == id, list_of_dicts)) for id in ids]
     # Safeguard against deleted nudges
     sorted_list = [nudge[0] for nudge in sorted_list if len(nudge) > 0]
+    for nudge in sorted_list:
+        if nudge.get("hero_image", None):
+            nudge['hero_image'] = f'https://greenlife.cloud/media/{nudge["hero_image"]}'
     # Convert List of Dicts to JSON
     data = json.dumps(sorted_list, cls=DjangoJSONEncoder)
     return HttpResponse(data, content_type="application/json")
