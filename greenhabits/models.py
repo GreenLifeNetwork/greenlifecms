@@ -205,7 +205,7 @@ class GreenHabitPage(Page):
         ('UK', 'UK'),
         ('US', 'US')
     )
-    headline = models.CharField(blank=False,
+    description = models.CharField(blank=False,
                                 max_length=100,
                                 help_text='Title of the nudge as it appears on history and favourites. This is what the user will save and search.')
     carbon_footprint_impact = models.CharField(choices=CARBON_FOOTPRINT_IMPACT_TYPES, max_length=20, default='low')
@@ -225,7 +225,7 @@ class GreenHabitPage(Page):
     study_link = RichTextField(help_text="study link: study/paper supporting content (can be pdf, diagram...) ", blank=True)
     other_link = RichTextField(help_text="other link: any links related to content", blank=True)
     footnote = RichTextField(blank=True,
-                             max_length=300,
+                             max_length=400,
                              help_text='Inspirational quote or funny facts to leave the user on high note and'
                                        ' strongly encourage sharing/saving ')
     notes = models.TextField(blank=True,
@@ -247,7 +247,7 @@ class GreenHabitPage(Page):
 
     search_fields = Page.search_fields + [
         index.SearchField('title'),
-        index.SearchField('headline'),
+        index.SearchField('description'),
         index.SearchField('carbon_footprint_impact'),
         index.SearchField('body'),
     ]
@@ -258,7 +258,7 @@ class GreenHabitPage(Page):
         APIField('body'),
         APIField('hero_image'),
         APIField('carbon_footprint_impact'),
-        APIField('headline'),
+        APIField('description'),
         APIField('headline_link'),
         APIField('study_link'),
         APIField('footnote'),
@@ -270,7 +270,7 @@ class GreenHabitPage(Page):
     ]
 
     content_panels = Page.content_panels + [
-        FieldPanel('headline'),
+        FieldPanel('description'),
         FieldPanel('audience'),
         MultiFieldPanel([
             # FieldPanel('date'),
