@@ -11,7 +11,7 @@ from .models import GreenHabitPage
 from django.http import HttpResponse
 from django.db.models import Q
 
-NUDGE_FIELDS = ('id', 'body', 'hero_image', 'headline_link', 'headline', 'study_link', 'other_link', 'headline','footnote', 'last_published_at', 'title')
+NUDGE_FIELDS = ('id', 'body', 'hero_image', 'headline_link', 'study_link', 'other_link', 'footnote', 'last_published_at', 'title', 'description')
 
 # TODO: check valid header token in request
 
