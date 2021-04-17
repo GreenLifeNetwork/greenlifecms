@@ -11,7 +11,13 @@ from .models import GreenHabitPage
 from django.http import HttpResponse
 from django.db.models import Q
 
-NUDGE_FIELDS = ('id', 'body', 'hero_image', 'headline_link', 'study_link', 'other_link', 'footnote', 'last_published_at', 'title', 'description')
+NUDGE_FIELDS = (
+    'id', 'body', 'hero_image', 'headline_link',
+    'study_link', 'other_link', 'footnote',
+    'url_path', 'description',
+    'last_published_at', 'title',
+)
+
 
 # TODO: check valid header token in request
 
@@ -54,12 +60,12 @@ def json_favourites(request):
 
 
 def json_ids(request, ids):
-  # Grabs all the ids
+    # Grabs all the ids
     ids = eval(ids)
     if isinstance(ids, int):
-      ids = [ids]
+        ids = [ids]
     else:
-      ids = ids
+        ids = ids
     q_query_str = [f"Q(id={id})|" for id in ids]
     q_query_str = ''.join(q_query_str).rstrip('|')
     q_query = eval(q_query_str)
@@ -73,6 +79,8 @@ def json_ids(request, ids):
     # Safeguard against deleted nudges
     sorted_list = [nudge[0] for nudge in sorted_list if len(nudge) > 0]
     for nudge in sorted_list:
+        if nudge.get("url_path", None):
+            nudge['url_path'] = nudge["url_path"].replace("/home/", "https://greenlife.cloud/")
         if nudge.get("hero_image", None):
             nudge['hero_image'] = f'https://greenlife.cloud/media/{nudge["hero_image"]}'
     # Convert List of Dicts to JSON
@@ -137,4 +145,4 @@ def search(request):
     return render(request, 'search/search.html', {
         'search_query': search_query,
         'search_results': search_results,
-        })
+    })
