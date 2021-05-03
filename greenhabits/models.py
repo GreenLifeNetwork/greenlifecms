@@ -20,13 +20,13 @@ from wagtail.search import index
 
 
 # See how long it takes before that becomes too lax..
-@receiver(post_save, sender=User)
-def set_user_as_contributor(sender, instance, created, **kwargs):
-    if created:
-        # This group should exist from last db backup.
-        # TODO: check backup strategy
-        instance.groups.add(Group.objects.get(name='Editors'))
-        instance.save()
+# @receiver(post_save, sender=User)
+# def set_user_as_contributor(sender, instance, created, **kwargs):
+#     if created:
+#         # This group should exist from last db backup.
+#         # TODO: check backup strategy
+#         instance.groups.add(Group.objects.get(name='Editors'))
+#         instance.save()
 
 
 class GreenHabitIndexPage(RoutablePageMixin, Page):
@@ -225,7 +225,7 @@ class GreenHabitPage(Page):
     study_link = RichTextField(help_text="study link: study/paper supporting content (can be pdf, diagram...) ", blank=True)
     other_link = RichTextField(help_text="other link: any links related to content", blank=True)
     footnote = RichTextField(blank=True,
-                             max_length=400,
+                             max_length=500,
                              help_text='Inspirational quote or funny facts to leave the user on high note and'
                                        ' strongly encourage sharing/saving ')
     notes = models.TextField(blank=True,
