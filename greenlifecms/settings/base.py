@@ -60,7 +60,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
 
-    'wagtailmetadata',
+    # 'wagtailmetadata',
 
     # only used locally to represent correct absolute http scheme when developing
     # https://medium.com/@millienakiganda/creating-an-ssl-certificate-for-localhost-in-django-framework-45290d905b88
