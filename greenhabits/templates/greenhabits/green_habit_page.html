@@ -3,6 +3,14 @@
 
 {% load wagtailcore_tags wagtailimages_tags dump_tag %}
 
+{% block meta %}
+<meta property="og:title" content="GreenLife: {{page.title}}">
+<meta property="og:url" content="https://{{request.META.HTTP_HOST}}{{page.url}}">
+<meta property="og:description" content="{{ page.headline_link }}">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://greenlife.cloud/media/{{page.hero_image}}">
+{% endblock %}
+
 {% block body_class %}template-quotepage{% endblock %}
 
 {% block content %}
@@ -18,8 +26,6 @@
         {{ page.body|richtext }}
         <div id="nudge-links">
             <i>{{ page.footnote|richtext }}</i>
-        </div>
-        <div id="nudge-links">
             {{ page.headline_link|richtext }}
             {{ page.study_link|richtext }}
             {{ page.other_link|richtext }}

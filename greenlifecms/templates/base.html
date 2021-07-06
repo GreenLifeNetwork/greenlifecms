@@ -10,6 +10,16 @@
             {% endblock %}
             {% block title_suffix %} {% with self.get_site.site_name as site_name %} {% if site_name %} - {{ site_name }}{% endif %} {% endwith %} {% endblock %}
         </title>
+
+        {% block meta %}
+            <meta property="og:title" content="GreenLife nudge of the day">
+            <meta property="og:site_name" content="GreenLife">
+            <meta property="og:url" content="https://greenlife.cloud">
+<!--            <meta property="og:description" content="">-->
+            <meta property="og:type" content="article">
+            <meta property="og:image" content="https://{{request.META.HTTP_HOST}}{% static 'images/svg/GLlogo.svg' %}">
+            {# Override this in templates to add extra stylesheets #}
+        {% endblock %}
         <meta name="description" content="Daily tips about sustainability" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="p:domain_verify" content="868d950e7fd0447d4859c6df71e096bc"/>
