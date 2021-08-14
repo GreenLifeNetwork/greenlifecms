@@ -1,8 +1,11 @@
 module.exports = {
     apps : [{
-            name: 'greenlife-cms',
-            script: 'manage.py',
-            interpreter: '/home/ubuntu/.pyenv/versions/3.7.4/bin/python',
-            args: 'runserver'
+        name: 'greenlife-cms',
+        script: 'manage.py',
+        interpreter: '/home/ubuntu/.pyenv/versions/wagtail2.14/bin/python',
+        args: 'runserver'
+
     }, ],
+
 };
+
