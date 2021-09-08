@@ -14,7 +14,7 @@ from django.db.models import Q
 NUDGE_FIELDS = (
     'id', 'body', 'hero_image', 'headline_link',
     'study_link', 'other_link', 'footnote',
-    'url_path', 'description',
+    'url_path', 'description', 'quiz',
     'last_published_at', 'title',
 )
 

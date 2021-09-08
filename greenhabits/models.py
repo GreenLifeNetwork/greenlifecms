@@ -116,49 +116,93 @@ class BlogPageIndex(RoutablePageMixin, Page):
             posts = paginator.page(1)
         except EmptyPage:
             posts = paginator.page(paginator.num_pages)
-
         context['posts'] = posts
         return context
 
 
-class BlogPage(Page):
-    body = RichTextField(blank=False)
-    summary = models.CharField(max_length=180, help_text='The article summary')
+class PetitionPage(Page):
+    body = StreamField([
+        ('title', blocks.CharBlock()),
+        ('caption', blocks()),
+        ('url', blocks.RichTextBlock()),
+
+        ], block_counts={
+            'heading': {'min_num': 1},
+            'image': {'max_num': 5},
+
+            })
+        summary = models.CharField(max_length=180, help_text='The article summary')
     tags = ClusterTaggableManager(blank=True, through=BlogTagPage,
-                                  help_text='Tags to mark the content. ie: energy, diet, household...')
+            help_text='Tags to mark the content. ie: energy, diet, household...')
     links = RichTextField(blank=True, help_text='Possible links to follow up or support discussions')
     reference = models.CharField(blank=True, max_length=250, help_text='If source is not link (like paper or archives)')
     notes = models.TextField(blank=True,
-                             help_text='Notes about the quote. Useful for drafts and moderators. Not published.')
+            help_text='Notes about the quote. Useful for drafts and moderators. Not published.')
     search_fields = Page.search_fields + [
-        index.SearchField('summary'),
-        index.SearchField('tags'),
-        index.SearchField('body'),
-    ]
+            index.SearchField('summary'),
+            index.SearchField('tags'),
+            index.SearchField('body'),
+            ]
 
     # Export fields over the API
     api_fields = [
-        APIField('body'),
-        APIField('tags'),
-        APIField('links'),
-        APIField('reference'),
-        APIField('notes'),
-    ]
+            APIField('body'),
+            APIField('tags'),
+            APIField('links'),
+            APIField('reference'),
+            APIField('notes'),
+            ]
 
     content_panels = Page.content_panels + [
-        MultiFieldPanel([
-            FieldPanel('tags'),
-        ], heading="Blog pages"),
-        FieldPanel('body', classname="full"),
-        FieldPanel('summary'),
-        FieldPanel('links'),
-        FieldPanel('reference'),
-        FieldPanel('notes'),
-    ]
+            MultiFieldPanel([
+                FieldPanel('tags'),
+                ], heading="Blog pages"),
+            FieldPanel('body', classname="full"),
+            FieldPanel('summary'),
+            FieldPanel('links'),
+            FieldPanel('reference'),
+            FieldPanel('notes'),
+            ]
 
 
-class BlogList(ListView):
-    model = BlogPage
+    class BlogPage(Page):
+        body = RichTextField(blank=False)
+    summary = models.CharField(max_length=180, help_text='The article summary')
+    tags = ClusterTaggableManager(blank=True, through=BlogTagPage,
+            help_text='Tags to mark the content. ie: energy, diet, household...')
+    links = RichTextField(blank=True, help_text='Possible links to follow up or support discussions')
+    reference = models.CharField(blank=True, max_length=250, help_text='If source is not link (like paper or archives)')
+    notes = models.TextField(blank=True,
+            help_text='Notes about the quote. Useful for drafts and moderators. Not published.')
+    search_fields = Page.search_fields + [
+            index.SearchField('summary'),
+            index.SearchField('tags'),
+            index.SearchField('body'),
+            ]
+
+    # Export fields over the API
+    api_fields = [
+            APIField('body'),
+            APIField('tags'),
+            APIField('links'),
+            APIField('reference'),
+            APIField('notes'),
+            ]
+
+    content_panels = Page.content_panels + [
+            MultiFieldPanel([
+                FieldPanel('tags'),
+                ], heading="Blog pages"),
+            FieldPanel('body', classname="full"),
+            FieldPanel('summary'),
+            FieldPanel('links'),
+            FieldPanel('reference'),
+            FieldPanel('notes'),
+            ]
+
+
+    class BlogList(ListView):
+        model = BlogPage
     paginate_by = 1
 
 
@@ -179,10 +223,10 @@ class GreenHabitTagIndexPage(Page):
 class Link(models.Model):
     name = models.URLField()
     choices = (
-        ('headline', 'headline'),
-        ('study', 'Study'),
-        ('source', 'Source'),
-    )
+            ('headline', 'headline'),
+            ('study', 'Study'),
+            ('source', 'Source'),
+            )
     typeOf = models.CharField(max_length=15, choices=choices)
 
 
@@ -196,103 +240,107 @@ def validate_url(value):
 
 class GreenHabitPage(Page):
     CARBON_FOOTPRINT_IMPACT_TYPES = (
-        ('high', 'High co2e reduction'),
-        ('medium', 'Medium co2e reduction'),
-        ('low', 'Low co2e reduction')
-    )
+            ('high', 'High co2e reduction'),
+            ('medium', 'Medium co2e reduction'),
+            ('low', 'Low co2e reduction')
+            )
     AUDIENCE = (
-        ('global', 'Global'),
-        ('UK', 'UK'),
-        ('US', 'US')
-    )
+            ('global', 'Global'),
+            ('UK', 'UK'),
+            ('US', 'US')
+            )
     description = models.CharField(blank=False,
-                                max_length=100,
-                                help_text='Title of the nudge as it appears on history and favourites. This is what the user will save and search.')
+            max_length=100,
+            help_text='Title of the nudge as it appears on history and favourites. This is what the user will save and search.')
     carbon_footprint_impact = models.CharField(choices=CARBON_FOOTPRINT_IMPACT_TYPES, max_length=20, default='low')
     delivered = models.BooleanField(default=False, help_text='Set to false once delivered with scheduler')
     tags = ClusterTaggableManager(through=GreenHabitTagPage,
-                                  blank=True,
-                                  help_text='Tags to mark the content. ie: energy, diet, household...')
+            blank=True,
+            help_text='Tags to mark the content. ie: energy, diet, household...')
     body = RichTextField(blank=True,
-                         max_length=1000,
-                         help_text='This should be a short paragraph where the carbon reduction habits '
-                                   'should be highlighted. Avoid lists. Keep the message focused. '
-                                   'One day. One change.')
+            max_length=1000,
+            help_text='This should be a short paragraph where the carbon reduction habits '
+            'should be highlighted. Avoid lists. Keep the message focused. '
+            'One day. One change.')
     hero_image = models.ImageField(blank=False,
-                                   upload_to="nudge_post_heros")
+            upload_to="nudge_post_heros")
+    quiz = models.JSONField(blank=True, default={})
     headline_link = RichTextField(blank=True, help_text='headline link: source content')
 
     study_link = RichTextField(help_text="study link: study/paper supporting content (can be pdf, diagram...) ", blank=True)
     other_link = RichTextField(help_text="other link: any links related to content", blank=True)
     footnote = RichTextField(blank=True,
-                             max_length=500,
-                             help_text='Inspirational quote or funny facts to leave the user on high note and'
-                                       ' strongly encourage sharing/saving ')
+            max_length=500,
+            help_text='Inspirational quote or funny facts to leave the user on high note and'
+            ' strongly encourage sharing/saving ')
     notes = models.TextField(blank=True,
-                             help_text='Notes about the quote. '
-                                       'Useful for drafts and/or moderators comment. '
-                                       'Not published.')
+            help_text='Notes about the quote. '
+            'Useful for drafts and/or moderators comment. '
+            'Not published.')
     audience = models.CharField(choices=AUDIENCE,
-                                max_length=20,
-                                default='global', 
-                                help_text="Content can be global or country specific. Our main audience is UK for now but global is preferred for reusability and we're not restricting add distribution. Be mindful of links used (metrics used, GDPR like restrictions); Some might not be accessible in every country")
+            max_length=20,
+            default='global', 
+            help_text="Content can be global or country specific. Our main audience is UK for now but global is preferred for reusability and we're not restricting add distribution. Be mindful of links used (metrics used, GDPR like restrictions); Some might not be accessible in every country")
 
     # obsolete since we usually link back
     source = models.CharField(max_length=120,
-                              blank=True,
-                              help_text='Original author or source. '
-                                        'If website or article. '
-                                        'Use link field but only the domain name here! ')
+            blank=True,
+            help_text='Original author or source. '
+            'If website or article. '
+            'Use link field but only the domain name here! ')
 
 
     search_fields = Page.search_fields + [
-        index.SearchField('title'),
-        index.SearchField('description'),
-        index.SearchField('carbon_footprint_impact'),
-        index.SearchField('body'),
-    ]
+            index.SearchField('title'),
+            index.SearchField('description'),
+            index.SearchField('carbon_footprint_impact'),
+            index.SearchField('body'),
+            index.SearchField('quiz'),
+            ]
 
     # Export fields over the API
     api_fields = [
-        # APIField('published_date'),
-        APIField('body'),
-        APIField('hero_image'),
-        APIField('carbon_footprint_impact'),
-        APIField('description'),
-        APIField('headline_link'),
-        APIField('study_link'),
-        APIField('footnote'),
-        APIField('other_link'),
-        APIField('notes'),
-        APIField('source'),
-        # APIField('links'),
-        # APIField('reference'),
-    ]
+            # APIField('published_date'),
+            APIField('body'),
+            APIField('hero_image'),
+            APIField('carbon_footprint_impact'),
+            APIField('description'),
+            APIField('headline_link'),
+            APIField('study_link'),
+            APIField('footnote'),
+            APIField('other_link'),
+            APIField('notes'),
+            APIField('source'),
+            APIField('quiz'),
+            # APIField('links'),
+            # APIField('reference'),
+            ]
 
     content_panels = Page.content_panels + [
-        FieldPanel('description'),
-        FieldPanel('audience'),
-        MultiFieldPanel([
-            # FieldPanel('date'),
-            FieldPanel('tags'),
-        ], heading="Sustainable habit details"),
-        FieldPanel('carbon_footprint_impact'),
-        FieldPanel('delivered'),
-        RichTextFieldPanel('body', classname="full"),
-        FieldPanel('hero_image', classname="full"),
-        FieldPanel('headline_link'),
-        FieldPanel('study_link'),
-        FieldPanel('other_link'),
-        FieldPanel('footnote'),
-        # FieldPanel('source'),
-        # FieldPanel('reference'),
-        FieldPanel('notes'),
-    ]
+            FieldPanel('description'),
+            FieldPanel('audience'),
+            MultiFieldPanel([
+                # FieldPanel('date'),
+                FieldPanel('tags'),
+                ], heading="Sustainable habit details"),
+            FieldPanel('carbon_footprint_impact'),
+            FieldPanel('delivered'),
+            RichTextFieldPanel('body', classname="full"),
+            FieldPanel('hero_image', classname="full"),
+            FieldPanel('headline_link'),
+            FieldPanel('study_link'),
+            FieldPanel('other_link'),
+            FieldPanel('footnote'),
+            # FieldPanel('source'),
+            # FieldPanel('reference'),
+            FieldPanel('notes'),
+            FieldPanel('quiz'),
+            ]
 
 
-class StaticPage(Page):
-    # parent_page_types = []  # make the page private
+    class StaticPage(Page):
+        # parent_page_types = []  # make the page private
     body = RichTextField()
     content_panels = Page.content_panels + [
-        FieldPanel('body', classname="full"),
-    ]
+            FieldPanel('body', classname="full"),
+            ]
