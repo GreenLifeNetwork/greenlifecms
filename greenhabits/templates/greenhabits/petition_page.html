@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% load wagtailcore_tags wagtailimages_tags dump_tag %}
+
+{% block meta %}
+<meta property="og:title" content="GreenLife: {{page.title}}">
+<meta property="og:url" content="https://{{request.META.HTTP_HOST}}{{page.url}}">
+<meta property="og:description" content="{{ page.description }}">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://greenlife.cloud/media/{{page.hero_image}}">
+{% endblock %}
+
+{% block body_class %}template-quotepage{% endblock %}
+
+{% block content %}
+<div class="article">
+    <a href="/" class="href">
+        <img class="logo" alt="Green Life Logo" src="https://{{request.META.HTTP_HOST}}{% static 'images/svg/GLlogo.svg' %}"/>
+    </a>
+
+    <h1>{{ page.title }}</h1>
+
+<!--   {% for petition in  -->
+
+    <div class="content">
+        {{ page.body|richtext }}
+        <div id="nudge-links">
+            <i>{{ page.footnote|richtext }}</i>
+            {{ page.headline_link|richtext }}
+            {{ page.study_link|richtext }}
+            {{ page.other_link|richtext }}
+        </div>
+
+         <div class="sharethis-inline-share-buttons"></div>
+
+            {% for link in page.petition %}
+            <!-- FIXME -->
+             <a href="{{link.ur}}" title="{{page.title}}">{{ tag }}</a>
+            {% endfor %}
+
+<!--        <div id="app-available-desktop-banner" class="app-banner" style='display: none'>-->
+<!--            <h4>Become carbon neutral the easy way</h4>-->
+<!--            <ul>-->
+<!--                <li>-->
+<!--                    <a href="https://apps.apple.com/us/app/green-lifestyle/id1484892517?ls=1">-->
+<!--                        <img alt="Green Life on App Store" src="https://{{request.META.HTTP_HOST}}{% static 'images/svg/app-store-download.svg' %}"/>-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <a href="https://play.google.com/store/apps/details?id=lastchance.greenlife.quotes">-->
+<!--                        <img alt="Green Life on Play Store" src="https://{{request.META.HTTP_HOST}}{% static 'images/svg/google-play-download.svg' %}"/>-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+
+        {# <p><a href="{{ page.get_parent.url }}">Return to blog</a></p>#}
+    </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
