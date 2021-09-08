@@ -1,21 +1,21 @@
 from urllib.parse import urlparse
 
-from django.contrib.auth.models import User
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db import models
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 from django.forms import ValidationError
 from django.shortcuts import render
 from django.views.generic import ListView
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey
 from taggit.models import TaggedItemBase
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, RichTextFieldPanel
+from wagtail.admin.edit_handlers import MultiFieldPanel, RichTextFieldPanel, FieldPanel, StreamFieldPanel
 from wagtail.api import APIField
+from wagtail.contrib.modeladmin.options import ModelAdmin
 from wagtail.contrib.routable_page.models import RoutablePageMixin, route
-from wagtail.core.fields import RichTextField
-from wagtail.core.models import Page, Group
+from wagtail.core import blocks
+from wagtail.core.fields import RichTextField, StreamField
+from wagtail.core.models import Page
+from wagtail.images.blocks import ImageChooserBlock
 from wagtail.search import index
 
 
@@ -67,6 +67,23 @@ class GreenHabitIndexPage(RoutablePageMixin, Page):
         return render(request, 'greenhabits/green_habit_page.html', {
             'page': page,
         })
+
+
+class PetitionPage(Page):
+    petition = StreamField([
+        ('link', blocks.StructBlock([
+            ('title', blocks.CharBlock()),
+            # ('summary', blocks.CharBlock()),
+            ('url', blocks.URLBlock())
+        ]))])
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel('petition'),
+    ]
+
+    api_fields = [
+        APIField('petition'),
+    ]
 
 
 class BlogTagPage(TaggedItemBase):
@@ -206,8 +223,9 @@ class GreenHabitPage(Page):
         ('US', 'US')
     )
     description = models.CharField(blank=False,
-                                max_length=100,
-                                help_text='Title of the nudge as it appears on history and favourites. This is what the user will save and search.')
+                                   max_length=100,
+                                   help_text='Title of the nudge as it appears on history and favourites. This is '
+                                             'what the user will save and search.')
     carbon_footprint_impact = models.CharField(choices=CARBON_FOOTPRINT_IMPACT_TYPES, max_length=20, default='low')
     delivered = models.BooleanField(default=False, help_text='Set to false once delivered with scheduler')
     tags = ClusterTaggableManager(through=GreenHabitTagPage,
@@ -223,7 +241,8 @@ class GreenHabitPage(Page):
     quiz = models.JSONField(blank=True, default={})
     headline_link = RichTextField(blank=True, help_text='headline link: source content')
 
-    study_link = RichTextField(help_text="study link: study/paper supporting content (can be pdf, diagram...) ", blank=True)
+    study_link = RichTextField(help_text="study link: study/paper supporting content (can be pdf, diagram...) ",
+                               blank=True)
     other_link = RichTextField(help_text="other link: any links related to content", blank=True)
     footnote = RichTextField(blank=True,
                              max_length=500,
@@ -235,7 +254,7 @@ class GreenHabitPage(Page):
                                        'Not published.')
     audience = models.CharField(choices=AUDIENCE,
                                 max_length=20,
-                                default='global', 
+                                default='global',
                                 help_text="Content can be global or country specific. Our main audience is UK for now but global is preferred for reusability and we're not restricting add distribution. Be mindful of links used (metrics used, GDPR like restrictions); Some might not be accessible in every country")
 
     # obsolete since we usually link back
@@ -244,7 +263,6 @@ class GreenHabitPage(Page):
                               help_text='Original author or source. '
                                         'If website or article. '
                                         'Use link field but only the domain name here! ')
-
 
     search_fields = Page.search_fields + [
         index.SearchField('title'),
