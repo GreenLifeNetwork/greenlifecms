@@ -1,3 +1,4 @@
+import datetime
 from urllib.parse import urlparse
 
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
@@ -73,8 +74,9 @@ class PetitionPage(Page):
     petition = StreamField([
         ('link', blocks.StructBlock([
             ('title', blocks.CharBlock()),
-            # ('summary', blocks.CharBlock()),
-            ('url', blocks.URLBlock())
+            ('url', blocks.URLBlock()),
+            ('expiry_date', blocks.DateBlock(default=datetime.datetime.now() + datetime.timedelta(days=30), help_text='Important: petitions have a short lifespan and can expire within days!')),
+            ('summary', blocks.CharBlock(required=False)),
         ]))])
 
     content_panels = Page.content_panels + [
