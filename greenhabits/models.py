@@ -214,24 +214,6 @@ def validate_url(value):
         raise ValidationError(f'Only secure links can be used: https://...')
 
 
-class Person(Page, models.Model):
-    name = models.CharField(max_length=100)
-    nickname = models.CharField(blank=True, max_length=100)
-    likes_cat_gifs = models.NullBooleanField()
-
-
-class PersonAdmin(ModelAdmin):
-    model = Person
-    list_display = ('name', 'nickname', 'likes_cat_gifs')
-
-    def get_empty_value_display(self, field_name=None):
-        if field_name == 'nickname':
-            return 'None given'
-        if field_name == 'likes_cat_gifs':
-            return 'Unanswered'
-        return super().get_empty_value_display(field_name)
-
-
 class GreenHabitPage(Page, models.Model):
     CARBON_FOOTPRINT_IMPACT_TYPES = (
         ('high', 'High co2e reduction'),
