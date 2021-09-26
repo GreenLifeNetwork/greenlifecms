@@ -70,7 +70,7 @@ class GreenHabitIndexPage(RoutablePageMixin, Page):
         })
 
 
-class PetitionPage(Page):
+class PetitionPage(Page, models.Model):
     petition = StreamField([
         ('link', blocks.StructBlock([
             ('title', blocks.CharBlock()),
@@ -83,6 +83,9 @@ class PetitionPage(Page):
     content_panels = Page.content_panels + [
         StreamFieldPanel('petition'),
     ]
+
+    def __str__(self):
+        return self.petition
 
     api_fields = [
         APIField('petition'),
@@ -329,26 +332,22 @@ class GreenHabitPage(Page, models.Model):
     ]
 
 
-# class GreenHabitAdmin(ModelAdmin):
-#     model = GreenHabitPage
-#     list_display = (title, description)
+class PetitionPageAdmin(ModelAdmin):
+    model = PetitionPage
+    menu_label = 'Petitions'
+    menu_icon = 'warning'
+    menu_order = 2
+    # list_display = ('petition__link',)
+    # list_display = ('petition',)
+    # list_display = ('link',)
+    list_display = ('__str__',)
 
 
-# class GreenHabitPageAdmin(ModelAdmin):
 class GreenHabitPageAdmin(ModelAdmin):
     model = GreenHabitPage
     menu_label = 'Nudges'
     menu_icon = 'snippet'
     menu_order = 1
-
-    # menu_label = "Standard Blog posts"
-    # menu_icon = "doc-full"
-    #
-    # add_to_settings_menu = False
-    # exclude_from_explorer = False
-    # empty_value_display = 'N/A'
-    # list_per_page = 10
-    # index_view_extra_css = ["css/wagtail.css", ]
 
     def has_quiz(self, obj):
         if obj.quiz:
@@ -357,16 +356,12 @@ class GreenHabitPageAdmin(ModelAdmin):
             return False
 
     has_quiz.short_description = 'has quiz'
-
-    empty_value_display = 'N/A'
     list_display = ('title', 'description', 'carbon_footprint_impact', 'quiz')
-    # list_display = ('title', 'description', 'carbon_footprint_impact', 'has_quiz', 'quiz')
-    # list_display = ('title', 'description',  'quiz')
-    # admin_order_field = '-carbon_footprint_impact'
-    # list_filter = ['carbon_footprint_impact']
+    list_export = ('title', 'description', 'carbon_footprint_impact', 'quiz')
 
 
 modeladmin_register(GreenHabitPageAdmin)
+modeladmin_register(PetitionPageAdmin)
 
 
 class StaticPage(Page):
