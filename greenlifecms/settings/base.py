@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'wagtail.core',
     'wagtail.api.v2',
     'wagtail.contrib.routable_page',
+    'wagtail.contrib.modeladmin',
 
     'modelcluster',
     'taggit',

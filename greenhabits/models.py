@@ -11,7 +11,7 @@ from modelcluster.fields import ParentalKey
 from taggit.models import TaggedItemBase
 from wagtail.admin.edit_handlers import MultiFieldPanel, RichTextFieldPanel, FieldPanel, StreamFieldPanel
 from wagtail.api import APIField
-from wagtail.contrib.modeladmin.options import ModelAdmin
+from wagtail.contrib.modeladmin.options import ModelAdmin, modeladmin_register
 from wagtail.contrib.routable_page.models import RoutablePageMixin, route
 from wagtail.core import blocks
 from wagtail.core.fields import RichTextField, StreamField
@@ -75,7 +75,8 @@ class PetitionPage(Page):
         ('link', blocks.StructBlock([
             ('title', blocks.CharBlock()),
             ('url', blocks.URLBlock()),
-            ('expiry_date', blocks.DateBlock(default=datetime.datetime.now() + datetime.timedelta(days=30), help_text='Important: petitions have a short lifespan and can expire within days!')),
+            ('expiry_date', blocks.DateBlock(default=datetime.datetime.now() + datetime.timedelta(days=30),
+                                             help_text='Important: petitions have a short lifespan and can expire within days!')),
             ('summary', blocks.CharBlock(required=False)),
         ]))])
 
@@ -213,7 +214,25 @@ def validate_url(value):
         raise ValidationError(f'Only secure links can be used: https://...')
 
 
-class GreenHabitPage(Page):
+class Person(Page, models.Model):
+    name = models.CharField(max_length=100)
+    nickname = models.CharField(blank=True, max_length=100)
+    likes_cat_gifs = models.NullBooleanField()
+
+
+class PersonAdmin(ModelAdmin):
+    model = Person
+    list_display = ('name', 'nickname', 'likes_cat_gifs')
+
+    def get_empty_value_display(self, field_name=None):
+        if field_name == 'nickname':
+            return 'None given'
+        if field_name == 'likes_cat_gifs':
+            return 'Unanswered'
+        return super().get_empty_value_display(field_name)
+
+
+class GreenHabitPage(Page, models.Model):
     CARBON_FOOTPRINT_IMPACT_TYPES = (
         ('high', 'High co2e reduction'),
         ('medium', 'Medium co2e reduction'),
@@ -224,6 +243,20 @@ class GreenHabitPage(Page):
         ('UK', 'UK'),
         ('US', 'US')
     )
+
+    class Meta:
+        verbose_name = "Nudge"
+
+    # def colored_first_name(self):
+    #     return format_html(
+    #         '<span style="color: #{};">{}</span>',
+    #         self.description,
+    #         self.title,
+    #     )
+    # colored_first_name.admin_order_field = 'first_name'
+
+    ordering = ['-pub_date', 'author']
+
     description = models.CharField(blank=False,
                                    max_length=100,
                                    help_text='Title of the nudge as it appears on history and favourites. This is '
@@ -312,6 +345,46 @@ class GreenHabitPage(Page):
         FieldPanel('notes'),
         FieldPanel('quiz'),
     ]
+
+
+# class GreenHabitAdmin(ModelAdmin):
+#     model = GreenHabitPage
+#     list_display = (title, description)
+
+
+# class GreenHabitPageAdmin(ModelAdmin):
+class GreenHabitPageAdmin(ModelAdmin):
+    model = GreenHabitPage
+    menu_label = 'Nudges'
+    menu_icon = 'snippet'
+    menu_order = 1
+
+    # menu_label = "Standard Blog posts"
+    # menu_icon = "doc-full"
+    #
+    # add_to_settings_menu = False
+    # exclude_from_explorer = False
+    # empty_value_display = 'N/A'
+    # list_per_page = 10
+    # index_view_extra_css = ["css/wagtail.css", ]
+
+    def has_quiz(self, obj):
+        if obj.quiz:
+            return True
+        else:
+            return False
+
+    has_quiz.short_description = 'has quiz'
+
+    empty_value_display = 'N/A'
+    list_display = ('title', 'description', 'carbon_footprint_impact', 'quiz')
+    # list_display = ('title', 'description', 'carbon_footprint_impact', 'has_quiz', 'quiz')
+    # list_display = ('title', 'description',  'quiz')
+    # admin_order_field = '-carbon_footprint_impact'
+    # list_filter = ['carbon_footprint_impact']
+
+
+modeladmin_register(GreenHabitPageAdmin)
 
 
 class StaticPage(Page):
