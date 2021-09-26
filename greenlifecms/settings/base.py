@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'wagtail.api.v2',
     'wagtail.contrib.routable_page',
     'wagtail.contrib.modeladmin',
+    'django.contrib.sitemaps',
 
     'modelcluster',
     'taggit',
